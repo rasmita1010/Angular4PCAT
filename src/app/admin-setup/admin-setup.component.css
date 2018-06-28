@@ -1,0 +1,19 @@
+.dragarea label{
+    padding-left:5px;
+}
+
+.droparea i{
+    font-size:large;
+}
+
+.droparea a{
+    padding-right:5px;
+}
+.alert-danger-error{
+    border-radius: 20px;
+    font-family: open-sans-sbold;
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    text-align:center;
+}

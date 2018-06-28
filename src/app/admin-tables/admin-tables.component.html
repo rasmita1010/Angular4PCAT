@@ -1,0 +1,206 @@
+<div class="row mt10 cnt-md">
+  <h1 class="fl">{{constants.PCA_DIGITAL | titlecase}}</h1>
+  <div role="tabpanel" class="clearfix">
+    <div class="cnt-md-inner">
+      <div class="col-md-2 vtabs text-center">
+        <i class="fa fa-laptop fa-2x"></i>
+      </div>
+      <div class="col-md-10">
+        <div class="tab-content">
+          <div role="tabpanel" id="demoCode" class="tab-pane in fade active">
+            <div class="sbc hide show">
+              <input type="text" placeholder="Search" [(ngModel)]="freeTextSearch" style="width:35%;">
+              <a class="fa fa-search"></a>
+            </div>
+            <div class="table-cnt clearfix mt10">
+              <table *ngIf="data" class="table ntable" [mfData]="data | DigitalDemoSearchPipe: freeTextSearch" #mf="mfDataTable" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder"
+                     [(mfRowsOnPage)]="rowsOnPage">
+                <colgroup>
+                  <col style="width:10%">
+                  <col style="width:35%">
+                  <col style="width:10%">
+                  <col style="width:5%">
+                  <col style="width:40%">
+                </colgroup>
+                <thead class="thead-default">
+                  <tr>
+                    <th><mfDefaultSorter by="DemoCode">{{constants.LBL_DEMO_CODE}}</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="Description">{{constants.LBL_DESCRIPTION}}</mfDefaultSorter></th>
+                    <th><mfDefaultSorter by="DemoOfferCode">{{constants.LBL_DEMOOFFERS}}</mfDefaultSorter></th>
+                    <th colspan="2"><mfDefaultSorter by="MagCode">{{constants.LBL_MAG_CODE}}</mfDefaultSorter></th>
+                  </tr>
+                </thead>
+
+                <tbody *ngFor="let element of mf.data; trackBy:trackByDemoCode;let i = index">
+                  <tr>
+                    <td>{{element.DemoCode}}</td>
+                    <td>{{element.Description}}</td>
+                    <td>{{element.DemoOfferCode}}</td>
+
+                    <!-- CME-7077 - Commented by Priya -->
+                    <!--<td>
+                      <p *ngFor="let item of element.DemoOfferCodes">{{item}}</p>
+                    </td>-->
+                    <!--<td *ngIf="!isDisabled"><a (click)="editDigitalDemo(element,(mf.activePage - 1) * mf.rowsOnPage + i)" class="fa fa-pencil" href="javascript:void(0)"></a></td>-->
+
+                    <td>
+                      <!-- {{element.MagCode}} -->
+
+                      <a class="ptr" title="Expand/Collapse Data" (click)="showDetails(i)">
+                        <i [ngClass]="selectedIndex.indexOf(i) > -1 ? 'fa fa-minus-circle fSize':'fa fa-plus-circle fSize'"></i>
+                      </a>
+                    </td>
+                    <td colspan="4">                   
+
+                      <div class="magintblc" *ngIf="(selectedIndex.indexOf(i) > -1);else channelDetailsHeader">
+                        <table class="table bgrey mb5">
+                          <colgroup>
+                            <col style="width:20%" />
+                            <col style="width:80%" />
+                          </colgroup>
+
+                          <thead class="thead-default">
+                            <tr>
+                              <th>Mag Code</th>
+                              <th>Magazine Name</th>                          
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <ng-template ngFor let-magcode [ngForOf]="element.MagDetail" let-k="index">
+                              <tr>
+                                <td>{{magcode.MagCode}}</td>
+                                <td>{{magcode.MagazineName}}</td>
+                              </tr>
+                            </ng-template>
+                          </tbody>
+                        </table>
+                      </div>
+                      <ng-template #channelDetailsHeader><a class="ptr" (click)="showDetails(i)">View Magazines</a></ng-template>
+                    </td>
+
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="13">
+                      <div class="fr clearfix">
+                        <div class="fl sipp">
+                          Show
+                          <select [(ngModel)]="rowsOnPage">
+                            <option [ngValue]="5">5</option>
+                            <option [ngValue]="10">10</option>
+                            <option [ngValue]="15">15</option>
+                            <option [ngValue]="25">25</option>
+                            <option [ngValue]="100">100</option>
+                          </select>items per page
+                        </div>
+                        <mfBootstrapPaginator></mfBootstrapPaginator>
+
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- Commented Add new as part of CME-7077 -- Priya -->
+            <!--<div class="row mt20" *ngIf="!isDisabled">
+                <div class="col-md-12">
+                    <div class="cnopt text-center">
+                        <span class="ptr" (click)="addNewDigitalDemo()"><i class="fa fa-plus-circle fa-2x"></i></span>
+                        <span (click)="addNewDigitalDemo()" class="ptr ml15">Add Digital Demo</span>
+                    </div>
+                </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CME - 7077 - Commented by Priya -->
+<!--<bs-modal #modelDemoCode class="md" [backdrop]="'static'">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="allowExit()">&times;</button>
+                <h4 class="modal-title">Add/Edit Digital Demo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="divATadd">
+                    <div class="table-cnt clearfix">
+                        <table class="table ntable atable">
+                            <colgroup>
+                                <col style="width:50%">
+                                <col style="width:50%">
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">Demo Code</td>
+                                    <td class="text-center">
+                                        <input id="DemoCode" type="text" class="txt" value="" placeholder="enter" [(ngModel)]="selectedDigitalDemo.DemoCode" (change)="onDemoCodeChange($event)" [disabled]="!isAdd" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Description</td>
+                                    <td class="text-center">
+                                        <input id="Description" type="text" class="txt" value="" placeholder="enter" [(ngModel)]="selectedDigitalDemo.Description" (change)="onDescriptionChange($event)" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Demo Offer Codes</td>
+                                    <td class="text-center">
+                                        <div class="doContainer">
+                                            <div *ngFor="let offer of selectedDigitalDemo.DemoOfferCodes;let i = index;" class="pt10 divOffer">
+                                                <i class="fa fa-dropbox fl"></i><label class="pr20">{{offer}}</label><a class="ptr fr" (click)="deleteDemoOffer(offer,i)"><i class="fa fa-trash delIcon"></i></a>
+                                            </div>
+                                        </div>
+                                            <div class="pt20 addOffer btnc">
+                                                <input type="text" class="txt" value="" [(ngModel)]="demoofferCode" />
+                                                <a (click)="addNewDemoOffer()" title="Add" class="ptr"><p>Add</p></a>
+                                            </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="alert-danger-error mt7" *ngIf="showError">{{errorMessage}}</div>
+                    </div>
+                    <div class="clearfix mt10">
+                        <div class="btnc">
+                            <p class="fr">
+                                <a (click)="saveDigitalDemos($event)" class="active ml15 ptr">Save</a>
+                                <a (click)="allowExit()" title="Cancel" class="ml15 ptr">Cancel</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</bs-modal>-->
+
+<bs-modal #progressBar [backdrop]="'static'">
+  <div style="padding-left: 50%;
+    margin-top: 33%;">
+    <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+  </div>
+</bs-modal>
+
+<!--<bs-modal #modalSaveSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>-->
+<!--<bs-modal #modelIsDirty [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+        <button (click)="modelIsDirty.close();modelDemoCode.close();modified = false;" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="no" class="btn btn-default" (click)="modelIsDirty.close()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>-->

@@ -1,0 +1,74 @@
+.modal-dialog {
+    width: 50%;
+    margin: 30px auto;
+}
+
+.adddo{
+    padding-top:15px;
+}
+
+.delIcon{
+    font-size: 1.3em;
+}
+
+.addIcon{
+    font-size: 1.5em;
+}
+/*.md{
+    padding-left: 25%;
+    padding-right: 25%;
+}*/
+
+.addOffer a{
+    padding: 5px 15px;
+    font-size: small;
+    margin-left:20px;
+}
+
+.addOffer input{
+    margin-left:15%;
+}
+
+.divOffer{
+    margin-left: 30%;
+    margin-right: 10%;
+    margin-top: 5px;
+    border-radius: 20px;
+    background: #d6d4d4;
+}
+
+.doContainer{
+    max-height:170px;
+    overflow-y:auto;
+}
+
+.divATadd{
+    padding:0px 5%;
+}
+
+.cnopt{
+    border: 1px dashed #ddd;
+    padding:10px;
+    color:#337ab7;
+}
+
+.cnopt span{
+     cursor:pointer;
+}
+
+.table-cnt{
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sbc{
+    margin: 0 5px 20px;
+    padding-top: 0px;
+}
+
+.tab-content{
+    margin-top:-4%;
+}
+
+.cnt-md-inner{padding:0px;}

@@ -1,0 +1,153 @@
+<div class="row mtop20 cnt-md">
+    <div class="col-md-12 plz pr20">
+        <div class="cnt-md-inner-fluid">
+            <div class="ctl-r">
+                <div class="clearfix row">
+                    <div class="col-md-5">
+                        <h1 class="fl pl35">{{constants.LBL_PRIOR_HEADER}}</h1>
+                    </div>
+                </div>
+                <div class="clearfix row pl35">
+                    <div class="col-md-3">
+                            <label class="control-label mb5" for="ddlMagazine">{{constants.LBL_MAGAZINE}}:</label><br />
+                            <select id="ddlMagazine" [(ngModel)]="selectedMagazine" (change)="changeMagazine()" class="ddl-ctrl">
+                                <option value="" disabled selected>Select Magazine</option>
+                                <option *ngFor="let type of magazineList" value="{{type.ResourceName}}">{{type.Description}}</option>
+                            </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label mb5" for="ddlChannel">{{constants.LBL_CHANNEL}}:</label><br />
+                        <select id="ddlChannel" [(ngModel)]="selectedChannelId" (change)="changeChannel()" class="ddl-ctrl">
+                            <option value="0" disabled selected>Select Channel</option>
+                            <option *ngFor="let type of channelList" value="{{type.ChannelId}}" title="{{type.ChannelName}}">{{constants['LBL_'+type.ChannelCode]}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="control-label mb5">{{constants.LBL_PRIOR_DATE}}:</label><br />
+                        <my-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'mm/dd/yyyy'"
+                                    (inputFieldChanged)="validateDate($event)" [selDate]="selectedDate" required></my-date-picker>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="innerNav fr">
+                            <li class="btnc"><button class="active" (click)="viewAllSchedules()">View all schedules</button></li>
+                            <li><span class="dot fl"></span></li>
+                            <li class="btnc"><button class="active" (click)="PublishDemoOffers()">{{constants.BTN_PUBLISH}}</button></li>
+                            <li><span class="dot fl"></span></li>
+                            <li class="btnc"><button (click)="goToSummary()" title="Close"><span class="glyphicon glyphicon-remove"></span></button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive pl35 mt10">
+                    <div id="sbox" class="sbc hide text-center">
+                        <input type="text" placeholder="Search" style="width:90%;" />
+                        <a class="fa fa-search"></a>
+                    </div>
+                    <div class="table-cnt scroll-data">
+                        <table id="mytable" class="table table-hover">
+                            <colgroup>
+                                <col style="width:15%" />
+                                <col style="width:35%" />
+                                <col style="width:10%" />
+                                <col style="width:10%" />
+                                <col style="width:20%" />
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>{{constants.TBL_H_DISPLAY}}</th>
+                                    <th>{{constants.TBL_H_QUESTION}}</th>
+                                    <th>{{constants.TBL_H_ANS_TYPE}}</th>
+                                    <th>{{constants.TBL_H_DEMO_OFFER}}</th>
+                                    <th>{{constants.TBL_H_ACTION}}</th>
+                                </tr>
+                            </thead>
+                            <tbody dnd-sortable-container [sortableData]="offerChannelList">
+                                <tr *ngFor="let offer of offerChannelList; let i = index" dnd-sortable [sortableIndex]="i" [dragEnabled]="true" (onDropSuccess)="dropSuccess()">
+                                    <td>{{i+1}}</td>
+                                    <td><span class="fa fa-question-circle" aria-hidden="true"></span>{{offer.QuestionText}}</td>
+                                    <td>{{offer.AnswerType}}</td>
+                                    <td>{{offer.DemoOfferCode}}</td>
+                                    <td><a href="javascript:void(0);" (click)="goToViewDemoCode(offer.DemoCode)" title="View">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<bs-modal #modalValidate [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modalSaveSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modelIsExisting [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{warningMessage}}?</span></p>
+        <button (click)="modelIsExisting.close()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="no" class="btn btn-default" (click)="modelIsExisting.dismiss()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modelViewSchedules [backdrop]="'static'">
+    <bs-modal-header>
+        <h4 class="modal-title">View All Prioritize Schedule!</h4>
+        <a title="Close" (click)="modelViewSchedules.close()" style="float:right"><i class="fa fa-2x fa-close"></i></a>
+    </bs-modal-header>
+    <bs-modal-body>
+        <div class="table-responsive pl35 mt10">
+            <div id="sbox" class="sbc hide text-center">
+                <input type="text" placeholder="Search" style="width:90%;" />
+                <a href="#" class="fa fa-search"></a>
+            </div>
+            <div class="table-cnt scroll-data">
+                <table id="mytable" class="table table-hover">
+                    <colgroup>
+                        <col style="width:35%" />
+                        <col style="width:35%" />
+                        <col style="width:30%" />
+                    </colgroup>
+                    <thead class="thead-default">
+                        <tr>
+                            <th>{{constants.LBL_MAGAZINE}}</th>
+                            <th>{{constants.LBL_CHANNEL}}</th>
+                            <th>{{constants.LBL_SCHEDULED_DATE}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let view of viewScheduledList; let i = index">
+                            <td>{{view.MagazineName}}</td>
+                            <td title="{{view.ChannelName}}">{{constants['LBL_'+view.ChannelCode]}}</td>
+                            <td>{{view.ScheduledDate | FormatDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </bs-modal-body>
+    <bs-modal-footer>
+        <button type="button" class="btn btn-primary" (click)="modelViewSchedules.close()">Ok</button>
+    </bs-modal-footer>
+</bs-modal>
+
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+    </div>
+</bs-modal>
+<bs-modal #modelIsDirty [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+        <button (click)="allowNavigation()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="no" class="btn btn-default" (click)="blockRouteNavigation()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>

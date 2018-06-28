@@ -1,0 +1,275 @@
+﻿<h2>{{constants.CO_CHAINOFFERS}}</h2>
+<h3 *ngIf="!(!isSingleOptionType || offerNotAvailable || isCDBModel)">{{constants.CO_MANAGE}}</h3>
+<p *ngIf="!isSingleOptionType" class="alert-offer-error"><span class="fa fa-info-circle"></span>{{constants.MSG_CO_SINGLE_ONLY}}</p>
+<p *ngIf="isCDBModel && isSingleOptionType" class="alert-offer-error"><span class="fa fa-info-circle"></span>{{constants.MSG_CO_CDB}}</p>
+<p *ngIf="isSingleOptionType && offerNotAvailable && !isCDBModel" class="alert-offer-error"><span class="fa fa-info-circle"></span>{{constants.MSG_CO_ADD_MAGCHNL}}</p>
+<div class="table-cnt clearfix mt10" *ngIf="!offerNotAvailable && isSingleOptionType && !isCDBModel">
+    <table class="table">
+        <colgroup>
+            <col style="width:35%">
+            <col style="width:20%">
+            <col style="width:25%">
+            <col style="width:20%">
+        </colgroup>
+        <thead class="thead-default">
+            <tr>
+                <th>{{constants.TBL_H_QUESTION}}</th>
+                <th>
+                    <div class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                </th>
+                <th>{{constants.LBL_MAGAZINE}}</th>
+                <th>{{constants.LBL_CHAIN_OFFER}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--List of Available Forced Chain Offers-->
+            <ng-template ngFor let-forcedChain [ngForOf]="availableForcedOffers | DemoOfferCodePipe: freeTextSearch" let-fo="index">
+                <!--parentoffer-->
+                <tr>
+                    <td>
+                        <a class="ptr"><i class="fa fa-dropbox"></i>{{forcedChain.QuestionText}}</a>
+                    </td>
+                    <td>{{forcedChain.ParentDemoOfferCode}}</td>
+                    <td>{{forcedChain.MagazineName}}</td>
+                    <td>
+                        <a *ngIf="fo != forcedIndex" title="Expand" (click)="forcedIndex = fo;choiceIndex=-1;choiceToOfferIndex=-1;editOfferChain = false" class="fa fa-angle-right ptr"></a>
+                        <a *ngIf="fo == forcedIndex" title="Collapse" (click)="forcedIndex = -1" class="fa fa-angle-down ptr"></a>
+                    </td>
+                </tr>
+                <!--linked child offer-->
+                <tr *ngIf="fo == forcedIndex && !editOfferChain">
+                    <td>
+                        <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{forcedChain.ChildOfferQuestionText}}</a></p>
+                    </td>
+                    <td>{{forcedChain.ChildDemoOfferCode}}</td>
+                    <td></td>
+                    <td>
+                        <a title="Delete" class="fa fa-trash ptr" (click)="deleteChainOffer(forcedChain,'FORCED')" *ngIf="getEditibility(forcedChain) && !isDemoCodePending()"></a>
+                        <a title="Edit" class="fa fa-edit ptr" (click)="editChainOffer(forcedChain)" *ngIf="getEditibility(forcedChain) && !isDemoCodePending()"></a>
+                    </td>
+                </tr>
+                <tr *ngIf="editOfferChain && fo == forcedIndex">
+                    <td colspan="4" class="datadet">
+                        <app-chainofferssetup 
+                                              [possibleForcedChainOffers]="possibleForcedChainOffers" 
+                                              [possibleChoiceChainOffers]="possibleChoiceChainOffers"
+                                              [possibleChoiceToOfferChains]="possibleChoiceToOfferChains"
+                                              [editForced]="editChoiceOfferObj"
+                                              [ParentChoices]="ParentChoices" 
+                                              (selectedForcedChain)="LinkChainOffer($event)" 
+                                              (selectedChoiceChain)="LinkChoiceChainOffer($event)" 
+                                              (selectedChoiceToOfferChain)="LinkChoiceToOffer($event)"
+                                              (closeOfferSetup)="closeSetup($event)"></app-chainofferssetup>
+                    </td>
+                </tr>
+            </ng-template>
+
+
+            <!--List of Available Choice To Offer Chains-->
+            <ng-template ngFor let-choiceToOfferChain [ngForOf]="availableChoiceToOfferChains | DemoOfferCodePipe: freeTextSearch" let-cf="index">
+                <!--parentoffer -->
+                <tr>
+                    <td>
+                        <a class="ptr"><i class="fa fa-dropbox"></i>{{choiceToOfferChain.QuestionText}}</a>
+                    </td>
+                    <td>{{choiceToOfferChain.ParentDemoOfferCode}}</td>
+                    <td>{{choiceToOfferChain.MagazineName}}</td>
+                    <td>
+                        <a *ngIf="cf != choiceToOfferIndex" title="Expand" (click)="choiceToOfferIndex = cf;forcedIndex=-1;choiceIndex=-1;editOfferChain = false" class="fa fa-angle-right ptr"></a>
+                        <a *ngIf="cf == choiceToOfferIndex" title="Collapse" (click)="choiceToOfferIndex = -1" class="fa fa-angle-down ptr"></a>
+                    </td>
+                </tr>
+                <!--linked child offer -->
+                <tr *ngIf="cf == choiceToOfferIndex && !editOfferChain">
+                    <td>
+                        <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{choiceToOfferChain.ChildOfferQuestionText}}</a></p>
+                    </td>
+                    <td>{{choiceToOfferChain.ChildDemoCode}}</td>
+                    <td></td>
+                    <td>
+                        <a title="Delete" class="fa fa-trash ptr" (click)="deleteChainOffer(choiceToOfferChain,'CHOICE TO OFFER')" *ngIf="getEditibility(choiceToOfferChain)  && !isDemoCodePending()"></a>
+                        <a title="Edit" class="fa fa-edit ptr" (click)="editChainOffer(choiceToOfferChain)" *ngIf="getEditibility(choiceToOfferChain)  && !isDemoCodePending()"></a>
+                    </td>
+                </tr>
+                <tr *ngIf="cf==choiceToOfferIndex && !editOfferChain">
+                    <td colspan="4">
+                        <div class="row">
+                            <div class="col-md-6 pl80 scroll-choice">
+                                <ng-template ngFor let-choiceChain [ngForOf]="choiceToOfferChain.ChoiceToOfferAssociations" let-ch="index">
+                                    <div class="row">
+                                        <i [ngClass]="ch == 0 ?'fa fa-chain fl mt10':'fa fa-chain fl mt20'"></i>
+                                        <div [ngClass]="ch == 0 ? 'dropchoice':'dropchoice mt10'">
+                                            {{choiceChain.ParentDemoChoiceText}}
+                                            <a class="simplebox mt0 ptr" *ngIf="choiceChain.ChildDemoOfferCode">{{choiceChain.ChildDemoOfferCode}}</a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="editOfferChain && cf==choiceToOfferIndex">
+                    <td colspan="4" class="datadet">
+                        <app-chainofferssetup [possibleForcedChainOffers]="possibleForcedChainOffers" 
+                                              [possibleChoiceChainOffers]="possibleChoiceChainOffers" 
+                                              [possibleChoiceToOfferChains]="possibleChoiceToOfferChains"
+                                              [ParentChoices]="ParentChoices" 
+                                              [editChoiceToOfferAssociation]="editChoiceToOfferAssociationObj"
+                                              [choiceContradicts]="choiceCollision"
+                                              (selectedForcedChain)="LinkChainOffer($event)" 
+                                              (selectedChoiceChain)="LinkChoiceChainOffer($event)" 
+                                              (selectedChoiceToOfferChain)="LinkChoiceToOffer($event)"
+                                              (closeOfferSetup)="closeSetup($event)">
+                        </app-chainofferssetup>
+                    </td>
+                </tr>
+            </ng-template>
+
+
+            <!--List of Available Choice Chain Offers-->
+            <ng-template ngFor let-choiceChain [ngForOf]="availableChoiceChainOffers | DemoOfferCodePipe: freeTextSearch" let-cc="index">
+                <!--parentoffer-->
+                <tr>
+                    <td>
+                        <a class="ptr"><i class="fa fa-dropbox"></i>{{choiceChain.QuestionText}}</a>
+                    </td>
+                    <td>{{choiceChain.ParentDemoOfferCode}}</td>
+                    <td>{{choiceChain.MagazineName}}</td>
+                    <td>
+                        <a *ngIf="cc != choiceIndex" title="Expand" (click)="choiceIndex = cc;forcedIndex=-1;choiceToOfferIndex=-1;editOfferChain = false" class="fa fa-angle-right ptr"></a>
+                        <a *ngIf="cc == choiceIndex" title="Collapse" (click)="choiceIndex = -1" class="fa fa-angle-down ptr"></a>
+                    </td>
+                </tr>
+                <!--linked child offer-->
+                <tr *ngIf="cc == choiceIndex && !editOfferChain">
+                    <td>
+                        <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{choiceChain.ChildOfferQuestionText}}</a></p>
+                    </td>
+                    <td>{{choiceChain.ChildDemoCode}}</td>
+                    <td></td>
+                    <td>
+                        <a title="Delete" class="fa fa-trash ptr" (click)="deleteChainOffer(choiceChain,'CHOICE')" *ngIf="getEditibility(choiceChain)  && !isDemoCodePending()"></a>
+                        <a title="Edit" class="fa fa-edit ptr" (click)="editChainOffer(choiceChain)" *ngIf="getEditibility(choiceChain)  && !isDemoCodePending()"></a>
+                    </td>
+                </tr>
+                <tr *ngIf="cc==choiceIndex && !editOfferChain">
+                    <td colspan="4">
+                        <div class="row">
+                            <div class="col-md-6 pl80 scroll-choice">
+                                <ng-template ngFor let-chainChoices [ngForOf]="choiceChain.ChoiceChainOffers" let-ch="index">
+                                    <div class="row">
+                                        <i [ngClass]="ch == 0 ?'fa fa-chain fl mt10':'fa fa-chain fl mt20'"></i>
+                                        <div [ngClass]="ch == 0 ? 'dropchoice':'dropchoice mt10'">
+                                            {{chainChoices.ParentDemoChoiceText}}
+                                            <a class="simplebox mt0 ptr" *ngIf="chainChoices.ChildDemoCHoiceText">{{chainChoices.ChildDemoCHoiceText}}</a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="editOfferChain && cc==choiceIndex">
+                    <td colspan="4" class="datadet">
+                        <app-chainofferssetup [possibleForcedChainOffers]="possibleForcedChainOffers" 
+                                              [possibleChoiceChainOffers]="possibleChoiceChainOffers" 
+                                              [possibleChoiceToOfferChains]="possibleChoiceToOfferChains"
+                                              [ParentChoices]="ParentChoices" 
+                                              [editChoiceOffer]="editChoiceOfferObj"
+                                              [choiceContradicts]="choiceCollision"
+                                              (selectedForcedChain)="LinkChainOffer($event)" 
+                                              (selectedChoiceChain)="LinkChoiceChainOffer($event)" 
+                                              (selectedChoiceToOfferChain)="LinkChoiceToOffer($event)"
+                                              (closeOfferSetup)="closeSetup($event)">
+                        </app-chainofferssetup>
+                    </td>
+                </tr>
+            </ng-template>
+
+
+            <!--To Add new Chain Offer-->
+            <tr *ngIf="showNewSection">
+                <td>
+                    <p *ngIf="selectedQuestionText;else default"><a><i class="fa fa-dropbox"></i>{{selectedQuestionText}}</a></p>
+                    <ng-template #default><p #default><i class="fa fa-dropbox"></i>{{constants.CO_SEL_DO_MAG}}</p></ng-template>
+                </td>
+                <td>
+                    <div class="dropdown selmag priomag">
+                        <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer" #demoOffer (change)="filterMagazines()">
+                            <option value="Select" disabled selected>{{constants.LBL_SELECT}}</option>
+                            <option *ngFor="let offer of allowedDOs" [value]="offer">{{offer}}</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="dropdown selmag priomag">
+                        <select class="ddl-ctrl" [(ngModel)]="selectedMagazine" #demoOffer (change)="selectMagazine()">
+                            <option value="Select" disabled selected>{{constants.LBL_SELECT}}</option>
+                            <option *ngFor="let mag of filteredmagazines" [value]="mag">{{mag}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="enableShowOffers" class="btnc mt10">
+                        <button (click)="showChainOfferCandidates(selectedDemoOffer,selectedMagazine);showChainOfferSelection=true" title="Preview" class="ml15">{{constants.BTN_SHOW_CHAINS}}</button>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr *ngIf="showChainOfferSelection">
+                <td colspan="4" class="datadet">
+                    <app-chainofferssetup   [possibleForcedChainOffers]="possibleForcedChainOffers" 
+                                            [possibleChoiceChainOffers]="possibleChoiceChainOffers" 
+                                            [possibleChoiceToOfferChains]="possibleChoiceToOfferChains"
+                                            [ParentChoices]="ParentChoices" 
+                                            (selectedForcedChain)="LinkChainOffer($event)" 
+                                            (selectedChoiceChain)="LinkChoiceChainOffer($event)" 
+                                            (selectedChoiceToOfferChain)="LinkChoiceToOffer($event)"
+                                            (closeOfferSetup)="closeSetup($event)">
+                    </app-chainofferssetup>
+                </td>
+            </tr>
+
+            <!--Add New Chain Offer button -->
+            <tr *ngIf="allowAddition && !isDemoCodePending()">
+                <td colspan="4">
+                    <div class="mt10 text-center">
+                        <a href="javascript:void(0)" (click)="addNewRow()" class="bdashedb">
+                            <i class="fa fa-plus-circle"></i>{{constants.BTN_ADD_EDIT_CO}}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div *ngIf="filteredDemoOffer!=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a href="javascript:void(0)" (click)="clearPinnedFilter()">{{constants.BTN_REMV_DO_FLTR}}</a></div>
+</div>
+
+<!--Modals for Messages-->
+<bs-modal #modalDeleteChain [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_DELETE_CHAIN}}</span></p>
+        <button (click)="deleteChain()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteChain.dismiss()">{{constants.LBL_CANCEL}}</button>
+    </div>
+</bs-modal>
+<bs-modal #modalDeleteChainSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{BusinessMessage}}
+    </div>
+</bs-modal>
+<bs-modal #modalChainingSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{BusinessMessage}}
+    </div>
+</bs-modal>
+<bs-modal #modalValidate [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-info-circle"></span>{{BusinessMessage}}
+    </div>
+</bs-modal>
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+    </div>
+</bs-modal>

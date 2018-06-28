@@ -1,0 +1,214 @@
+<h3><Span class="fWeight">Assign Magazine</Span> - Select to add Magazines and Channels..</h3>
+<!--<h3 class="mt20 clearfix">Select to add Magazines and Channels..</h3>-->
+<div class="table-cnt clearfix mt20">
+    <table id="npotbl" class="table ntable">
+        <colgroup>
+            <col style="width:10%" />
+            <col style="width:15%" />
+            <col style="width:15%" />
+            <col style="width:5%" />
+            <col style="width:20%" />
+            <col style="width:20%" />
+            <col style="width:15%" />
+        </colgroup>
+        <thead class="thead-default">
+            <tr>
+                <th>Demo Offer</th>
+                <th>
+                    <div class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                </th>
+                <th>Add Magazine</th>
+                <th></th>
+                <th>Magazine Channel Associations</th>
+                <th>Visible</th>
+                <th>
+                    <p class="pr20 text-center">Actions</p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-template ngFor let-demoOffer [ngForOf]="demoOfferChannel | MagazineDemoOfferCode: freeTextSearch" let-i="index">
+                <tr>
+                    <td><i class="fa fa-dropbox"></i> {{i+1}}</td>
+                    <td>{{demoOffer.demoOffer}}</td>
+                    <td>
+                        <!--<div class="dropdown selmag priomag m" *ngIf="showMagazine && (magForDemoOffer !== demoOffer.demoOffer) && (!getMagEditability(demoOffer.demoOffer))">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" title="Select">Select</button>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let type of demoOffer.availableMagazines" (click)="onMagazineSelection(type,i,demoOffer.demoOffer)"><a class="ptr">{{type.Description}}</a></li>
+                            </ul>
+                            <select [(ngModel)]="selectedMagazineDetails[i]" (change)="onMagazineSelection(selectedMagazineDetails[i],i,demoOffer.demoOffer)" class="ddl-ctrl">
+                                <option value="undefined" disabled selected>Select Magazine</option>
+                                <option *ngFor="let type of demoOffer.availableMagazines" value="{{type.Description}}">{{type.Description}}</option>
+                            </select>
+                        </div>-->
+                        <div class="dropdown selmag priomag m">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" title="Select" [disabled]="!getEditability(demoOffer.demoOffer)">Select</button>
+                            <ul class="dropdown-menu" *ngIf="demoOffer.availableMagazines.length > 0">
+                                <li *ngFor="let type of demoOffer.availableMagazines" (click)="onMagazineSelection(type.Description,i,demoOffer.demoOffer)"><a class="ptr">{{type.Description}}</a></li>
+                            </ul>
+                            <ul class="dropdown-menu" *ngIf="demoOffer.availableMagazines.length === 0">
+                                <li><a class="ptr">No Magazines available</a></li>
+                            </ul>
+                            <!--<select [(ngModel)]="selectedMagazineDetails[i]" (change)="onMagazineSelection(selectedMagazineDetails[i],i,demoOffer.demoOffer)" class="ddl-ctrl">
+                                <option value="select" disabled>Select Magazine</option>
+                                <option *ngFor="let type of demoOffer.availableMagazines" value="{{type.Description}}">{{type.Description}}</option>
+                            </select>-->
+                        </div>
+                        <!--<div class="mt10 text-center mb5" *ngIf="selectedMagazine && !showThisMag && (selectedDemoOfferIndex == i)">
+                            <button class="bdashedb" (click)="setMagazine(demoOffer.demoOffer)" *ngIf="!getMagEditability(demoOffer.demoOffer) && demoOffer.availableMagazines.length > 0">
+                                <i class="fa fa-plus-circle"></i>Add Magazine
+                            </button>
+                        </div>-->
+                    </td>
+                    <td>
+                        <a class="ptr" title="Expand/Collapse Data" (click)="showDetails(i)" >
+                            <!--<i [ngClass]="selectedIndex === i && isEnabled ? 'fa fa-minus-circle fa-2x':'fa fa-plus-circle fa-2x'"></i>-->
+                            <i [ngClass]="selectedIndex.indexOf(i) > -1 ? 'fa fa-minus-circle fSize':'fa fa-plus-circle fSize'"></i>
+                        </a>
+                    </td>
+                    <td colspan="4">
+                        <div class="magintblc" *ngIf="(selectedIndex.indexOf(i) > -1);else channelDetailsHeader">
+                        <table class="table bgrey mb5">
+                            <!--*ngIf="selectedMagazine && selectedDemoOfferIndex == i"-->
+                            <ng-template ngFor let-item [ngForOf]="demoOffer.magazineList" let-j="index">
+                                <colgroup>
+                                    <col style="width:40%" />
+                                    <col style="width:28%" />
+                                    <col style="width:18%" />
+                                    <col style="width:14%" />
+                                </colgroup>
+                                <tr>
+                                    <th><span id="selectedMag">{{item.MagazineName}}</span></th>
+                                    <th></th>
+                                    <th>
+                                        <button [popover]="myPopover" class="bdashedb mWidth" (click)="setChannels(demoOffer.demoOffer,item)" *ngIf="getMagEditability(demoOffer.demoOffer,item.MagazineName)">
+                                            <i class="fa fa-plus-circle"></i>Add Channel
+                                        </button>
+                                        <popover-content #myPopover title="Select Channel" [closeOnClickOutside]="true">
+                                            <div class="popClass">
+                                                <span *ngFor="let channel of channelList">
+                                                  <a class="bdashedb inb ptr" (click)="onChannelselction(channel,j,demoOffer.demoOffer,item);myPopover.hide()" popover="{{channel.ChannelName}}" [popoverOnHover]="true">{{constants['LBL_'+channel.ChannelCode]}}</a>
+                                                </span>
+                                            </div> 
+                                        </popover-content>
+                                    </th>
+                                    <th class="text-right">
+                                        <a *ngIf="!item.isPublished && getMagEditability(demoOffer.demoOffer,item.MagazineName)" title="Remove" class="ptr" (click)="deleteDemoOfferMagazine(demoOffer.demoOffer,item,i)">Remove</a>
+                                    </th>
+                                </tr>
+                                <tbody>
+                                    <ng-template ngFor let-magchannel [ngForOf]="item.channelList" let-k="index">
+                                        <tr>
+                                            <!--*ngIf="showVisible">-->
+                                            <td><label class="pl15" popover="{{magchannel.ChannelName}}" [popoverOnHover]="true">{{constants['LBL_'+magchannel.ChannelCode]}}</label></td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input type="checkbox" id="{{magchannel.ChannelName}}" [(ngModel)]="magchannel.IsVisible" (change)="CheckExistingMagazineCombination(magchannel.IsVisible,magchannel.ChannelName,magchannel.MagazineName,demoOffer.demoOffer,item,magchannel.ChannelId )" [disabled]="isMagazineDisabled || !getMagEditability(demoOffer.demoOffer,item.MagazineName)">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td></td>
+                                            <td colspan="5" class="text-right"><a class="ptr" (click)="deleteDemOfferChannel(demoOffer.demoOffer,item,magchannel)" *ngIf="!magchannel.IsPublished && getMagEditability(demoOffer.demoOffer,item.MagazineName)"><i class="fa fa-trash-o delIcon"></i></a></td>
+                                        </tr>
+                                    </ng-template>
+                                    <!--<tr>
+                                        <td colspan="10" class="mt10 text-center mb5">
+                                            <button class="bdashedb" (click)="setChannels(demoOffer.demoOffer,item)" *ngIf="!getMagEditability(demoOffer.demoOffer)">
+                                                <i class="fa fa-plus-circle"></i>Add Channel
+                                            </button>
+                                        </td>
+                                    </tr>-->
+                                    <!--<tr *ngIf="(selectedMag === item.MagazineName && selectedDO === demoOffer.demoOffer)">
+                                        <td>Select Channel</td>
+                                        <td *ngFor="let channel of channelList">
+                                            <a class="bdashedb inb ptr" (click)="showCheckbox(channel,j,demoOffer.demoOffer,item)" title="{{channel.ChannelName}}">{{channel.ChannelCode}}</a>
+                                        </td>
+                                    </tr>-->
+                                </tbody>
+                                <tfoot>
+
+                                </tfoot>
+                            </ng-template>
+                        </table>
+                        <!--<div class="dropdown selmag priomag m" *ngIf="showMagazine && (magForDemoOffer !== demoOffer.demoOffer) && (!getMagEditability(demoOffer.demoOffer)) && demoOffer.availableMagazines.length > 0">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" title="Select">Select</button>
+                                <ul class="dropdown-menu">
+                                    <li *ngFor="let type of demoOffer.availableMagazines" (click)="onMagazineSelection(type,i,demoOffer.demoOffer)"><a class="ptr">{{type.Description}}</a></li>
+                                </ul>
+                            </div>
+                        <div class="dropdown selmag priomag m" *ngIf="showThisMag && (magForDemoOffer === demoOffer.demoOffer) && (!getMagEditability(demoOffer.demoOffer)) && demoOffer.availableMagazines.length > 0">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" title="Select">Select</button>
+                            <ul class="dropdown-menu">
+                                <li *ngFor="let type of demoOffer.availableMagazines" (click)="onMagazineSelection(type,i,demoOffer.demoOffer)"><a class="ptr">{{type.Description}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt10 text-center mb5" *ngIf="selectedMagazine && !showThisMag && (selectedDemoOfferIndex == i)">
+                            <button class="bdashedb" (click)="setMagazine(demoOffer.demoOffer)" *ngIf="!getMagEditability(demoOffer.demoOffer) && demoOffer.availableMagazines.length > 0">
+                                <i class="fa fa-plus-circle"></i>Add Magazine
+                            </button>
+                        </div>-->
+                        <div class="btnc clearfix btline text-right">
+                            <a class="active ml15 ptr saveBtn" (click)="OnSave(demoOffer.demoOffer)" *ngIf="getEditability(demoOffer.demoOffer)">Save</a>
+                        </div>
+                       </div>
+                        <ng-template #channelDetailsHeader><a class="ptr" (click)="showDetails(i)">View/Edit Magazine Channel Associations</a></ng-template>
+                    </td>
+                </tr>
+            </ng-template>
+
+        </tbody>
+
+    </table>
+    <div *ngIf="filteredDemoOffer !=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a href="javascript:void(0)" (click)="clearPinnedFilter()">Remove Demo Offer Filter</a></div>
+</div>
+
+<bs-modal #modalDeleteMagazine [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{questionMessage}}</span></p>
+        <button (click)="deleteMagazine()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteMagazine.dismiss()">{{constants.LBL_CANCEL}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modalDeleteChannel [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{questionMessage}}</span></p>
+        <button (click)="deleteChannel()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteChannel.dismiss()">{{constants.LBL_CANCEL}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modalSaveSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modalDeleteSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modalValidate [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+    </div>
+</bs-modal>
+
+<bs-modal #modelIsDirty [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{modalMessage}}?</span></p>
+        <button (click)="allowNavigation()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="no" class="btn btn-default" (click)="modelIsDirty.close()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>
+

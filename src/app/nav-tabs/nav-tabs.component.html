@@ -1,0 +1,16 @@
+<ul class="nav nav-pills fr">
+    <li role="presentation"  [ngClass]="activeTab === 'Home'? 'active' : 'notify'"><a *ngIf="role !='READONLY'" href="javascript:void(0);" (click)="loadHome()" title="Home">{{constants.PCA_HOME}}</a></li>
+    <li role="presentation"><span *ngIf="role !='READONLY'" class="dot"></span></li>
+    <li role="presentation" [ngClass]="activeTab === 'Questions'? 'active' : ''"><a href="javascript:void(0);" class="ml15" (click)="loadQuestions()" title="Questions">{{constants.PCA_QUESTIONS}}</a></li>
+    <li role="presentation" [ngClass]="activeTab === 'Digital Demos'? 'active' : ''"><a href="javascript:void(0);" class="ml15" (click)="loadAdminTables()" title="Digital Demos">{{constants.PCA_DIGITAL}}</a></li>
+    <li role="presentation" [ngClass]="activeTab === 'Schedule'? 'active' : ''"><a href="javascript:void(0);" class="ml15" (click)="loadSchedules()" title="Schedule">{{constants.PCA_SCHEDULE}}</a></li>
+    <li role="presentation" [ngClass]="activeTab === 'Setup'? 'active' : ''"><a *ngIf="isEnabled" href="javascript:void(0);" class="ml15" (click)="loadSetup()" title="Setup">{{constants.PCA_SETUP}}</a></li>
+    <li role="presentation" class="logout"><a href="javascript:void(0);" (click)="modelLogout.open()" title="Logout">{{constants.PCA_LOGOUT}}</a></li>
+</ul>
+<bs-modal #modelLogout [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_LOGOUT}}</span></p>
+        <button (click)="logOut()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="cancel" class="btn btn-default" (click)="modelLogout.dismiss()">{{constants.LBL_CANCEL}}</button>
+    </div>
+</bs-modal>

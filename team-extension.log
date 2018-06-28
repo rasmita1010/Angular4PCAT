@@ -1,0 +1,1001 @@
+2018-01-17T13:25:05.022Z - info:   [13620] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-01-17T13:25:05.026Z - info:   [13620] VSTSVSCode/1.122.0 (VSCode 1.18.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-01-17T13:25:05.030Z - debug:  [13620] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-17T13:25:05.030Z - debug:  [13620] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-17T13:25:05.030Z - debug:  [13620] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-17T13:25:05.034Z - debug:  [13620] TFVC Creating Tfvc object with localPath='undefined'
+2018-01-17T13:25:05.034Z - debug:  [13620] Using TFS proxy: 
+2018-01-17T13:25:05.034Z - debug:  [13620] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-01-17T13:25:05.034Z - debug:  [13620] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-01-17T13:25:05.038Z - debug:  [13620] TFVC Repository.CheckVersion
+2018-01-17T13:25:05.038Z - debug:  [13620] TFVC: tf add -noprompt -?
+2018-01-17T13:25:05.053Z - debug:  [13620] TFVC: spawned new process (duration: 15ms)
+2018-01-17T13:25:05.069Z - debug:  [13620] TFVC: spawned new process (duration: 16ms)
+2018-01-17T13:25:05.428Z - debug:  [13620] TFVC: add exit code: 0 (duration: 390ms)
+2018-01-17T13:25:05.428Z - debug:  [13620] TFVC Minimum required version: 14.102.0
+2018-01-17T13:25:05.428Z - debug:  [13620] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-01-17T13:25:05.428Z - debug:  [13620] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-01-17T13:25:05.428Z - debug:  [13620] TFVC: tf workfold -noprompt ********
+2018-01-17T13:25:05.443Z - debug:  [13620] TFVC: spawned new process (duration: 15ms)
+2018-01-17T13:25:08.090Z - debug:  [13620] TFVC: workfold exit code: 100 (duration: 2662ms)
+2018-01-17T13:25:08.090Z - debug:  [13620] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-01-17T13:25:08.106Z - error:  [13620] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-01-18T03:01:59.523Z - info:   [11464] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-01-18T03:01:59.529Z - info:   [11464] VSTSVSCode/1.122.0 (VSCode 1.18.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-01-18T03:01:59.530Z - debug:  [11464] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-18T03:01:59.531Z - debug:  [11464] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-18T03:01:59.534Z - debug:  [11464] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-01-18T03:01:59.535Z - debug:  [11464] TFVC Creating Tfvc object with localPath='undefined'
+2018-01-18T03:01:59.539Z - debug:  [11464] Using TFS proxy: 
+2018-01-18T03:01:59.539Z - debug:  [11464] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-01-18T03:01:59.543Z - debug:  [11464] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-01-18T03:01:59.546Z - debug:  [11464] TFVC Repository.CheckVersion
+2018-01-18T03:01:59.549Z - debug:  [11464] TFVC: tf add -noprompt -?
+2018-01-18T03:01:59.608Z - debug:  [11464] TFVC: spawned new process (duration: 57ms)
+2018-01-18T03:01:59.672Z - debug:  [11464] TFVC: spawned new process (duration: 62ms)
+2018-01-18T03:02:00.034Z - debug:  [11464] TFVC: add exit code: 0 (duration: 485ms)
+2018-01-18T03:02:00.036Z - debug:  [11464] TFVC Minimum required version: 14.102.0
+2018-01-18T03:02:00.036Z - debug:  [11464] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-01-18T03:02:00.037Z - debug:  [11464] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-01-18T03:02:00.038Z - debug:  [11464] TFVC: tf workfold -noprompt ********
+2018-01-18T03:02:00.054Z - debug:  [11464] TFVC: spawned new process (duration: 15ms)
+2018-01-18T03:02:02.115Z - debug:  [11464] TFVC: workfold exit code: 100 (duration: 2076ms)
+2018-01-18T03:02:02.118Z - debug:  [11464] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-01-18T03:02:02.120Z - error:  [11464] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-09T09:09:36.185Z - info:   [16396] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-09T09:09:36.189Z - info:   [16396] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-09T09:09:36.193Z - debug:  [16396] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-09T09:09:36.193Z - debug:  [16396] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-09T09:09:36.197Z - debug:  [16396] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-09T09:09:36.197Z - debug:  [16396] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-09T09:09:36.201Z - debug:  [16396] Using TFS proxy: 
+2018-02-09T09:09:36.201Z - debug:  [16396] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-09T09:09:36.201Z - debug:  [16396] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-09T09:09:36.205Z - debug:  [16396] TFVC Repository.CheckVersion
+2018-02-09T09:09:36.205Z - debug:  [16396] TFVC: tf add -noprompt -?
+2018-02-09T09:09:36.222Z - debug:  [16396] TFVC: spawned new process (duration: 12ms)
+2018-02-09T09:09:36.258Z - debug:  [16396] TFVC: spawned new process (duration: 32ms)
+2018-02-09T09:09:36.858Z - debug:  [16396] TFVC: add exit code: 0 (duration: 653ms)
+2018-02-09T09:09:36.858Z - debug:  [16396] TFVC Minimum required version: 14.102.0
+2018-02-09T09:09:36.858Z - debug:  [16396] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-09T09:09:36.858Z - debug:  [16396] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-09T09:09:36.862Z - debug:  [16396] TFVC: tf workfold -noprompt ********
+2018-02-09T09:09:36.870Z - debug:  [16396] TFVC: spawned new process (duration: 8ms)
+2018-02-09T09:09:39.185Z - debug:  [16396] TFVC: workfold exit code: 100 (duration: 2323ms)
+2018-02-09T09:09:39.185Z - debug:  [16396] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-09T09:09:39.185Z - error:  [16396] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-11T15:29:49.495Z - info:   [09500] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-11T15:29:49.495Z - info:   [09500] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-11T15:29:49.499Z - debug:  [09500] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-11T15:29:49.499Z - debug:  [09500] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-11T15:29:49.499Z - debug:  [09500] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-11T15:29:49.499Z - debug:  [09500] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-11T15:29:49.503Z - debug:  [09500] Using TFS proxy: 
+2018-02-11T15:29:49.503Z - debug:  [09500] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-11T15:29:49.507Z - debug:  [09500] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-11T15:29:49.507Z - debug:  [09500] TFVC Repository.CheckVersion
+2018-02-11T15:29:49.511Z - debug:  [09500] TFVC: tf add -noprompt -?
+2018-02-11T15:29:49.539Z - debug:  [09500] TFVC: spawned new process (duration: 28ms)
+2018-02-11T15:29:49.586Z - debug:  [09500] TFVC: spawned new process (duration: 47ms)
+2018-02-11T15:29:49.883Z - debug:  [09500] TFVC: add exit code: 0 (duration: 372ms)
+2018-02-11T15:29:49.883Z - debug:  [09500] TFVC Minimum required version: 14.102.0
+2018-02-11T15:29:49.883Z - debug:  [09500] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-11T15:29:49.883Z - debug:  [09500] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-11T15:29:49.883Z - debug:  [09500] TFVC: tf workfold -noprompt ********
+2018-02-11T15:29:49.899Z - debug:  [09500] TFVC: spawned new process (duration: 16ms)
+2018-02-11T15:29:52.180Z - debug:  [09500] TFVC: workfold exit code: 100 (duration: 2297ms)
+2018-02-11T15:29:52.180Z - debug:  [09500] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-11T15:29:52.180Z - error:  [09500] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-12T02:57:03.247Z - info:   [15236] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-12T02:57:03.249Z - info:   [15236] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-12T02:57:03.250Z - debug:  [15236] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T02:57:03.250Z - debug:  [15236] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T02:57:03.252Z - debug:  [15236] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T02:57:03.253Z - debug:  [15236] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-12T02:57:03.254Z - debug:  [15236] Using TFS proxy: 
+2018-02-12T02:57:03.255Z - debug:  [15236] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-12T02:57:03.257Z - debug:  [15236] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-12T02:57:03.258Z - debug:  [15236] TFVC Repository.CheckVersion
+2018-02-12T02:57:03.259Z - debug:  [15236] TFVC: tf add -noprompt -?
+2018-02-12T02:57:03.289Z - debug:  [15236] TFVC: spawned new process (duration: 29ms)
+2018-02-12T02:57:03.305Z - debug:  [15236] TFVC: spawned new process (duration: 15ms)
+2018-02-12T02:57:03.570Z - debug:  [15236] TFVC: add exit code: 0 (duration: 310ms)
+2018-02-12T02:57:03.570Z - debug:  [15236] TFVC Minimum required version: 14.102.0
+2018-02-12T02:57:03.570Z - debug:  [15236] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-12T02:57:03.570Z - debug:  [15236] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-12T02:57:03.570Z - debug:  [15236] TFVC: tf workfold -noprompt ********
+2018-02-12T02:57:03.586Z - debug:  [15236] TFVC: spawned new process (duration: 16ms)
+2018-02-12T02:57:05.833Z - debug:  [15236] TFVC: workfold exit code: 100 (duration: 2263ms)
+2018-02-12T02:57:05.833Z - debug:  [15236] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-12T02:57:05.849Z - error:  [15236] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-12T13:25:01.763Z - info:   [03548] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-12T13:25:01.765Z - info:   [03548] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-12T13:25:01.766Z - debug:  [03548] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T13:25:01.768Z - debug:  [03548] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T13:25:01.771Z - debug:  [03548] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-12T13:25:01.771Z - debug:  [03548] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-12T13:25:01.773Z - debug:  [03548] Using TFS proxy: 
+2018-02-12T13:25:01.774Z - debug:  [03548] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-12T13:25:01.775Z - debug:  [03548] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-12T13:25:01.777Z - debug:  [03548] TFVC Repository.CheckVersion
+2018-02-12T13:25:01.778Z - debug:  [03548] TFVC: tf add -noprompt -?
+2018-02-12T13:25:01.809Z - debug:  [03548] TFVC: spawned new process (duration: 30ms)
+2018-02-12T13:25:01.856Z - debug:  [03548] TFVC: spawned new process (duration: 47ms)
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC: add exit code: 0 (duration: 327ms)
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC Minimum required version: 14.102.0
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC: tf workfold -noprompt ********
+2018-02-12T13:25:02.106Z - debug:  [03548] TFVC: spawned new process (duration: 0ms)
+2018-02-12T13:25:04.771Z - debug:  [03548] TFVC: workfold exit code: 100 (duration: 2665ms)
+2018-02-12T13:25:04.771Z - debug:  [03548] TFVC errors (via stderr): TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS.
+Technical information (for administrator):
+  The remote name could not be resolved: 'tmpcmamva02'
+
+2018-02-12T13:25:04.771Z - error:  [03548] Execution of the TFVC command line failed unexpectedly. TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS. Technical information (for administrator):   The remote name could not be resolved: 'tmpcmamva02'
+2018-02-13T06:58:50.638Z - info:   [07896] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-13T06:58:50.643Z - info:   [07896] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-13T06:58:50.647Z - debug:  [07896] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-13T06:58:50.647Z - debug:  [07896] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-13T06:58:50.651Z - debug:  [07896] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-13T06:58:50.653Z - debug:  [07896] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-13T06:58:50.663Z - debug:  [07896] Using TFS proxy: 
+2018-02-13T06:58:50.663Z - debug:  [07896] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-13T06:58:50.665Z - debug:  [07896] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-13T06:58:50.675Z - debug:  [07896] TFVC Repository.CheckVersion
+2018-02-13T06:58:50.678Z - debug:  [07896] TFVC: tf add -noprompt -?
+2018-02-13T06:58:50.715Z - debug:  [07896] TFVC: spawned new process (duration: 33ms)
+2018-02-13T06:58:50.771Z - debug:  [07896] TFVC: spawned new process (duration: 56ms)
+2018-02-13T06:58:51.113Z - debug:  [07896] TFVC: add exit code: 0 (duration: 434ms)
+2018-02-13T06:58:51.118Z - debug:  [07896] TFVC Minimum required version: 14.102.0
+2018-02-13T06:58:51.119Z - debug:  [07896] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-13T06:58:51.120Z - debug:  [07896] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-13T06:58:51.121Z - debug:  [07896] TFVC: tf workfold -noprompt ********
+2018-02-13T06:58:51.133Z - debug:  [07896] TFVC: spawned new process (duration: 11ms)
+2018-02-13T06:58:53.340Z - debug:  [07896] TFVC: workfold exit code: 100 (duration: 2218ms)
+2018-02-13T06:58:53.340Z - debug:  [07896] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-13T06:58:53.340Z - error:  [07896] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-14T02:44:13.857Z - info:   [13688] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-14T02:44:13.861Z - info:   [13688] VSTSVSCode/1.122.0 (VSCode 1.19.3; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-14T02:44:13.865Z - debug:  [13688] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:44:13.865Z - debug:  [13688] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:44:13.865Z - debug:  [13688] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:44:13.869Z - debug:  [13688] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-14T02:44:13.869Z - debug:  [13688] Using TFS proxy: 
+2018-02-14T02:44:13.869Z - debug:  [13688] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-14T02:44:13.869Z - debug:  [13688] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-14T02:44:13.873Z - debug:  [13688] TFVC Repository.CheckVersion
+2018-02-14T02:44:13.873Z - debug:  [13688] TFVC: tf add -noprompt -?
+2018-02-14T02:44:13.913Z - debug:  [13688] TFVC: spawned new process (duration: 36ms)
+2018-02-14T02:44:13.960Z - debug:  [13688] TFVC: spawned new process (duration: 47ms)
+2018-02-14T02:44:14.866Z - debug:  [13688] TFVC: add exit code: 0 (duration: 989ms)
+2018-02-14T02:44:14.881Z - debug:  [13688] TFVC Minimum required version: 14.102.0
+2018-02-14T02:44:14.881Z - debug:  [13688] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-14T02:44:14.881Z - debug:  [13688] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-14T02:44:14.881Z - debug:  [13688] TFVC: tf workfold -noprompt ********
+2018-02-14T02:44:14.898Z - debug:  [13688] TFVC: spawned new process (duration: 17ms)
+2018-02-14T02:44:17.039Z - debug:  [13688] TFVC: workfold exit code: 100 (duration: 2158ms)
+2018-02-14T02:44:17.054Z - debug:  [13688] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-14T02:44:17.054Z - error:  [13688] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-14T02:47:30.296Z - info:   [16940] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-14T02:47:30.296Z - info:   [16940] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-14T02:47:30.300Z - debug:  [16940] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:47:30.300Z - debug:  [16940] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:47:30.300Z - debug:  [16940] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-14T02:47:30.304Z - debug:  [16940] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-14T02:47:30.316Z - debug:  [16940] Using TFS proxy: 
+2018-02-14T02:47:30.316Z - debug:  [16940] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-14T02:47:30.320Z - debug:  [16940] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-14T02:47:30.324Z - debug:  [16940] TFVC Repository.CheckVersion
+2018-02-14T02:47:30.324Z - debug:  [16940] TFVC: tf add -noprompt -?
+2018-02-14T02:47:30.348Z - debug:  [16940] TFVC: spawned new process (duration: 20ms)
+2018-02-14T02:47:30.368Z - debug:  [16940] TFVC: spawned new process (duration: 20ms)
+2018-02-14T02:47:30.814Z - debug:  [16940] TFVC: add exit code: 0 (duration: 490ms)
+2018-02-14T02:47:30.818Z - debug:  [16940] TFVC Minimum required version: 14.102.0
+2018-02-14T02:47:30.818Z - debug:  [16940] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-14T02:47:30.818Z - debug:  [16940] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-14T02:47:30.818Z - debug:  [16940] TFVC: tf workfold -noprompt ********
+2018-02-14T02:47:30.834Z - debug:  [16940] TFVC: spawned new process (duration: 12ms)
+2018-02-14T02:47:33.122Z - debug:  [16940] TFVC: workfold exit code: 100 (duration: 2304ms)
+2018-02-14T02:47:33.126Z - debug:  [16940] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-14T02:47:33.126Z - error:  [16940] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-15T02:48:03.920Z - info:   [08252] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-15T02:48:03.924Z - info:   [08252] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-15T02:48:03.928Z - debug:  [08252] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T02:48:03.928Z - debug:  [08252] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T02:48:03.932Z - debug:  [08252] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T02:48:03.932Z - debug:  [08252] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-15T02:48:03.936Z - debug:  [08252] Using TFS proxy: 
+2018-02-15T02:48:03.936Z - debug:  [08252] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-15T02:48:03.948Z - debug:  [08252] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T02:48:03.956Z - debug:  [08252] TFVC Repository.CheckVersion
+2018-02-15T02:48:03.964Z - debug:  [08252] TFVC: tf add -noprompt -?
+2018-02-15T02:48:04.036Z - debug:  [08252] TFVC: spawned new process (duration: 68ms)
+2018-02-15T02:48:04.056Z - debug:  [08252] TFVC: spawned new process (duration: 16ms)
+2018-02-15T02:48:05.048Z - debug:  [08252] TFVC: add exit code: 0 (duration: 1080ms)
+2018-02-15T02:48:05.048Z - debug:  [08252] TFVC Minimum required version: 14.102.0
+2018-02-15T02:48:05.048Z - debug:  [08252] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-15T02:48:05.048Z - debug:  [08252] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T02:48:05.048Z - debug:  [08252] TFVC: tf workfold -noprompt ********
+2018-02-15T02:48:05.063Z - debug:  [08252] TFVC: spawned new process (duration: 0ms)
+2018-02-15T02:48:08.061Z - debug:  [08252] TFVC: workfold exit code: 100 (duration: 2998ms)
+2018-02-15T02:48:08.061Z - debug:  [08252] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-15T02:48:08.061Z - error:  [08252] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-15T07:04:06.448Z - debug:  [08252] Reinitializing due to onDidChangeConfiguration
+2018-02-15T07:04:06.452Z - debug:  [08252] Polling interval value (minutes): 5
+2018-02-15T07:04:06.472Z - info:   [08252] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-15T07:04:06.472Z - info:   [08252] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-15T07:04:06.472Z - debug:  [08252] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:04:06.472Z - debug:  [08252] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:04:06.536Z - debug:  [08252] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:04:06.536Z - debug:  [08252] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-15T07:04:06.540Z - debug:  [08252] Using TFS proxy: 
+2018-02-15T07:04:06.540Z - debug:  [08252] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-15T07:04:06.540Z - debug:  [08252] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:04:06.544Z - debug:  [08252] TFVC Repository.CheckVersion
+2018-02-15T07:04:06.544Z - debug:  [08252] TFVC: tf add -noprompt -?
+2018-02-15T07:04:06.564Z - debug:  [08252] TFVC: spawned new process (duration: 16ms)
+2018-02-15T07:04:06.772Z - debug:  [08252] TFVC: add exit code: 0 (duration: 228ms)
+2018-02-15T07:04:06.776Z - debug:  [08252] TFVC Minimum required version: 14.102.0
+2018-02-15T07:04:06.776Z - debug:  [08252] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-15T07:04:06.776Z - debug:  [08252] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:04:06.776Z - debug:  [08252] TFVC: tf workfold -noprompt ********
+2018-02-15T07:04:06.788Z - debug:  [08252] TFVC: spawned new process (duration: 12ms)
+2018-02-15T07:04:10.353Z - debug:  [08252] TFVC: workfold exit code: 100 (duration: 3577ms)
+2018-02-15T07:04:10.353Z - debug:  [08252] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-15T07:04:10.353Z - error:  [08252] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-15T07:07:46.462Z - debug:  [08252] Reinitializing due to onDidChangeConfiguration
+2018-02-15T07:07:46.466Z - debug:  [08252] Polling interval value (minutes): 5
+2018-02-15T07:07:46.478Z - info:   [08252] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-15T07:07:46.478Z - info:   [08252] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-15T07:07:46.478Z - debug:  [08252] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:07:46.478Z - debug:  [08252] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:07:46.514Z - debug:  [08252] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:07:46.514Z - debug:  [08252] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-15T07:07:46.518Z - debug:  [08252] Using TFS proxy: 
+2018-02-15T07:07:46.518Z - debug:  [08252] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-15T07:07:46.530Z - debug:  [08252] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:07:46.534Z - debug:  [08252] TFVC Repository.CheckVersion
+2018-02-15T07:07:46.534Z - debug:  [08252] TFVC: tf add -noprompt -?
+2018-02-15T07:07:46.558Z - debug:  [08252] TFVC: spawned new process (duration: 20ms)
+2018-02-15T07:07:46.666Z - debug:  [08252] TFVC: add exit code: 0 (duration: 132ms)
+2018-02-15T07:07:46.670Z - debug:  [08252] TFVC Minimum required version: 14.102.0
+2018-02-15T07:07:46.670Z - debug:  [08252] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-15T07:07:46.670Z - debug:  [08252] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:07:46.670Z - debug:  [08252] TFVC: tf workfold -noprompt ********
+2018-02-15T07:07:46.682Z - debug:  [08252] TFVC: spawned new process (duration: 12ms)
+2018-02-15T07:07:49.702Z - debug:  [08252] TFVC: workfold exit code: 100 (duration: 3032ms)
+2018-02-15T07:07:49.702Z - debug:  [08252] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-15T07:07:49.702Z - error:  [08252] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-15T07:10:00.813Z - debug:  [08252] Reinitializing due to onDidChangeConfiguration
+2018-02-15T07:10:00.817Z - debug:  [08252] Polling interval value (minutes): 5
+2018-02-15T07:10:00.821Z - info:   [08252] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-15T07:10:00.821Z - info:   [08252] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-15T07:10:00.821Z - debug:  [08252] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:10:00.821Z - debug:  [08252] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:10:00.846Z - debug:  [08252] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-15T07:10:00.846Z - debug:  [08252] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-15T07:10:00.846Z - debug:  [08252] Using TFS proxy: 
+2018-02-15T07:10:00.846Z - debug:  [08252] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-15T07:10:00.846Z - debug:  [08252] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:10:00.850Z - debug:  [08252] TFVC Repository.CheckVersion
+2018-02-15T07:10:00.850Z - debug:  [08252] TFVC: tf add -noprompt -?
+2018-02-15T07:10:00.866Z - debug:  [08252] TFVC: spawned new process (duration: 16ms)
+2018-02-15T07:10:00.934Z - debug:  [08252] TFVC: add exit code: 0 (duration: 84ms)
+2018-02-15T07:10:00.934Z - debug:  [08252] TFVC Minimum required version: 14.102.0
+2018-02-15T07:10:00.934Z - debug:  [08252] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-15T07:10:00.934Z - debug:  [08252] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-15T07:10:00.934Z - debug:  [08252] TFVC: tf workfold -noprompt ********
+2018-02-15T07:10:00.950Z - debug:  [08252] TFVC: spawned new process (duration: 16ms)
+2018-02-15T07:10:03.629Z - debug:  [08252] TFVC: workfold exit code: 100 (duration: 2695ms)
+2018-02-15T07:10:03.633Z - debug:  [08252] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-15T07:10:03.633Z - error:  [08252] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-16T05:11:56.840Z - info:   [20528] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-16T05:11:56.844Z - info:   [20528] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-16T05:11:56.844Z - debug:  [20528] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T05:11:56.844Z - debug:  [20528] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T05:11:56.848Z - debug:  [20528] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T05:11:56.848Z - debug:  [20528] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-16T05:11:56.848Z - debug:  [20528] Using TFS proxy: 
+2018-02-16T05:11:56.848Z - debug:  [20528] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-16T05:11:56.852Z - debug:  [20528] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-16T05:11:56.852Z - debug:  [20528] TFVC Repository.CheckVersion
+2018-02-16T05:11:56.852Z - debug:  [20528] TFVC: tf add -noprompt -?
+2018-02-16T05:11:56.892Z - debug:  [20528] TFVC: spawned new process (duration: 36ms)
+2018-02-16T05:11:56.923Z - debug:  [20528] TFVC: spawned new process (duration: 31ms)
+2018-02-16T05:11:57.314Z - debug:  [20528] TFVC: add exit code: 0 (duration: 462ms)
+2018-02-16T05:11:57.314Z - debug:  [20528] TFVC Minimum required version: 14.102.0
+2018-02-16T05:11:57.314Z - debug:  [20528] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-16T05:11:57.318Z - debug:  [20528] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-16T05:11:57.318Z - debug:  [20528] TFVC: tf workfold -noprompt ********
+2018-02-16T05:11:57.322Z - debug:  [20528] TFVC: spawned new process (duration: 4ms)
+2018-02-16T05:11:59.376Z - debug:  [20528] TFVC: workfold exit code: 100 (duration: 2058ms)
+2018-02-16T05:11:59.376Z - debug:  [20528] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-16T05:11:59.376Z - error:  [20528] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-16T13:22:52.907Z - info:   [13164] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-16T13:22:52.913Z - info:   [13164] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-16T13:22:52.915Z - debug:  [13164] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T13:22:52.915Z - debug:  [13164] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T13:22:52.920Z - debug:  [13164] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-16T13:22:52.920Z - debug:  [13164] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-16T13:22:52.926Z - debug:  [13164] Using TFS proxy: 
+2018-02-16T13:22:52.927Z - debug:  [13164] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-16T13:22:52.928Z - debug:  [13164] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-16T13:22:52.932Z - debug:  [13164] TFVC Repository.CheckVersion
+2018-02-16T13:22:52.934Z - debug:  [13164] TFVC: tf add -noprompt -?
+2018-02-16T13:22:52.966Z - debug:  [13164] TFVC: spawned new process (duration: 31ms)
+2018-02-16T13:22:52.996Z - debug:  [13164] TFVC: spawned new process (duration: 29ms)
+2018-02-16T13:22:53.336Z - debug:  [13164] TFVC: add exit code: 0 (duration: 401ms)
+2018-02-16T13:22:53.339Z - debug:  [13164] TFVC Minimum required version: 14.102.0
+2018-02-16T13:22:53.339Z - debug:  [13164] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-16T13:22:53.340Z - debug:  [13164] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-16T13:22:53.341Z - debug:  [13164] TFVC: tf workfold -noprompt ********
+2018-02-16T13:22:53.351Z - debug:  [13164] TFVC: spawned new process (duration: 9ms)
+2018-02-16T13:22:56.762Z - debug:  [13164] TFVC: workfold exit code: 100 (duration: 3420ms)
+2018-02-16T13:22:56.765Z - debug:  [13164] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-16T13:22:56.766Z - error:  [13164] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-18T01:56:47.108Z - info:   [14732] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-18T01:56:47.112Z - info:   [14732] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-18T01:56:47.112Z - debug:  [14732] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T01:56:47.112Z - debug:  [14732] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T01:56:47.116Z - debug:  [14732] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T01:56:47.120Z - debug:  [14732] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-18T01:56:47.120Z - debug:  [14732] Using TFS proxy: 
+2018-02-18T01:56:47.120Z - debug:  [14732] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-18T01:56:47.124Z - debug:  [14732] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T01:56:47.128Z - debug:  [14732] TFVC Repository.CheckVersion
+2018-02-18T01:56:47.136Z - debug:  [14732] TFVC: tf add -noprompt -?
+2018-02-18T01:56:47.188Z - debug:  [14732] TFVC: spawned new process (duration: 48ms)
+2018-02-18T01:56:47.244Z - debug:  [14732] TFVC: spawned new process (duration: 56ms)
+2018-02-18T01:56:47.765Z - debug:  [14732] TFVC: add exit code: 0 (duration: 625ms)
+2018-02-18T01:56:47.769Z - debug:  [14732] TFVC Minimum required version: 14.102.0
+2018-02-18T01:56:47.769Z - debug:  [14732] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-18T01:56:47.769Z - debug:  [14732] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T01:56:47.769Z - debug:  [14732] TFVC: tf workfold -noprompt ********
+2018-02-18T01:56:47.781Z - debug:  [14732] TFVC: spawned new process (duration: 12ms)
+2018-02-18T01:56:48.915Z - debug:  [14732] TFVC: workfold exit code: 100 (duration: 1146ms)
+2018-02-18T01:56:48.919Z - debug:  [14732] TFVC errors (via stderr): TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS.
+Technical information (for administrator):
+  The remote name could not be resolved: 'tmpcmamva02'
+
+2018-02-18T01:56:48.919Z - error:  [14732] Execution of the TFVC command line failed unexpectedly. TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS. Technical information (for administrator):   The remote name could not be resolved: 'tmpcmamva02'
+2018-02-18T04:32:34.060Z - info:   [10620] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-18T04:32:34.063Z - info:   [10620] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-18T04:32:34.065Z - debug:  [10620] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T04:32:34.065Z - debug:  [10620] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T04:32:34.069Z - debug:  [10620] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T04:32:34.070Z - debug:  [10620] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-18T04:32:34.073Z - debug:  [10620] Using TFS proxy: 
+2018-02-18T04:32:34.073Z - debug:  [10620] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-18T04:32:34.075Z - debug:  [10620] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T04:32:34.079Z - debug:  [10620] TFVC Repository.CheckVersion
+2018-02-18T04:32:34.081Z - debug:  [10620] TFVC: tf add -noprompt -?
+2018-02-18T04:32:34.125Z - debug:  [10620] TFVC: spawned new process (duration: 42ms)
+2018-02-18T04:32:34.140Z - debug:  [10620] TFVC: spawned new process (duration: 14ms)
+2018-02-18T04:32:34.894Z - debug:  [10620] TFVC: add exit code: 0 (duration: 812ms)
+2018-02-18T04:32:34.897Z - debug:  [10620] TFVC Minimum required version: 14.102.0
+2018-02-18T04:32:34.897Z - debug:  [10620] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-18T04:32:34.898Z - debug:  [10620] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T04:32:34.899Z - debug:  [10620] TFVC: tf workfold -noprompt ********
+2018-02-18T04:32:34.915Z - debug:  [10620] TFVC: spawned new process (duration: 14ms)
+2018-02-18T04:32:35.655Z - debug:  [10620] TFVC: workfold exit code: 100 (duration: 754ms)
+2018-02-18T04:32:35.657Z - debug:  [10620] TFVC errors (via stderr): TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS.
+Technical information (for administrator):
+  The remote name could not be resolved: 'tmpcmamva02'
+
+2018-02-18T04:32:35.658Z - error:  [10620] Execution of the TFVC command line failed unexpectedly. TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS. Technical information (for administrator):   The remote name could not be resolved: 'tmpcmamva02'
+2018-02-18T06:13:48.790Z - info:   [01476] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-18T06:13:48.793Z - info:   [01476] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-18T06:13:48.794Z - debug:  [01476] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T06:13:48.795Z - debug:  [01476] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T06:13:48.798Z - debug:  [01476] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-18T06:13:48.798Z - debug:  [01476] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-18T06:13:48.802Z - debug:  [01476] Using TFS proxy: 
+2018-02-18T06:13:48.802Z - debug:  [01476] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-18T06:13:48.804Z - debug:  [01476] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T06:13:48.811Z - debug:  [01476] TFVC Repository.CheckVersion
+2018-02-18T06:13:48.813Z - debug:  [01476] TFVC: tf add -noprompt -?
+2018-02-18T06:13:48.851Z - debug:  [01476] TFVC: spawned new process (duration: 37ms)
+2018-02-18T06:13:48.865Z - debug:  [01476] TFVC: spawned new process (duration: 12ms)
+2018-02-18T06:13:49.473Z - debug:  [01476] TFVC: add exit code: 0 (duration: 659ms)
+2018-02-18T06:13:49.476Z - debug:  [01476] TFVC Minimum required version: 14.102.0
+2018-02-18T06:13:49.477Z - debug:  [01476] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-18T06:13:49.478Z - debug:  [01476] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-18T06:13:49.479Z - debug:  [01476] TFVC: tf workfold -noprompt ********
+2018-02-18T06:13:49.492Z - debug:  [01476] TFVC: spawned new process (duration: 12ms)
+2018-02-18T06:13:51.728Z - debug:  [01476] TFVC: workfold exit code: 100 (duration: 2248ms)
+2018-02-18T06:13:51.730Z - debug:  [01476] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-18T06:13:51.731Z - error:  [01476] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-19T02:44:26.411Z - info:   [13196] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-19T02:44:26.414Z - info:   [13196] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-19T02:44:26.416Z - debug:  [13196] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-19T02:44:26.416Z - debug:  [13196] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-19T02:44:26.419Z - debug:  [13196] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-19T02:44:26.419Z - debug:  [13196] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-19T02:44:26.424Z - debug:  [13196] Using TFS proxy: 
+2018-02-19T02:44:26.425Z - debug:  [13196] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-19T02:44:26.426Z - debug:  [13196] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-19T02:44:26.429Z - debug:  [13196] TFVC Repository.CheckVersion
+2018-02-19T02:44:26.430Z - debug:  [13196] TFVC: tf add -noprompt -?
+2018-02-19T02:44:26.454Z - debug:  [13196] TFVC: spawned new process (duration: 22ms)
+2018-02-19T02:44:26.485Z - debug:  [13196] TFVC: spawned new process (duration: 31ms)
+2018-02-19T02:44:27.304Z - debug:  [13196] TFVC: add exit code: 0 (duration: 873ms)
+2018-02-19T02:44:27.320Z - debug:  [13196] TFVC Minimum required version: 14.102.0
+2018-02-19T02:44:27.320Z - debug:  [13196] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-19T02:44:27.320Z - debug:  [13196] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-19T02:44:27.320Z - debug:  [13196] TFVC: tf workfold -noprompt ********
+2018-02-19T02:44:27.336Z - debug:  [13196] TFVC: spawned new process (duration: 16ms)
+2018-02-19T02:44:30.183Z - debug:  [13196] TFVC: workfold exit code: 100 (duration: 2863ms)
+2018-02-19T02:44:30.183Z - debug:  [13196] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-19T02:44:30.183Z - error:  [13196] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-20T02:35:50.046Z - info:   [09720] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-20T02:35:50.050Z - info:   [09720] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-20T02:35:50.054Z - debug:  [09720] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:35:50.054Z - debug:  [09720] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:35:50.054Z - debug:  [09720] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:35:50.058Z - debug:  [09720] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-20T02:35:50.058Z - debug:  [09720] Using TFS proxy: 
+2018-02-20T02:35:50.058Z - debug:  [09720] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-20T02:35:50.058Z - debug:  [09720] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T02:35:50.062Z - debug:  [09720] TFVC Repository.CheckVersion
+2018-02-20T02:35:50.062Z - debug:  [09720] TFVC: tf add -noprompt -?
+2018-02-20T02:35:50.090Z - debug:  [09720] TFVC: spawned new process (duration: 20ms)
+2018-02-20T02:35:50.102Z - debug:  [09720] TFVC: spawned new process (duration: 12ms)
+2018-02-20T02:35:50.974Z - debug:  [09720] TFVC: add exit code: 0 (duration: 908ms)
+2018-02-20T02:35:50.978Z - debug:  [09720] TFVC Minimum required version: 14.102.0
+2018-02-20T02:35:50.978Z - debug:  [09720] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-20T02:35:50.978Z - debug:  [09720] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T02:35:50.978Z - debug:  [09720] TFVC: tf workfold -noprompt ********
+2018-02-20T02:35:50.990Z - debug:  [09720] TFVC: spawned new process (duration: 12ms)
+2018-02-20T02:35:53.600Z - debug:  [09720] TFVC: workfold exit code: 100 (duration: 2622ms)
+2018-02-20T02:35:53.600Z - debug:  [09720] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-20T02:35:53.600Z - error:  [09720] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-20T02:48:23.601Z - info:   [11932] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-20T02:48:23.604Z - info:   [11932] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-20T02:48:23.606Z - debug:  [11932] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:48:23.606Z - debug:  [11932] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:48:23.608Z - debug:  [11932] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T02:48:23.609Z - debug:  [11932] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-20T02:48:23.611Z - debug:  [11932] Using TFS proxy: 
+2018-02-20T02:48:23.612Z - debug:  [11932] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-20T02:48:23.613Z - debug:  [11932] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T02:48:23.615Z - debug:  [11932] TFVC Repository.CheckVersion
+2018-02-20T02:48:23.616Z - debug:  [11932] TFVC: tf add -noprompt -?
+2018-02-20T02:48:23.633Z - debug:  [11932] TFVC: spawned new process (duration: 16ms)
+2018-02-20T02:48:23.649Z - debug:  [11932] TFVC: spawned new process (duration: 16ms)
+2018-02-20T02:48:23.956Z - debug:  [11932] TFVC: add exit code: 0 (duration: 340ms)
+2018-02-20T02:48:23.958Z - debug:  [11932] TFVC Minimum required version: 14.102.0
+2018-02-20T02:48:23.959Z - debug:  [11932] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-20T02:48:23.960Z - debug:  [11932] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T02:48:23.960Z - debug:  [11932] TFVC: tf workfold -noprompt ********
+2018-02-20T02:48:23.972Z - debug:  [11932] TFVC: spawned new process (duration: 10ms)
+2018-02-20T02:48:25.869Z - debug:  [11932] TFVC: workfold exit code: 100 (duration: 1908ms)
+2018-02-20T02:48:25.869Z - debug:  [11932] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-20T02:48:25.885Z - error:  [11932] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-20T07:03:43.592Z - debug:  [11932] Reinitializing due to onDidChangeConfiguration
+2018-02-20T07:03:43.603Z - debug:  [11932] Polling interval value (minutes): 5
+2018-02-20T07:03:43.668Z - info:   [11932] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-20T07:03:43.672Z - info:   [11932] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-20T07:03:43.672Z - debug:  [11932] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T07:03:43.676Z - debug:  [11932] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T07:03:43.684Z - debug:  [11932] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-20T07:03:43.684Z - debug:  [11932] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-20T07:03:43.684Z - debug:  [11932] Using TFS proxy: 
+2018-02-20T07:03:43.684Z - debug:  [11932] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-20T07:03:43.684Z - debug:  [11932] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T07:03:43.684Z - debug:  [11932] TFVC Repository.CheckVersion
+2018-02-20T07:03:43.700Z - debug:  [11932] TFVC: tf add -noprompt -?
+2018-02-20T07:03:43.715Z - debug:  [11932] TFVC: spawned new process (duration: 15ms)
+2018-02-20T07:03:44.032Z - debug:  [11932] TFVC: add exit code: 0 (duration: 332ms)
+2018-02-20T07:03:44.035Z - debug:  [11932] TFVC Minimum required version: 14.102.0
+2018-02-20T07:03:44.035Z - debug:  [11932] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-20T07:03:44.036Z - debug:  [11932] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-20T07:03:44.037Z - debug:  [11932] TFVC: tf workfold -noprompt ********
+2018-02-20T07:03:44.076Z - debug:  [11932] TFVC: spawned new process (duration: 37ms)
+2018-02-20T07:03:47.040Z - debug:  [11932] TFVC: workfold exit code: 100 (duration: 3002ms)
+2018-02-20T07:03:47.041Z - debug:  [11932] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-20T07:03:47.042Z - error:  [11932] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-21T08:48:07.914Z - info:   [13956] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-21T08:48:07.917Z - info:   [13956] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-21T08:48:07.919Z - debug:  [13956] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T08:48:07.919Z - debug:  [13956] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T08:48:07.922Z - debug:  [13956] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T08:48:07.923Z - debug:  [13956] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-21T08:48:07.926Z - debug:  [13956] Using TFS proxy: 
+2018-02-21T08:48:07.926Z - debug:  [13956] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-21T08:48:07.928Z - debug:  [13956] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T08:48:07.931Z - debug:  [13956] TFVC Repository.CheckVersion
+2018-02-21T08:48:07.933Z - debug:  [13956] TFVC: tf add -noprompt -?
+2018-02-21T08:48:07.968Z - debug:  [13956] TFVC: spawned new process (duration: 34ms)
+2018-02-21T08:48:07.985Z - debug:  [13956] TFVC: spawned new process (duration: 15ms)
+2018-02-21T08:48:08.808Z - debug:  [13956] TFVC: add exit code: 0 (duration: 874ms)
+2018-02-21T08:48:08.811Z - debug:  [13956] TFVC Minimum required version: 14.102.0
+2018-02-21T08:48:08.811Z - debug:  [13956] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-21T08:48:08.812Z - debug:  [13956] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T08:48:08.813Z - debug:  [13956] TFVC: tf workfold -noprompt ********
+2018-02-21T08:48:08.824Z - debug:  [13956] TFVC: spawned new process (duration: 11ms)
+2018-02-21T08:48:12.599Z - debug:  [13956] TFVC: workfold exit code: 100 (duration: 3785ms)
+2018-02-21T08:48:12.601Z - debug:  [13956] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-21T08:48:12.603Z - error:  [13956] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-21T12:23:02.623Z - info:   [09464] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-21T12:23:02.626Z - info:   [09464] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-21T12:23:02.628Z - debug:  [09464] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T12:23:02.628Z - debug:  [09464] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T12:23:02.631Z - debug:  [09464] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T12:23:02.631Z - debug:  [09464] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-21T12:23:02.636Z - debug:  [09464] Using TFS proxy: 
+2018-02-21T12:23:02.636Z - debug:  [09464] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-21T12:23:02.637Z - debug:  [09464] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T12:23:02.645Z - debug:  [09464] TFVC Repository.CheckVersion
+2018-02-21T12:23:02.647Z - debug:  [09464] TFVC: tf add -noprompt -?
+2018-02-21T12:23:02.671Z - debug:  [09464] TFVC: spawned new process (duration: 21ms)
+2018-02-21T12:23:02.687Z - debug:  [09464] TFVC: spawned new process (duration: 16ms)
+2018-02-21T12:23:03.574Z - debug:  [09464] TFVC: add exit code: 0 (duration: 926ms)
+2018-02-21T12:23:03.577Z - debug:  [09464] TFVC Minimum required version: 14.102.0
+2018-02-21T12:23:03.577Z - debug:  [09464] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-21T12:23:03.578Z - debug:  [09464] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T12:23:03.579Z - debug:  [09464] TFVC: tf workfold -noprompt ********
+2018-02-21T12:23:03.589Z - debug:  [09464] TFVC: spawned new process (duration: 10ms)
+2018-02-21T12:23:05.949Z - debug:  [09464] TFVC: workfold exit code: 100 (duration: 2370ms)
+2018-02-21T12:23:05.949Z - debug:  [09464] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-21T12:23:05.949Z - error:  [09464] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-21T13:16:39.968Z - info:   [13516] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-21T13:16:39.970Z - info:   [13516] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-21T13:16:39.973Z - debug:  [13516] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T13:16:39.974Z - debug:  [13516] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T13:16:39.978Z - debug:  [13516] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-21T13:16:39.978Z - debug:  [13516] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-21T13:16:39.981Z - debug:  [13516] Using TFS proxy: 
+2018-02-21T13:16:39.981Z - debug:  [13516] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-21T13:16:39.982Z - debug:  [13516] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T13:16:39.984Z - debug:  [13516] TFVC Repository.CheckVersion
+2018-02-21T13:16:39.986Z - debug:  [13516] TFVC: tf add -noprompt -?
+2018-02-21T13:16:40.014Z - debug:  [13516] TFVC: spawned new process (duration: 25ms)
+2018-02-21T13:16:40.060Z - debug:  [13516] TFVC: spawned new process (duration: 46ms)
+2018-02-21T13:16:40.447Z - debug:  [13516] TFVC: add exit code: 0 (duration: 461ms)
+2018-02-21T13:16:40.447Z - debug:  [13516] TFVC Minimum required version: 14.102.0
+2018-02-21T13:16:40.447Z - debug:  [13516] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-21T13:16:40.447Z - debug:  [13516] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-21T13:16:40.447Z - debug:  [13516] TFVC: tf workfold -noprompt ********
+2018-02-21T13:16:40.462Z - debug:  [13516] TFVC: spawned new process (duration: 15ms)
+2018-02-21T13:16:42.677Z - debug:  [13516] TFVC: workfold exit code: 100 (duration: 2230ms)
+2018-02-21T13:16:42.677Z - debug:  [13516] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-21T13:16:42.677Z - error:  [13516] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-22T03:24:02.838Z - info:   [15424] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-22T03:24:02.839Z - info:   [15424] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-22T03:24:02.840Z - debug:  [15424] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-22T03:24:02.841Z - debug:  [15424] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-22T03:24:02.843Z - debug:  [15424] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-22T03:24:02.844Z - debug:  [15424] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-22T03:24:02.850Z - debug:  [15424] Using TFS proxy: 
+2018-02-22T03:24:02.850Z - debug:  [15424] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-22T03:24:02.851Z - debug:  [15424] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-22T03:24:02.852Z - debug:  [15424] TFVC Repository.CheckVersion
+2018-02-22T03:24:02.854Z - debug:  [15424] TFVC: tf add -noprompt -?
+2018-02-22T03:24:02.893Z - debug:  [15424] TFVC: spawned new process (duration: 38ms)
+2018-02-22T03:24:02.925Z - debug:  [15424] TFVC: spawned new process (duration: 32ms)
+2018-02-22T03:24:03.258Z - debug:  [15424] TFVC: add exit code: 0 (duration: 404ms)
+2018-02-22T03:24:03.262Z - debug:  [15424] TFVC Minimum required version: 14.102.0
+2018-02-22T03:24:03.263Z - debug:  [15424] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-22T03:24:03.265Z - debug:  [15424] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-22T03:24:03.267Z - debug:  [15424] TFVC: tf workfold -noprompt ********
+2018-02-22T03:24:03.279Z - debug:  [15424] TFVC: spawned new process (duration: 10ms)
+2018-02-22T03:24:05.323Z - debug:  [15424] TFVC: workfold exit code: 100 (duration: 2056ms)
+2018-02-22T03:24:05.323Z - debug:  [15424] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-22T03:24:05.323Z - error:  [15424] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-23T03:05:23.070Z - info:   [18816] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-23T03:05:23.073Z - info:   [18816] VSTSVSCode/1.122.0 (VSCode 1.20.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-23T03:05:23.074Z - debug:  [18816] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-23T03:05:23.075Z - debug:  [18816] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-23T03:05:23.078Z - debug:  [18816] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-23T03:05:23.079Z - debug:  [18816] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-23T03:05:23.083Z - debug:  [18816] Using TFS proxy: 
+2018-02-23T03:05:23.083Z - debug:  [18816] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-23T03:05:23.084Z - debug:  [18816] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-23T03:05:23.087Z - debug:  [18816] TFVC Repository.CheckVersion
+2018-02-23T03:05:23.089Z - debug:  [18816] TFVC: tf add -noprompt -?
+2018-02-23T03:05:23.119Z - debug:  [18816] TFVC: spawned new process (duration: 29ms)
+2018-02-23T03:05:23.178Z - debug:  [18816] TFVC: spawned new process (duration: 58ms)
+2018-02-23T03:05:23.567Z - debug:  [18816] TFVC: add exit code: 0 (duration: 477ms)
+2018-02-23T03:05:23.570Z - debug:  [18816] TFVC Minimum required version: 14.102.0
+2018-02-23T03:05:23.570Z - debug:  [18816] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-23T03:05:23.571Z - debug:  [18816] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-23T03:05:23.572Z - debug:  [18816] TFVC: tf workfold -noprompt ********
+2018-02-23T03:05:23.582Z - debug:  [18816] TFVC: spawned new process (duration: 9ms)
+2018-02-23T03:05:25.473Z - debug:  [18816] TFVC: workfold exit code: 100 (duration: 1901ms)
+2018-02-23T03:05:25.473Z - debug:  [18816] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-23T03:05:25.473Z - error:  [18816] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-27T14:48:53.019Z - info:   [09632] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-27T14:48:53.023Z - info:   [09632] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-27T14:48:53.023Z - debug:  [09632] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-27T14:48:53.023Z - debug:  [09632] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-27T14:48:53.023Z - debug:  [09632] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-27T14:48:53.027Z - debug:  [09632] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-27T14:48:53.027Z - debug:  [09632] Using TFS proxy: 
+2018-02-27T14:48:53.027Z - debug:  [09632] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-27T14:48:53.027Z - debug:  [09632] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-27T14:48:53.031Z - debug:  [09632] TFVC Repository.CheckVersion
+2018-02-27T14:48:53.031Z - debug:  [09632] TFVC: tf add -noprompt -?
+2018-02-27T14:48:53.070Z - debug:  [09632] TFVC: spawned new process (duration: 35ms)
+2018-02-27T14:48:53.117Z - debug:  [09632] TFVC: spawned new process (duration: 47ms)
+2018-02-27T14:48:53.451Z - debug:  [09632] TFVC: add exit code: 0 (duration: 420ms)
+2018-02-27T14:48:53.451Z - debug:  [09632] TFVC Minimum required version: 14.102.0
+2018-02-27T14:48:53.451Z - debug:  [09632] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-27T14:48:53.451Z - debug:  [09632] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-27T14:48:53.451Z - debug:  [09632] TFVC: tf workfold -noprompt ********
+2018-02-27T14:48:53.463Z - debug:  [09632] TFVC: spawned new process (duration: 8ms)
+2018-02-27T14:48:56.274Z - debug:  [09632] TFVC: workfold exit code: 100 (duration: 2819ms)
+2018-02-27T14:48:56.274Z - debug:  [09632] TFVC errors (via stderr): TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS.
+Technical information (for administrator):
+  The remote name could not be resolved: 'tmpcmamva02'
+
+2018-02-27T14:48:56.274Z - error:  [09632] Execution of the TFVC command line failed unexpectedly. TF400324: Team Foundation services are not available from server tmpcmamva02\CMAS. Technical information (for administrator):   The remote name could not be resolved: 'tmpcmamva02'
+2018-02-28T05:45:16.100Z - info:   [08080] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-28T05:45:16.108Z - info:   [08080] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-28T05:45:16.108Z - debug:  [08080] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T05:45:16.108Z - debug:  [08080] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T05:45:16.112Z - debug:  [08080] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T05:45:16.112Z - debug:  [08080] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-28T05:45:16.116Z - debug:  [08080] Using TFS proxy: 
+2018-02-28T05:45:16.116Z - debug:  [08080] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-28T05:45:16.116Z - debug:  [08080] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-28T05:45:16.116Z - debug:  [08080] TFVC Repository.CheckVersion
+2018-02-28T05:45:16.120Z - debug:  [08080] TFVC: tf add -noprompt -?
+2018-02-28T05:45:16.160Z - debug:  [08080] TFVC: spawned new process (duration: 36ms)
+2018-02-28T05:45:16.256Z - debug:  [08080] TFVC: spawned new process (duration: 92ms)
+2018-02-28T05:45:16.942Z - debug:  [08080] TFVC: add exit code: 0 (duration: 822ms)
+2018-02-28T05:45:16.946Z - debug:  [08080] TFVC Minimum required version: 14.102.0
+2018-02-28T05:45:16.946Z - debug:  [08080] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-28T05:45:16.946Z - debug:  [08080] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-28T05:45:16.946Z - debug:  [08080] TFVC: tf workfold -noprompt ********
+2018-02-28T05:45:16.958Z - debug:  [08080] TFVC: spawned new process (duration: 8ms)
+2018-02-28T05:45:19.683Z - debug:  [08080] TFVC: workfold exit code: 100 (duration: 2737ms)
+2018-02-28T05:45:19.683Z - debug:  [08080] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-28T05:45:19.699Z - error:  [08080] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-02-28T11:51:00.438Z - info:   [13728] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-02-28T11:51:00.442Z - info:   [13728] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-02-28T11:51:00.446Z - debug:  [13728] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T11:51:00.446Z - debug:  [13728] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T11:51:00.450Z - debug:  [13728] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-02-28T11:51:00.450Z - debug:  [13728] TFVC Creating Tfvc object with localPath='undefined'
+2018-02-28T11:51:00.454Z - debug:  [13728] Using TFS proxy: 
+2018-02-28T11:51:00.454Z - debug:  [13728] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-02-28T11:51:00.466Z - debug:  [13728] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-28T11:51:00.482Z - debug:  [13728] TFVC Repository.CheckVersion
+2018-02-28T11:51:00.486Z - debug:  [13728] TFVC: tf add -noprompt -?
+2018-02-28T11:51:00.602Z - debug:  [13728] TFVC: spawned new process (duration: 116ms)
+2018-02-28T11:51:00.629Z - debug:  [13728] TFVC: spawned new process (duration: 27ms)
+2018-02-28T11:51:01.230Z - debug:  [13728] TFVC: add exit code: 0 (duration: 744ms)
+2018-02-28T11:51:01.234Z - debug:  [13728] TFVC Minimum required version: 14.102.0
+2018-02-28T11:51:01.234Z - debug:  [13728] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-02-28T11:51:01.234Z - debug:  [13728] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-02-28T11:51:01.234Z - debug:  [13728] TFVC: tf workfold -noprompt ********
+2018-02-28T11:51:01.246Z - debug:  [13728] TFVC: spawned new process (duration: 12ms)
+2018-02-28T11:51:03.979Z - debug:  [13728] TFVC: workfold exit code: 100 (duration: 2745ms)
+2018-02-28T11:51:03.979Z - debug:  [13728] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-02-28T11:51:03.979Z - error:  [13728] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-01T06:32:34.698Z - info:   [07004] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-01T06:32:34.700Z - info:   [07004] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-01T06:32:34.702Z - debug:  [07004] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T06:32:34.702Z - debug:  [07004] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T06:32:34.706Z - debug:  [07004] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T06:32:34.707Z - debug:  [07004] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-01T06:32:34.709Z - debug:  [07004] Using TFS proxy: 
+2018-03-01T06:32:34.709Z - debug:  [07004] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-01T06:32:34.711Z - debug:  [07004] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-01T06:32:34.713Z - debug:  [07004] TFVC Repository.CheckVersion
+2018-03-01T06:32:34.715Z - debug:  [07004] TFVC: tf add -noprompt -?
+2018-03-01T06:32:34.754Z - debug:  [07004] TFVC: spawned new process (duration: 38ms)
+2018-03-01T06:32:34.812Z - debug:  [07004] TFVC: spawned new process (duration: 57ms)
+2018-03-01T06:32:35.559Z - debug:  [07004] TFVC: add exit code: 0 (duration: 844ms)
+2018-03-01T06:32:35.561Z - debug:  [07004] TFVC Minimum required version: 14.102.0
+2018-03-01T06:32:35.562Z - debug:  [07004] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-01T06:32:35.563Z - debug:  [07004] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-01T06:32:35.564Z - debug:  [07004] TFVC: tf workfold -noprompt ********
+2018-03-01T06:32:35.577Z - debug:  [07004] TFVC: spawned new process (duration: 12ms)
+2018-03-01T06:32:38.417Z - debug:  [07004] TFVC: workfold exit code: 100 (duration: 2853ms)
+2018-03-01T06:32:38.422Z - debug:  [07004] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-01T06:32:38.424Z - error:  [07004] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-01T13:02:26.445Z - info:   [10872] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-01T13:02:26.445Z - info:   [10872] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-01T13:02:26.449Z - debug:  [10872] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T13:02:26.449Z - debug:  [10872] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T13:02:26.453Z - debug:  [10872] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-01T13:02:26.453Z - debug:  [10872] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-01T13:02:26.457Z - debug:  [10872] Using TFS proxy: 
+2018-03-01T13:02:26.457Z - debug:  [10872] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-01T13:02:26.457Z - debug:  [10872] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-01T13:02:26.461Z - debug:  [10872] TFVC Repository.CheckVersion
+2018-03-01T13:02:26.465Z - debug:  [10872] TFVC: tf add -noprompt -?
+2018-03-01T13:02:26.565Z - debug:  [10872] TFVC: spawned new process (duration: 100ms)
+2018-03-01T13:02:26.601Z - debug:  [10872] TFVC: spawned new process (duration: 32ms)
+2018-03-01T13:02:27.287Z - debug:  [10872] TFVC: add exit code: 0 (duration: 822ms)
+2018-03-01T13:02:27.287Z - debug:  [10872] TFVC Minimum required version: 14.102.0
+2018-03-01T13:02:27.287Z - debug:  [10872] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-01T13:02:27.287Z - debug:  [10872] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-01T13:02:27.287Z - debug:  [10872] TFVC: tf workfold -noprompt ********
+2018-03-01T13:02:27.302Z - debug:  [10872] TFVC: spawned new process (duration: 15ms)
+2018-03-01T13:02:30.163Z - debug:  [10872] TFVC: workfold exit code: 100 (duration: 2876ms)
+2018-03-01T13:02:30.163Z - debug:  [10872] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-01T13:02:30.167Z - error:  [10872] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-02T03:03:31.433Z - info:   [13716] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-02T03:03:31.433Z - info:   [13716] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-02T03:03:31.433Z - debug:  [13716] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T03:03:31.449Z - debug:  [13716] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T03:03:31.449Z - debug:  [13716] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T03:03:31.449Z - debug:  [13716] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-02T03:03:31.449Z - debug:  [13716] Using TFS proxy: 
+2018-03-02T03:03:31.449Z - debug:  [13716] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-02T03:03:31.449Z - debug:  [13716] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-02T03:03:31.449Z - debug:  [13716] TFVC Repository.CheckVersion
+2018-03-02T03:03:31.449Z - debug:  [13716] TFVC: tf add -noprompt -?
+2018-03-02T03:03:31.522Z - debug:  [13716] TFVC: spawned new process (duration: 58ms)
+2018-03-02T03:03:31.536Z - debug:  [13716] TFVC: spawned new process (duration: 13ms)
+2018-03-02T03:03:33.344Z - debug:  [13716] TFVC: add exit code: 0 (duration: 1895ms)
+2018-03-02T03:03:33.344Z - debug:  [13716] TFVC Minimum required version: 14.102.0
+2018-03-02T03:03:33.344Z - debug:  [13716] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-02T03:03:33.344Z - debug:  [13716] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-02T03:03:33.344Z - debug:  [13716] TFVC: tf workfold -noprompt ********
+2018-03-02T03:03:33.375Z - debug:  [13716] TFVC: spawned new process (duration: 15ms)
+2018-03-02T03:03:35.797Z - debug:  [13716] TFVC: workfold exit code: 100 (duration: 2453ms)
+2018-03-02T03:03:35.797Z - debug:  [13716] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-02T03:03:35.797Z - error:  [13716] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-02T09:53:17.861Z - info:   [10680] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-02T09:53:17.865Z - info:   [10680] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-02T09:53:17.867Z - debug:  [10680] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T09:53:17.867Z - debug:  [10680] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T09:53:17.870Z - debug:  [10680] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-02T09:53:17.870Z - debug:  [10680] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-02T09:53:17.874Z - debug:  [10680] Using TFS proxy: 
+2018-03-02T09:53:17.874Z - debug:  [10680] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-02T09:53:17.883Z - debug:  [10680] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-02T09:53:17.885Z - debug:  [10680] TFVC Repository.CheckVersion
+2018-03-02T09:53:17.887Z - debug:  [10680] TFVC: tf add -noprompt -?
+2018-03-02T09:53:17.954Z - debug:  [10680] TFVC: spawned new process (duration: 66ms)
+2018-03-02T09:53:17.993Z - debug:  [10680] TFVC: spawned new process (duration: 39ms)
+2018-03-02T09:53:18.773Z - debug:  [10680] TFVC: add exit code: 0 (duration: 885ms)
+2018-03-02T09:53:18.773Z - debug:  [10680] TFVC Minimum required version: 14.102.0
+2018-03-02T09:53:18.773Z - debug:  [10680] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-02T09:53:18.773Z - debug:  [10680] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-02T09:53:18.773Z - debug:  [10680] TFVC: tf workfold -noprompt ********
+2018-03-02T09:53:18.788Z - debug:  [10680] TFVC: spawned new process (duration: 15ms)
+2018-03-02T09:53:21.233Z - debug:  [10680] TFVC: workfold exit code: 100 (duration: 2460ms)
+2018-03-02T09:53:21.235Z - debug:  [10680] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-02T09:53:21.237Z - error:  [10680] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-06T06:36:18.409Z - info:   [10680] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-06T06:36:18.409Z - info:   [10680] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-06T06:36:18.413Z - debug:  [10680] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-06T06:36:18.413Z - debug:  [10680] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-06T06:36:18.413Z - debug:  [10680] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-06T06:36:18.413Z - debug:  [10680] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-06T06:36:18.417Z - debug:  [10680] Using TFS proxy: 
+2018-03-06T06:36:18.417Z - debug:  [10680] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-06T06:36:18.417Z - debug:  [10680] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-06T06:36:18.421Z - debug:  [10680] TFVC Repository.CheckVersion
+2018-03-06T06:36:18.421Z - debug:  [10680] TFVC: tf add -noprompt -?
+2018-03-06T06:36:18.429Z - debug:  [10680] TFVC: spawned new process (duration: 8ms)
+2018-03-06T06:36:18.441Z - debug:  [10680] TFVC: spawned new process (duration: 8ms)
+2018-03-06T06:36:18.735Z - debug:  [10680] TFVC: add exit code: 0 (duration: 314ms)
+2018-03-06T06:36:18.751Z - debug:  [10680] TFVC Minimum required version: 14.102.0
+2018-03-06T06:36:18.751Z - debug:  [10680] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-06T06:36:18.751Z - debug:  [10680] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-06T06:36:18.751Z - debug:  [10680] TFVC: tf workfold -noprompt ********
+2018-03-06T06:36:18.751Z - debug:  [10680] TFVC: spawned new process (duration: 0ms)
+2018-03-06T06:36:21.237Z - debug:  [10680] TFVC: workfold exit code: 100 (duration: 2486ms)
+2018-03-06T06:36:21.241Z - debug:  [10680] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-06T06:36:21.241Z - error:  [10680] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-07T07:12:07.564Z - info:   [14192] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-07T07:12:07.564Z - info:   [14192] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-07T07:12:07.579Z - debug:  [14192] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-07T07:12:07.579Z - debug:  [14192] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-07T07:12:07.579Z - debug:  [14192] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-07T07:12:07.579Z - debug:  [14192] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-07T07:12:07.579Z - debug:  [14192] Using TFS proxy: 
+2018-03-07T07:12:07.579Z - debug:  [14192] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-07T07:12:07.579Z - debug:  [14192] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-07T07:12:07.579Z - debug:  [14192] TFVC Repository.CheckVersion
+2018-03-07T07:12:07.579Z - debug:  [14192] TFVC: tf add -noprompt -?
+2018-03-07T07:12:07.611Z - debug:  [14192] TFVC: spawned new process (duration: 32ms)
+2018-03-07T07:12:07.664Z - debug:  [14192] TFVC: spawned new process (duration: 53ms)
+2018-03-07T07:12:08.391Z - debug:  [14192] TFVC: add exit code: 0 (duration: 812ms)
+2018-03-07T07:12:08.391Z - debug:  [14192] TFVC Minimum required version: 14.102.0
+2018-03-07T07:12:08.391Z - debug:  [14192] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-07T07:12:08.395Z - debug:  [14192] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-07T07:12:08.395Z - debug:  [14192] TFVC: tf workfold -noprompt ********
+2018-03-07T07:12:08.408Z - debug:  [14192] TFVC: spawned new process (duration: 9ms)
+2018-03-07T07:12:11.345Z - debug:  [14192] TFVC: workfold exit code: 100 (duration: 2950ms)
+2018-03-07T07:12:11.345Z - debug:  [14192] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-07T07:12:11.345Z - error:  [14192] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-09T09:23:45.094Z - info:   [25332] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-09T09:23:45.097Z - info:   [25332] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-09T09:23:45.098Z - debug:  [25332] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-09T09:23:45.098Z - debug:  [25332] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-09T09:23:45.101Z - debug:  [25332] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-09T09:23:45.101Z - debug:  [25332] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-09T09:23:45.103Z - debug:  [25332] Using TFS proxy: 
+2018-03-09T09:23:45.103Z - debug:  [25332] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-09T09:23:45.104Z - debug:  [25332] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-09T09:23:45.106Z - debug:  [25332] TFVC Repository.CheckVersion
+2018-03-09T09:23:45.108Z - debug:  [25332] TFVC: tf add -noprompt -?
+2018-03-09T09:23:45.123Z - debug:  [25332] TFVC: spawned new process (duration: 14ms)
+2018-03-09T09:23:45.166Z - debug:  [25332] TFVC: spawned new process (duration: 43ms)
+2018-03-09T09:23:46.193Z - debug:  [25332] TFVC: add exit code: 0 (duration: 1084ms)
+2018-03-09T09:23:46.195Z - debug:  [25332] TFVC Minimum required version: 14.102.0
+2018-03-09T09:23:46.196Z - debug:  [25332] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-09T09:23:46.196Z - debug:  [25332] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-09T09:23:46.197Z - debug:  [25332] TFVC: tf workfold -noprompt ********
+2018-03-09T09:23:46.211Z - debug:  [25332] TFVC: spawned new process (duration: 13ms)
+2018-03-09T09:23:49.526Z - debug:  [25332] TFVC: workfold exit code: 100 (duration: 3329ms)
+2018-03-09T09:23:49.526Z - debug:  [25332] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-09T09:23:49.526Z - error:  [25332] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-12T05:03:02.136Z - info:   [02184] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-12T05:03:02.139Z - info:   [02184] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-12T05:03:02.140Z - debug:  [02184] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T05:03:02.140Z - debug:  [02184] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T05:03:02.143Z - debug:  [02184] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T05:03:02.144Z - debug:  [02184] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-12T05:03:02.146Z - debug:  [02184] Using TFS proxy: 
+2018-03-12T05:03:02.146Z - debug:  [02184] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-12T05:03:02.148Z - debug:  [02184] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-12T05:03:02.151Z - debug:  [02184] TFVC Repository.CheckVersion
+2018-03-12T05:03:02.153Z - debug:  [02184] TFVC: tf add -noprompt -?
+2018-03-12T05:03:02.192Z - debug:  [02184] TFVC: spawned new process (duration: 37ms)
+2018-03-12T05:03:02.226Z - debug:  [02184] TFVC: spawned new process (duration: 33ms)
+2018-03-12T05:03:02.775Z - debug:  [02184] TFVC: add exit code: 0 (duration: 621ms)
+2018-03-12T05:03:02.779Z - debug:  [02184] TFVC Minimum required version: 14.102.0
+2018-03-12T05:03:02.779Z - debug:  [02184] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-12T05:03:02.780Z - debug:  [02184] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-12T05:03:02.781Z - debug:  [02184] TFVC: tf workfold -noprompt ********
+2018-03-12T05:03:02.792Z - debug:  [02184] TFVC: spawned new process (duration: 10ms)
+2018-03-12T05:03:05.950Z - debug:  [02184] TFVC: workfold exit code: 100 (duration: 3168ms)
+2018-03-12T05:03:05.953Z - debug:  [02184] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-12T05:03:05.954Z - error:  [02184] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-12T10:03:38.658Z - info:   [11540] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-12T10:03:38.662Z - info:   [11540] VSTSVSCode/1.122.0 (VSCode 1.20.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-12T10:03:38.666Z - debug:  [11540] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T10:03:38.666Z - debug:  [11540] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T10:03:38.670Z - debug:  [11540] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-12T10:03:38.674Z - debug:  [11540] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-12T10:03:38.682Z - debug:  [11540] Using TFS proxy: 
+2018-03-12T10:03:38.682Z - debug:  [11540] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-12T10:03:38.682Z - debug:  [11540] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-12T10:03:38.690Z - debug:  [11540] TFVC Repository.CheckVersion
+2018-03-12T10:03:38.694Z - debug:  [11540] TFVC: tf add -noprompt -?
+2018-03-12T10:03:38.718Z - debug:  [11540] TFVC: spawned new process (duration: 24ms)
+2018-03-12T10:03:38.750Z - debug:  [11540] TFVC: spawned new process (duration: 32ms)
+2018-03-12T10:03:39.194Z - debug:  [11540] TFVC: add exit code: 0 (duration: 500ms)
+2018-03-12T10:03:39.198Z - debug:  [11540] TFVC Minimum required version: 14.102.0
+2018-03-12T10:03:39.198Z - debug:  [11540] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-12T10:03:39.198Z - debug:  [11540] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-12T10:03:39.198Z - debug:  [11540] TFVC: tf workfold -noprompt ********
+2018-03-12T10:03:39.210Z - debug:  [11540] TFVC: spawned new process (duration: 12ms)
+2018-03-12T10:03:42.062Z - debug:  [11540] TFVC: workfold exit code: 100 (duration: 2864ms)
+2018-03-12T10:03:42.066Z - debug:  [11540] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-12T10:03:42.066Z - error:  [11540] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-13T09:02:47.457Z - info:   [16628] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-13T09:02:47.458Z - info:   [16628] VSTSVSCode/1.122.0 (VSCode 1.21.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-13T09:02:47.460Z - debug:  [16628] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-13T09:02:47.460Z - debug:  [16628] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-13T09:02:47.462Z - debug:  [16628] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-13T09:02:47.462Z - debug:  [16628] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-13T09:02:47.464Z - debug:  [16628] Using TFS proxy: 
+2018-03-13T09:02:47.464Z - debug:  [16628] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-13T09:02:47.465Z - debug:  [16628] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-13T09:02:47.467Z - debug:  [16628] TFVC Repository.CheckVersion
+2018-03-13T09:02:47.469Z - debug:  [16628] TFVC: tf add -noprompt -?
+2018-03-13T09:02:47.482Z - debug:  [16628] TFVC: spawned new process (duration: 11ms)
+2018-03-13T09:02:47.520Z - debug:  [16628] TFVC: spawned new process (duration: 37ms)
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC: add exit code: 0 (duration: 303ms)
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC Minimum required version: 14.102.0
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC: tf workfold -noprompt ********
+2018-03-13T09:02:47.773Z - debug:  [16628] TFVC: spawned new process (duration: 0ms)
+2018-03-13T09:02:50.044Z - debug:  [16628] TFVC: workfold exit code: 100 (duration: 2271ms)
+2018-03-13T09:02:50.046Z - debug:  [16628] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-13T09:02:50.047Z - error:  [16628] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-26T04:25:09.578Z - info:   [11492] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-26T04:25:09.578Z - info:   [11492] VSTSVSCode/1.122.0 (VSCode 1.21.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-26T04:25:09.578Z - debug:  [11492] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T04:25:09.578Z - debug:  [11492] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T04:25:09.582Z - debug:  [11492] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T04:25:09.582Z - debug:  [11492] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-26T04:25:09.586Z - debug:  [11492] Using TFS proxy: 
+2018-03-26T04:25:09.586Z - debug:  [11492] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-26T04:25:09.586Z - debug:  [11492] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-26T04:25:09.590Z - debug:  [11492] TFVC Repository.CheckVersion
+2018-03-26T04:25:09.594Z - debug:  [11492] TFVC: tf add -noprompt -?
+2018-03-26T04:25:09.642Z - debug:  [11492] TFVC: spawned new process (duration: 48ms)
+2018-03-26T04:25:09.694Z - debug:  [11492] TFVC: spawned new process (duration: 52ms)
+2018-03-26T04:25:10.060Z - debug:  [11492] TFVC: add exit code: 0 (duration: 466ms)
+2018-03-26T04:25:10.064Z - debug:  [11492] TFVC Minimum required version: 14.102.0
+2018-03-26T04:25:10.064Z - debug:  [11492] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-26T04:25:10.064Z - debug:  [11492] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-26T04:25:10.064Z - debug:  [11492] TFVC: tf workfold -noprompt ********
+2018-03-26T04:25:10.076Z - debug:  [11492] TFVC: spawned new process (duration: 12ms)
+2018-03-26T04:25:12.593Z - debug:  [11492] TFVC: workfold exit code: 100 (duration: 2529ms)
+2018-03-26T04:25:12.593Z - debug:  [11492] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-26T04:25:12.597Z - error:  [11492] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-03-26T07:43:37.717Z - info:   [02752] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-03-26T07:43:37.719Z - info:   [02752] VSTSVSCode/1.122.0 (VSCode 1.21.1; Windows_NT 10.0.14393; Node 7.9.0)
+2018-03-26T07:43:37.720Z - debug:  [02752] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T07:43:37.720Z - debug:  [02752] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T07:43:37.722Z - debug:  [02752] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-03-26T07:43:37.722Z - debug:  [02752] TFVC Creating Tfvc object with localPath='undefined'
+2018-03-26T07:43:37.725Z - debug:  [02752] Using TFS proxy: 
+2018-03-26T07:43:37.725Z - debug:  [02752] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-03-26T07:43:37.727Z - debug:  [02752] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-26T07:43:37.729Z - debug:  [02752] TFVC Repository.CheckVersion
+2018-03-26T07:43:37.730Z - debug:  [02752] TFVC: tf add -noprompt -?
+2018-03-26T07:43:37.740Z - debug:  [02752] TFVC: spawned new process (duration: 8ms)
+2018-03-26T07:43:37.767Z - debug:  [02752] TFVC: spawned new process (duration: 27ms)
+2018-03-26T07:43:38.137Z - debug:  [02752] TFVC: add exit code: 0 (duration: 405ms)
+2018-03-26T07:43:38.139Z - debug:  [02752] TFVC Minimum required version: 14.102.0
+2018-03-26T07:43:38.139Z - debug:  [02752] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-03-26T07:43:38.140Z - debug:  [02752] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-03-26T07:43:38.141Z - debug:  [02752] TFVC: tf workfold -noprompt ********
+2018-03-26T07:43:38.154Z - debug:  [02752] TFVC: spawned new process (duration: 11ms)
+2018-03-26T07:43:40.325Z - debug:  [02752] TFVC: workfold exit code: 100 (duration: 2184ms)
+2018-03-26T07:43:40.325Z - debug:  [02752] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-03-26T07:43:40.325Z - error:  [02752] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces. TF30063: You are not authorized to access tmpcmamva02\CMAS.
+2018-05-17T06:03:37.192Z - info:   [11400] *** FOLDER: c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client ***
+2018-05-17T06:03:37.195Z - info:   [11400] VSTSVSCode/1.133.0 (VSCode 1.23.0; Windows_NT 10.0.14393; Node 7.9.0)
+2018-05-17T06:03:37.196Z - debug:  [11400] Looking for an External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-05-17T06:03:37.197Z - debug:  [11400] No External Context at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-05-17T06:03:37.200Z - debug:  [11400] Looking for TFVC repository at c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client
+2018-05-17T06:03:37.200Z - debug:  [11400] TFVC Creating Tfvc object with localPath='undefined'
+2018-05-17T06:03:37.202Z - debug:  [11400] Using TFS proxy: 
+2018-05-17T06:03:37.203Z - debug:  [11400] TFVC Retrieved from settings; localPath='C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\TF.exe'
+2018-05-17T06:03:37.204Z - debug:  [11400] TFVC Repository created with repositoryRootFolder='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-05-17T06:03:37.205Z - debug:  [11400] TFVC Repository.CheckVersion
+2018-05-17T06:03:37.208Z - debug:  [11400] TFVC: tf add -noprompt -?
+2018-05-17T06:03:37.239Z - debug:  [11400] TFVC: spawned new process (duration: 30ms)
+2018-05-17T06:03:37.268Z - debug:  [11400] TFVC: spawned new process (duration: 29ms)
+2018-05-17T06:03:37.866Z - debug:  [11400] TFVC: add exit code: 0 (duration: 656ms)
+2018-05-17T06:03:37.867Z - debug:  [11400] TFVC Minimum required version: 14.102.0
+2018-05-17T06:03:37.868Z - debug:  [11400] TFVC (TF.exe, TF.cmd) version: 14.102.25619.0
+2018-05-17T06:03:37.868Z - debug:  [11400] TFVC Repository.FindWorkspace with localPath='c:\D\Timeinc Projects\PCAT\PreferenceCenterAdminTool\PCAT.Client'
+2018-05-17T06:03:37.869Z - debug:  [11400] TFVC: tf workfold -noprompt ********
+2018-05-17T06:03:37.900Z - debug:  [11400] TFVC: spawned new process (duration: 29ms)
+2018-05-17T06:03:40.627Z - debug:  [11400] TFVC: workfold exit code: 100 (duration: 2758ms)
+2018-05-17T06:03:40.629Z - debug:  [11400] TFVC errors (via stderr): TF30063: You are not authorized to access tmpcmamva02\CMAS.
+
+2018-05-17T06:03:40.630Z - error:  [11400] It appears you are using a Server workspace. Currently, TFVC support is limited to Local workspaces.

@@ -1,0 +1,29 @@
+
+.alert-danger-error{
+    border-radius: 20px;
+    font-family: open-sans-sbold;
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    text-align:center;
+}
+
+.result-data {
+    max-height: 100px;
+}
+
+.pdcButton{
+    float: right;
+    margin-top: -10px;
+    font-size: small;
+}
+
+.msgSize{
+    font-size: smaller;
+    padding: 3px;
+}
+
+.pinOffer{
+    float: left;
+    padding: 5px 20px;
+}

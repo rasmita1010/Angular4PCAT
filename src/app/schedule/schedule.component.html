@@ -1,0 +1,196 @@
+<div class="row mt10 cnt-md">
+    <h1 class="fl">Demo Offers Schedules</h1>
+    <div class="penretc text-center fr mt10 mr36p">
+        <span class="pend">
+            <a (click)="showCompleted = false; loadPendingSchedules()" [ngClass]="showCompleted === true ? 'off editorv':'off on editorv'" title="Pending">
+                <span>{{pendingSchedules.length}}</span> Pending
+            </a>
+        </span>
+        <span class="retn">
+            <a (click)="showCompleted = true; loadCompletedSchedules()" [ngClass]="showCompleted === true ? 'off on userv':'off userv'" title="Completed">Completed</a>
+        </span>
+    </div>
+    <div role="tabpanel" class="clearfix">
+        <div class="cnt-md-inner">
+            <div class="col-md-2 vtabs text-center">
+                <i class="fa fa-calendar fa-2x"></i>
+            </div>
+            <div class="col-md-10">
+                <div class="tab-content schedulec">
+                    <div class="sbc hide text-center show">
+                        <input type="text" placeholder="Search Schedules..." [(ngModel)]="freeTextSearch" style="width:90%;">
+                        <a class="fa fa-search"></a>
+                    </div>
+                    <div role="tabpanel" id="pendingDemoCode" *ngIf="!showCompleted">
+                        <div class="table-cnt clearfix mt10" >
+                            <table id="pendingTable" class="table table-hover" [mfData]="pendingSchedules |PendingScheduleSearchPipe: freeTextSearch" #mf="mfDataTable" [(mfSortBy)]="pendingSortBy" [(mfSortOrder)]="sortOrder">
+                                <colgroup>
+                                    <col style="width:15%" />
+                                    <col style="width:15%" />
+                                    <col style="width:40%" />
+                                    <col style="width:10%" />
+                                    <col style="width:20%" />
+                                </colgroup>
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>Demo Code</th>
+                                        <th>Demo Offer Code</th>
+                                        <th>Question</th>
+                                        <th>Status</th>
+                                        <th><mfDefaultSorter by="ScheduleDate">Scheduled Date</mfDefaultSorter></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pendingSchedule of mf.data">
+                                        <td>{{pendingSchedule.DemoCode}}</td>
+                                        <td>{{pendingSchedule.DemoOfferCode}}</td>
+                                        <td>{{pendingSchedule.QuestionText}}</td>
+                                        <td [ngSwitch]="pendingSchedule.Status">
+                                            <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{pendingSchedule.Status}}</a>
+                                            <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{pendingSchedule.Status}}</a>
+                                        </td>
+                                        <td>{{pendingSchedule.ScheduleDate | FormatDate}}</td>
+                                    </tr>
+                                </tbody> 
+                            </table>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="completedDemoCode" *ngIf="showCompleted" class="table-cnt">
+                        <div class="mt10 clearfix row" >
+                            <div class="col-md-2 text-center mt20 bold">Today</div>
+                            <div class="col-md-10">
+                                <div class="table-cnt">
+                                    <table id="todayTable" class="table table-hover" [mfData]="todayCompletedSchedules |CompletedScheduleSearchPipe: freeTextSearch" #mf1="mfDataTable" [(mfSortBy)]="completedSortBy">
+                                        <colgroup>
+                                            <col style="width:10%" />
+                                            <col style="width:10%" />
+                                            <col style="width:32%" />
+                                            <col style="width:18%" />
+                                            <col style="width:15%" />
+                                            <col style="width:15%" />
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Code</th>
+                                                <th>Demo Offer Code</th>
+                                                <th>Question</th>
+                                                <th><mfDefaultSorter by="ScheduledDate">Scheduled Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="ApprovedDate">Approved Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="PublishedDate">Published Date</mfDefaultSorter></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  *ngFor="let completedSchedule of mf1.data">
+                                            <tr>
+                                                <td>{{completedSchedule.DemoCode}}</td>
+                                                <td>{{completedSchedule.DemoOfferCode}}</td>
+                                                <td>{{completedSchedule.QuestionText}}</td>
+                                                <td>{{completedSchedule.ScheduledDate  | FormatDate}}</td>
+                                                <td>{{completedSchedule.ApprovedDate  | FormatDate}}</td>
+                                                <td>{{completedSchedule.PublishedDate  | FormatDate}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt10 text-center pb15">
+                                    <p *ngIf="loadToday && todayCompletedSchedules.length === 0">Loading...</p>
+                                    <a (click)="loadTodayCompletedSchedules()" *ngIf="loadToday && todayCompletedSchedules.length > 0" class="more" title="More">{{paginationValue}} More</a>
+                                    <p *ngIf="!loadToday"><b>No more completed schedules</b></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt10 clearfix row">
+                            <div class="col-md-2 text-center mt20 bold">This week</div>
+                            <div class="col-md-10">
+                                <div class="table-cnt">
+                                    <table id="thisWeekTable" class="table table-hover" [mfData]="thisWeekCompletedSchedules |CompletedScheduleSearchPipe: freeTextSearch" #mf2="mfDataTable">
+                                        <colgroup>
+                                            <col style="width:10%" />
+                                            <col style="width:10%" />
+                                            <col style="width:32%" />
+                                            <col style="width:18%" />
+                                            <col style="width:15%" />
+                                            <col style="width:15%" />
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Code</th>
+                                                <th>Demo Offer Code</th>
+                                                <th>Question</th>
+                                                <th><mfDefaultSorter by="ScheduledDate">Scheduled Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="ApprovedDate">Approved Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="PublishedDate">Published Date</mfDefaultSorter></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let completedSchedule of mf2.data">
+                                            <tr>
+                                                <td>{{completedSchedule.DemoCode}}</td>
+                                                <td>{{completedSchedule.DemoOfferCode}}</td>
+                                                <td>{{completedSchedule.QuestionText}}</td>
+                                                <td>{{completedSchedule.ScheduledDate  |FormatDate}}</td>
+                                                <td>{{completedSchedule.ApprovedDate  |FormatDate}}</td>
+                                                <td>{{completedSchedule.PublishedDate  |FormatDate}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt10 text-center pb15">
+                                    <p *ngIf="loadThisWeek && thisWeekCompletedSchedules.length === 0">Loading...</p>
+                                    <a (click)="loadThisWeekCompletedSchedules()" *ngIf="loadThisWeek && thisWeekCompletedSchedules.length > 0" class="more" title="More">{{paginationValue}} More</a>
+                                    <p *ngIf="!loadThisWeek"><b>No more completed schedules</b></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt10 clearfix row">
+                            <div class="col-md-2 text-center mt20 bold">Earlier</div>
+                            <div class="col-md-10">
+                                <div class="table-cnt">
+                                    <table id="earlierTable" class="table table-hover" [mfData]="earlierCompletedSchedules |CompletedScheduleSearchPipe: freeTextSearch" #mf3="mfDataTable">
+                                        <colgroup>
+                                            <col style="width:10%" />
+                                            <col style="width:10%" />
+                                            <col style="width:32%" />
+                                            <col style="width:18%" />
+                                            <col style="width:15%" />
+                                            <col style="width:15%" />
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Code</th>
+                                                <th>Demo Offer Code</th>
+                                                <th>Question</th>
+                                                <th><mfDefaultSorter by="ScheduledDate">Scheduled Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="ApprovedDate">Approved Date</mfDefaultSorter></th>
+                                                <th><mfDefaultSorter by="PublishedDate">Published Date</mfDefaultSorter></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let completedSchedule of mf3.data">
+                                            <tr>
+                                                <td>{{completedSchedule.DemoCode}}</td>
+                                                <td>{{completedSchedule.DemoOfferCode}}</td>
+                                                <td>{{completedSchedule.QuestionText}}</td>
+                                                <td>{{completedSchedule.ScheduledDate  |FormatDate}}</td>
+                                                <td>{{completedSchedule.ApprovedDate  |FormatDate}}</td>
+                                                <td>{{completedSchedule.PublishedDate  |FormatDate}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mt10 text-center pb15" >
+                                    <p *ngIf="loadEarlier && earlierCompletedSchedules.length === 0">Loading...</p>
+                                    <a (click)="loadEarlierCompletedSchedules()" *ngIf="loadEarlier && earlierCompletedSchedules.length > 0" class="more" title="More">{{paginationValue}} More</a>
+                                    <p *ngIf="!loadEarlier" ><b>No more completed schedules</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <bs-modal #progressBar [backdrop]="'static'">
+        <div style="padding-left: 50%; margin-top: 33%;">
+            <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+        </div>
+    </bs-modal>
+</div>

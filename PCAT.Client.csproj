@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5205603E-CF45-4486-839B-1FD0D319B976}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PCAT.Client</RootNamespace>
+    <AssemblyName>PCAT.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\PCAT.Client.dll" />
+    <Content Include="bin\PCAT.Client.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="karma.conf.js" />
+    <Content Include="obj\Debug\PCAT.Client.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\PCAT.Client.dll" />
+    <Content Include="obj\Debug\PCAT.Client.pdb" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\PCAT.Client.dll.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="e2e\tsconfig.e2e.json" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\PCAT.Client.csprojResolveAssemblyReference.cache" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\admin-setup\admin-setup.component.css" />
+    <Content Include="src\app\admin-setup\admin-setup.component.html" />
+    <Content Include="src\app\admin-tables\admin-tables.component.css" />
+    <Content Include="src\app\admin-tables\admin-tables.component.html" />
+    <Content Include="src\app\alert-message\alert-message.component.css" />
+    <Content Include="src\app\alert-message\alert-message.component.html" />
+    <Content Include="src\app\dashboard\dashboard.component.css" />
+    <Content Include="src\app\dashboard\dashboard.component.html" />
+    <Content Include="src\app\filter-search\filter-search.component.css" />
+    <Content Include="src\app\filter-search\filter-search.component.html" />
+    <Content Include="src\app\filter-search\multi-check-box\multi-check-box.component.css" />
+    <Content Include="src\app\filter-search\multi-check-box\multi-check-box.component.html" />
+    <Content Include="src\app\home\home.component.css" />
+    <Content Include="src\app\home\home.component.html" />
+    <Content Include="src\app\login\login.component.css" />
+    <Content Include="src\app\login\login.component.html" />
+    <Content Include="src\app\nav-tabs\nav-tabs.component.css" />
+    <Content Include="src\app\nav-tabs\nav-tabs.component.html" />
+    <Content Include="src\app\notifications\notifications.component.css" />
+    <Content Include="src\app\notifications\notifications.component.html" />
+    <Content Include="src\app\question-search\question-search.component.css" />
+    <Content Include="src\app\question-search\question-search.component.html" />
+    <Content Include="src\app\questions\commments\commments.component.css" />
+    <Content Include="src\app\questions\commments\commments.component.html" />
+    <Content Include="src\app\questions\demos-summary\demos-summary.component.css" />
+    <Content Include="src\app\questions\demos-summary\demos-summary.component.html" />
+    <Content Include="src\app\questions\magazine\magazine.component.css" />
+    <Content Include="src\app\questions\magazine\magazine.component.html" />
+    <Content Include="src\app\questions\manage-demos\chain-offers\offer-setup.html" />
+    <Content Include="src\app\questions\manage-demos\demo-offers\non-choice-answers\non-choice-answers.component.css" />
+    <Content Include="src\app\questions\manage-demos\demo-offers\non-choice-answers\non-choice-answers.component.html" />
+    <Content Include="src\app\questions\manage-demos\demo-offers\choice-answer\choice-answer.component.css" />
+    <Content Include="src\app\questions\manage-demos\demo-offers\choice-answer\choice-answer.component.html" />
+    <Content Include="src\app\questions\manage-demos\manage-demos.component.css" />
+    <Content Include="src\app\questions\manage-demos\manage-demos.component.html" />
+    <Content Include="src\app\questions\prioritize-demos\prioritize-demos.component.css" />
+    <Content Include="src\app\questions\prioritize-demos\prioritize-demos.component.html" />
+    <Content Include="src\app\questions\users-view\users-view.component.css" />
+    <Content Include="src\app\questions\users-view\users-view.component.html" />
+    <Content Include="src\app\questions\view-demos\view-demos.component.css" />
+    <Content Include="src\app\questions\view-demos\view-demos.component.html" />
+    <Content Include="src\app\schedule\schedule.component.css" />
+    <Content Include="src\app\schedule\schedule.component.html" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap-theme.css" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap-theme.min.css" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap.css" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap.min.css" />
+    <Content Include="src\assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="src\assets\bootstrap-3.3.7\js\bootstrap.js" />
+    <Content Include="src\assets\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="src\assets\bootstrap-3.3.7\js\npm.js" />
+    <Content Include="src\assets\css\bootstrap-multiselect.css" />
+    <Content Include="src\assets\css\loaders.min.css" />
+    <Content Include="src\assets\css\style.css" />
+    <Content Include="src\assets\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="src\assets\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="src\assets\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="src\assets\img\favicon-gear.ico" />
+    <Content Include="src\assets\img\favicon-gears.ico" />
+    <Content Include="src\assets\img\icn-close.png" />
+    <Content Include="src\assets\img\icn-drag-d.png" />
+    <Content Include="src\assets\img\icn-filter-on.gif" />
+    <Content Include="src\assets\img\icn_closee.gif" />
+    <Content Include="src\assets\img\logo-b.png" />
+    <Content Include="src\assets\img\logo-s.png" />
+    <Content Include="src\assets\jquery-3.1.1\jquery.min.js" />
+    <Content Include="src\assets\script\bootstrap-multiselect.min.js" />
+    <Content Include="src\assets\script\common.js" />
+    <Content Include="src\tsconfig.app.json" />
+    <Content Include="src\tsconfig.spec.json" />
+    <Content Include=".angular-cli.json" />
+    <Content Include=".editorconfig" />
+    <Content Include=".gitignore" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <Content Include="src\app\questions\manage-demos\chain-offers\chain-offers.component.html" />
+    <Content Include="src\assets\.gitkeep" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap-theme.css.map" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap-theme.min.css.map" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap.css.map" />
+    <Content Include="src\assets\bootstrap-3.3.7\css\bootstrap.min.css.map" />
+    <Content Include="src\assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="src\assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="src\assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="src\assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="src\assets\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\core.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\list.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\path.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="src\assets\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="src\assets\fonts\OpenSans-Bold.eot" />
+    <Content Include="src\assets\fonts\OpenSans-Bold.ttf" />
+    <Content Include="src\assets\fonts\OpenSans-Light.eot" />
+    <Content Include="src\assets\fonts\OpenSans-Light.ttf" />
+    <Content Include="src\assets\fonts\OpenSans-Regular.eot" />
+    <Content Include="src\assets\fonts\OpenSans-Regular.ttf" />
+    <Content Include="src\assets\fonts\OpenSans-Semibold.eot" />
+    <Content Include="src\assets\fonts\OpenSans-Semibold.ttf" />
+    <Content Include="obj\Debug\build.force" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\app.component.css" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\index.html" />
+    <Content Include="src\styles.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\app.po.ts" />
+    <TypeScriptCompile Include="src\app\admin-setup\admin-setup.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\admin-setup\admin-setup.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-tables\admin-tables.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\admin-tables\admin-tables.component.ts" />
+    <TypeScriptCompile Include="src\app\alert-message\alert-message.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\alert-message\alert-message.component.ts" />
+    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\dashboard\dashboard.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\filter-search\filter-search.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\filter-search\filter-search.component.ts" />
+    <TypeScriptCompile Include="src\app\filter-search\multi-check-box\multi-check-box.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\filter-search\multi-check-box\multi-check-box.component.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\nav-tabs\nav-tabs.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\nav-tabs\nav-tabs.component.ts" />
+    <TypeScriptCompile Include="src\app\notifications\notifications.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\notifications\notifications.component.ts" />
+    <TypeScriptCompile Include="src\app\question-search\question-search.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\question-search\question-search.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\commments\commments.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\commments\commments.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\demos-summary\demos-summary.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\demos-summary\demos-summary.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\index.ts" />
+    <TypeScriptCompile Include="src\app\questions\magazine\magazine.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\magazine\magazine.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\chain-offers\chain-offers.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\chain-offers\chain-offers.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\chain-offers\offer-setup.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\chain-offers\offer-setup.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\demo-offers\demo-offer-actions.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\demo-offers\non-choice-answers\non-choice-answers.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\demo-offers\non-choice-answers\non-choice-answers.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\demo-offers\choice-answer\choice-answer.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\demo-offers\choice-answer\choice-answer.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\manage-demos.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\manage-demos\manage-demos.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\prioritize-demos\prioritize-demos.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\prioritize-demos\prioritize-demos.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\questions.validators.ts" />
+    <TypeScriptCompile Include="src\app\questions\users-view\users-view.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\users-view\users-view.component.ts" />
+    <TypeScriptCompile Include="src\app\questions\view-demos\view-demos.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\questions\view-demos\view-demos.component.ts" />
+    <TypeScriptCompile Include="src\app\schedule\schedule.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\schedule\schedule.component.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\common-service.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\index.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\localStorage.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\mockModal.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\question-service.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\question-summary.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\route-guard.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\router.mock.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\shared-service.mock.ts" />
+    <TypeScriptCompile Include="src\app\_models\AnswerTypes.ts" />
+    <TypeScriptCompile Include="src\app\_models\ApplicationStatus.ts" />
+    <TypeScriptCompile Include="src\app\_models\ApproveReturnRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\ChoiceChainOffers.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\ChoiceOffer.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\ChoiceOfferRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\DeleteChainOfferRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\ForcedChainOffers.ts" />
+    <TypeScriptCompile Include="src\app\_models\CommonFilterModel.ts" />
+    <TypeScriptCompile Include="src\app\_models\Constants.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\DemoCodeComment.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\FilterParameter.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\PrioritizeChoiceRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\SearchRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\DemoOfferScheduleDate.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\SubmitDemoRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoOfferChannel.ts" />
+    <TypeScriptCompile Include="src\app\_models\demoOfferMagazineChannel.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoOffers\DemoChoiceDetails.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoOffers\DemoOfferDetails.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoOffers\DemoOfferRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\ChainOffers\ForcedOfferRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoOffers\UpdateOfferFieldsRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DigitalDemoRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\DigitalDemos.ts" />
+    <TypeScriptCompile Include="src\app\_models\index.ts" />
+    <TypeScriptCompile Include="src\app\_models\DemoCode\DemoCode.ts" />
+    <TypeScriptCompile Include="src\app\_models\LoginRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\Magazine.ts" />
+    <TypeScriptCompile Include="src\app\_models\MagazineChannel.ts" />
+    <TypeScriptCompile Include="src\app\_models\MagazineChannelDelete.ts" />
+    <TypeScriptCompile Include="src\app\_models\ManageButtons.ts" />
+    <TypeScriptCompile Include="src\app\_models\NotificationRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\PrioritySchedule.ts" />
+    <TypeScriptCompile Include="src\app\_models\RecallActionRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\RequestResult.ts" />
+    <TypeScriptCompile Include="src\app\_models\ResetRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\Roles.ts" />
+    <TypeScriptCompile Include="src\app\_models\Status.ts" />
+    <TypeScriptCompile Include="src\app\_models\UnAuthMagazines.ts" />
+    <TypeScriptCompile Include="src\app\_models\UpdateApprovalRequest.ts" />
+    <TypeScriptCompile Include="src\app\_models\Tuple.ts" />
+    <TypeScriptCompile Include="src\app\_models\ValidatePrioritizeRequest.ts" />
+    <TypeScriptCompile Include="src\app\_services\answers\answer.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\answers\answer.service.ts" />
+    <TypeScriptCompile Include="src\app\_mocks\auth.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\auth.service.ts" />
+    <TypeScriptCompile Include="src\app\_pipes\custom.pipes.ts" />
+    <TypeScriptCompile Include="src\app\_services\index.ts" />
+    <TypeScriptCompile Include="src\app\_services\preference-data.service.ts" />
+    <TypeScriptCompile Include="src\app\_services\questions\question.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\questions\question.service.ts" />
+    <TypeScriptCompile Include="src\app\_services\route-guard\prioritize-pending-changes-guard.ts" />
+    <TypeScriptCompile Include="src\app\_services\route-guard\question-pending-changes-guard.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\route-guard\question-pending-changes-guard.ts" />
+    <TypeScriptCompile Include="src\app\_services\route-guard\route-guard.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\route-guard\route-guard.service.ts" />
+    <TypeScriptCompile Include="src\app\_services\shared\common.service.ts" />
+    <TypeScriptCompile Include="src\app\_services\shared\shared.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\_services\shared\shared.service.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.qa.ts" />
+    <TypeScriptCompile Include="src\environments\environment.test.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\environments\environment.uat.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>48611</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48611/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties package_1json__JSONSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

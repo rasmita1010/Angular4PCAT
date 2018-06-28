@@ -1,0 +1,32 @@
+﻿<div class="home">
+    <div class="container-fluid">
+        <div class="row cnt-hd">
+        </div>
+        <div class="row cnt-md notify-md">
+            <h1 class="ml35">{{constants.LBL_HELLO}} {{userName}}!</h1>
+            <h2 class="ml35">{{constants.LBL_MANAGE_GREETING}}</h2>
+            <div role="tabpanel" class="clearfix mt10">
+                <div class="cnt-md-inner clearfix ptz">
+                    <div class="col-md-12" *ngIf="!isTCSUser">
+                        <app-question-search></app-question-search>
+                    </div>
+                    <div class="col-md-12">
+                        <app-notifications></app-notifications>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <div class="modal fade" id="logoutM" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content alert">
+                    <div class="modal-body text-center">
+                        <div class=""><p><span class="fa fa-2x fa-info-circle"></span><span class="pl5">Are you sure want to be <b>Logged Out?</b></span></p> <button id="logouty" title="YES">{{constants.LBL_YES}}</button><button id="logoutx" title="CANCEL" data-dismiss="modal">{{constants.LBL_CANCEL}}</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

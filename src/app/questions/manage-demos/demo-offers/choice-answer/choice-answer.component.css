@@ -1,0 +1,81 @@
+.modal-dialog {
+    width: 80%;
+    margin-left: 12%;
+}
+
+/*.modal-content select{
+    width:100px;
+}*/
+
+.modal-body-content {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 10px;
+    margin-top: -10px;
+}
+
+/*.minus-mt5 {
+    margin-top: -5px;
+    padding-right: 10px;
+}*/
+
+#ScheduleDate {
+    width: 150px;
+}
+
+#DemoOfferCode {
+    width: 100px;
+}
+
+.alert-danger-error {
+    border-radius: 20px;
+    font-family: open-sans-sbold;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    text-align: center;
+}
+
+.digital {
+    margin-top: 20px;
+    border-radius:7px;
+}
+
+.fa-trash {
+    padding: 10px 10px 0 5px;
+    font-size: 1.3em;
+}
+
+a.inEditStatus {
+    width: auto;
+    margin-top: 1px;
+}
+
+/*#demoChoiceContainer {
+    cursor: pointer;
+    max-height: 230px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}*/
+
+.rcOffer {
+    margin-right: 45px;
+    float: right;
+    color: #fff;
+    background-color: #8b8d91;
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 5px;
+    width: 90px;
+    text-align: center;
+    position: relative;
+}
+
+.priomag {
+    margin-left: 0px;
+}
+
+    .priomag .btn {
+        padding: 6px 4px;
+    }

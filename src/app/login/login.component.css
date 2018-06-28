@@ -1,0 +1,9 @@
+.txtLogin {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 7px 5px 7px 10px;
+    width: 42%;
+    height: 30%;
+    text-align: center;
+}
+

@@ -1,0 +1,14 @@
+.hl{
+    border-style: groove;opacity:0.5;
+}
+
+.pdcButton{
+    float: right;
+    margin-top: -10px;
+    font-size: small;
+}
+
+.pinOffer{
+    float: left;
+    padding: 5px 20px;
+}

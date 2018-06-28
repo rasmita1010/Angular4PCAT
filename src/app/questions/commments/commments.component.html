@@ -1,0 +1,59 @@
+<h2 *ngIf="showHeader">{{constants.QT_COMMENTS_NAME}}({{comments.length}})</h2>
+<div class="form-horizontal">
+    <div class="form-group mt20">
+        <div class="col-md-3 control-label userdet">
+            <div>
+                <span class="fa fa-3x fa-circle"></span><span class="fa fa-2x fa-user"></span>
+                <p class="user"><span>{{userDetails.DisplayName}}</span><br /><span>{{todayDate | FormatDateMonth}}</span></p>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <textarea cols="75" rows="10" placeholder="Enter Comment text here...." (change)="allowNavigation($event)" [(ngModel)]="commentText"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-8 btnc">
+            <button (click)="addComment()" [class.inactive]="(this.commentText === undefined || this.commentText === '')">Add Comment</button>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="form-horizontal">
+        <div *ngFor="let comment of comments">
+            <div class="form-group bgcomment">
+                <div class="col-md-3 control-label userdet">
+                    <div class="pred">
+                        <span class="fa fa-3x fa-circle"></span><span class="fa fa-2x fa-user"></span>
+                        <p class="user"><span>{{comment.CommentBy}}</span><br /><span>{{comment.CommentDate | FormatDateTime}}</span></p>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="commentd">
+                        <p class="comment" style="white-space:pre-wrap">{{comment.CommentText}}</p>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <!--<div *ngIf="(comment.UserName === userDetails.username)"><a class="dot fl"></a></div>-->
+                    <div class="btnc fr delCmt" *ngIf="(comment.UserName === userDetails.username)">
+                        <a (click)="deleteComment(comment.CommentId)" class="fa fa-trash-o" title="Delete" href="javascript:void(0)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<bs-modal #modelIsDirty [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.CMNT_ALERT_SAVE}}?</span></p>
+        <button (click)="modelIsDirty.close()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="no" class="btn btn-default" (click)="modelIsDirty.dismiss()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modalSaveSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>

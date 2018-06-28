@@ -1,0 +1,41 @@
+<div class="multiselect-native-select">
+    <div class="btn-group" style="width: 150px;">
+        <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="{{selectedText}}" style="width: 150px; overflow: hidden; text-overflow: ellipsis;">
+            <span class="multiselect-selected-text"></span>{{selectedText}} <b class="caret"></b>
+        </button>
+        <!--For Other Multi select Filter Types-->
+        <ul class="multiselect-container dropdown-menu pl20" *ngIf="!(ColumnName === 'LinkOffer')">
+            <li class="multiselect-item multiselect-all active">
+                <a tabindex="0" class="multiselect-all">
+                    <label class="checkbox">
+                        <input type="checkbox" value="multiselect-all" [(ngModel)]="selectAll" (change)="selectAllItems()">{{constants.LBL_SELECT_ALL}}
+                    </label>
+                </a>
+            </li>
+            <li class="active" *ngFor="let filter of filterColumn" >
+                <a tabindex="0">
+                    <label class="checkbox">
+                        <input type="checkbox" value="{{filter.TypeID}}" [(ngModel)]="filter.IsSelected" (change)="updateFilterColumn()">{{filter.TypeName}}
+                    </label>
+                </a>
+            </li>
+        </ul>
+        <!--For Link Offer Multi select Filter Types-->
+        <ul class="multiselect-container dropdown-menu pl20" *ngIf="ColumnName === 'LinkOffer'">
+            <li class="multiselect-item multiselect-all active">
+                <a tabindex="0" class="multiselect-all">
+                    <label class="checkbox">
+                        <input type="checkbox" value="multiselect-all" [(ngModel)]="selectAll" (change)="selectAllItems()">{{constants.LBL_SELECT_ALL}}
+                    </label>
+                </a>
+            </li>
+            <li class="active" *ngFor="let filter of filterColumn">
+                <a tabindex="0">
+                    <label class="checkbox">
+                        <input type="checkbox" value="{{filter.TypeID}}" [(ngModel)]="filter.IsSelected" (change)="updateLinkOffer()">{{filter.TypeName}}
+                    </label>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

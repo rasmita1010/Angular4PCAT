@@ -1,0 +1,203 @@
+﻿<div class="penretc text-center mb15 mr20 clearfix">
+    <span class="pend"><a (click)="changeTabtoForced()" [ngClass]="isForced === true? 'off normal on forcedv' : 'off normal forcedv'" title="Forced">{{constants.FORCED}}</a></span>
+    <span class="retn"><a (click)="changeToChoiceChain()" [ngClass]="isChoice === true? 'off normal on choicev' : 'off normal choicev'" title="Choice">{{constants.CHOICE}}</a></span>
+    <span class="retn"><a (click)="changeToChoiceToOfferChain()" [ngClass]="isChoiceToOffer === true? 'off normal on choicev' : 'off normal choicev'" title="Choice To Offer">{{constants.CHOICETOOFFER}}</a></span>
+</div>
+<div class="table-responsive pr20 pl35 clearfix">
+    <div class="table-cnt">
+        <!--Forced Chain Offers-->
+        <table id="fvtbl" class="table table-hover" *ngIf="isForced">
+            <colgroup>
+                <col style="width:2%">
+                <col style="width:50%">
+                <col style="width:25%">
+                <col style="width:23%">
+            </colgroup>
+            <thead class="thead-default">
+                <tr>
+                    <th></th>
+                    <th>
+                        <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Search" [(ngModel)]="searchForcedQue" style="width:90%;"><a class="fa fa-search ptr"></a></div>
+                    </th>
+                    <th>{{constants.CO_DEMO_CHOICE}}</th>
+                    <th>{{constants.CO_DO_CODE}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Available Forced Chain Offers list-->
+                <ng-template ngFor let-element [ngForOf]="possibleForcedChainOffers | ForcedChainPipe:searchForcedQue">
+                    <tr>
+                        <td><input type="radio" id="{{element.DemoOfferCode}}" [value]="element.DemoOfferCode" 
+                            [(ngModel)]="selectedDemoOfferCode" [checked]="selectedDemoOfferCode === element.DemoCode ? true : false" /></td>
+                        <td><span class="fa fa-question-circle"></span>{{element.QuestionText}}</td>
+                        <td>
+                            {{element.DemoChoiceText}}
+                        </td>
+                        <td>
+                            {{element.DemoOfferCode}}
+                            <label class="warn" style="padding-left:15px" *ngIf="element.hasPendingSubmission" popover="This choice '{{element.DemoChoiceText}}' has a pending activation" [popoverOnHover]="true"><b>Alert!</b></label>
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <!-- Choice To Offer Chain -->
+        <table id="choiceToOfferChaintbl" class="table table-hover" *ngIf="isChoiceToOffer">  
+            <tbody>
+                
+                <!--Available Choice To Offer Chain list -->
+                    <tr *ngIf = "isLinked">
+                    <!-- <tr> -->
+                        <td colspan="4">
+                            <div class="row">
+                                <div class="col-md-6 pl20 scroll-choice">
+                                    <ng-template ngFor let-choice [ngForOf]="linkedChoiceToOffers" let-ch="index">
+                                        <div class="row">
+                                            <i [ngClass]="ch === 0 ? 'fa fa-chain fl mt20':'fa fa-chain fl mt30'"></i>
+                                            <div [ngClass]="ch === 0 ? 'dropchoice':'dropchoice mt20'" id="{{choice.ParentDemoChoiceId}}" dnd-droppable (onDropSuccess)="offerDropped($event)">
+                                                {{choice.ParentDemoChoiceText}}
+                                                <a *ngIf = "choice.ChildDemoOfferCode" class="selected">{{choice.ChildDemoOfferCode}}<span class="sptr" (click)="removedChainedOffer(choice.ParentDemoChoiceId)"></span></a>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="whitep dragChoice scroll-choice">
+                                        {{constants.DEMOOFFER_DRAG_DROP}}
+                                        <ng-template ngFor let-element [ngForOf]="possibleChoiceToOfferChains" let-i="index">
+                                            <p class="mt20" dnd-draggable [dragData]="element" [dragEnabled]="canDrag(element)">
+                                                <span [ngClass]="canDrag(element) === true? 'blu':'warn'">
+                                                        {{element.DemoOfferCode + "-" + element.DemoCode + ': '+ element.QuestionText }}
+                                                </span>
+                                            </p>
+                                        </ng-template>
+                                    </div>
+
+                                </div>
+                                <div class="btnc">
+                                    <p class="fr">
+                                        <button (click)="closeLinking()">{{constants.BTN_CLOSE}}</button>
+                                        <button (click)="SaveChoiceToOfferChain()">{{constants.BTN_LINK_CHOICETOOFFER}}</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+
+        <!--Choice Chain offers-->
+        <table id="cvtbl" class="table table-hover" *ngIf="isChoice">
+            <colgroup>
+                <col style="width:2%">
+                <col style="width:50%">
+                <col style="width:25%">
+                <col style="width:23%">
+            </colgroup>
+            <thead class="thead-default">
+                <tr>
+                    <th></th>
+                    <th>
+                        <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Search" [(ngModel)]="searchChoiceQue" style="width:90%;"><a class="fa fa-search ptr"></a></div>
+                    </th>
+                    <th>{{constants.CO_DEMO_CHOICE}}</th>
+                    <th>{{constants.CO_DCODE}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Available Choice Chain Offers list-->
+                <ng-template ngFor let-element [ngForOf]="possibleChoiceChainOffers | ChoiceChainPipe:searchChoiceQue" let-i="index">
+                    <tr>
+                        <td><input type="radio" id="{{element.DemoCode}}" value="{{element.DemoCode}}" [(ngModel)]="selectedDemoCode" [checked]="selectedDemoCode === element.DemoCode ? true : false" (change)="changeSelection(i)"></td>
+                        <td><span class="fa fa-question-circle"></span>{{element.QuestionText}}</td>
+                        <td>{{element.Choices.length}}</td>
+                        <td>
+                            {{element.DemoCode}}
+                            <a *ngIf="i != selectedIndex" (click)="selectedIndex = i" title="Expand Data" class="asts collapsed"></a>
+                            <a *ngIf="i == selectedIndex" (click)="selectedIndex = -1" title="Collapse Data" class="asts"></a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="selectedIndex == i && !(isLinked && selectedDemoCode == element.DemoCode)">
+                        <td colspan="4">
+                            <ng-template ngFor let-choice [ngForOf]="element.Choices" let-j="index">
+                                <div class="row">
+                                    <div [ngClass]="j == 0 ? 'col-md-6 pl35': 'col-md-6 pl35 pt10'">
+                                        {{constants.CO_DEMO_CHOICE}} {{j+1}}
+                                        <span class="simplebox"> {{choice.DemoChoiceText}}</span>
+                                    </div>
+                                    <div class="col-md-6">{{choice.DemoChoiceCode}}</div>
+                                </div>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr *ngIf="(selectedIndex == i) && isLinked && (selectedDemoCode == element.DemoCode)">
+                        <td colspan="4">
+                            <div class="row">
+                                <div class="col-md-6 pl20 scroll-choice">
+                                    <ng-template ngFor let-choice [ngForOf]="ParentChoices" let-ch="index">
+                                        <div class="row">
+                                            <i [ngClass]="ch === 0 ? 'fa fa-chain fl mt20':'fa fa-chain fl mt30'"></i>
+                                            <div [ngClass]="ch === 0 ? 'dropchoice':'dropchoice mt20'" id="{{choice.DemoOfferChoiceId}}" dnd-droppable (onDropSuccess)="dropped($event)">
+                                                {{choice.DemoChoiceText}}
+                                                <ng-template ngFor let-linked [ngForOf]="linkedChoice">
+                                                    <a *ngIf="linked.ParentDemoOfferChoiceId == choice.DemoOfferChoiceId" class="selected">{{linked.ChildDemoCHoiceText}}<span class="sptr" (click)="removeChainedChoice(linked.ParentDemoOfferChoiceId)"></span></a>
+                                                    <label class="warn" *ngIf="(linked.ParentDemoOfferChoiceId == choice.DemoOfferChoiceId) && (linked.hasPendingSubmission)" popover="This choice '{{linked.ChildDemoCHoiceText}}' has a pending activation." [popoverOnHover]="true"><b>Alert!</b></label>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="whitep dragChoice scroll-choice">
+                                        {{constants.CO_DRAG_DROP}}
+                                        <label *ngIf="hasAlert" class="view-alert" 
+                                               popover="This Chain offer is linked to Demo Choices that belong to offers which are pending for activation." [popoverOnHover]="true">
+                                            View Alert
+                                        </label>
+                                        <ng-template ngFor let-childchoice [ngForOf]="element.Choices" let-j="index">
+                                            <p class="mt20" dnd-draggable [dragData]="childchoice" [dragEnabled]="canDrag(childchoice)">
+                                                <span [ngClass]="canDrag(childchoice) === true? 'blu':'warn'">{{childchoice.DemoChoiceText}}</span>
+                                            </p>
+                                        </ng-template>
+                                    </div>
+
+                                </div>
+                                <div class="btnc">
+                                    <p class="fr">
+                                        <button (click)="closeLinking()">{{constants.BTN_CLOSE}}</button>
+                                        <button (click)="SaveChoiceChain()">{{constants.BTN_SAVE}}<span class="fa fa-save"></span></button>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </tbody>
+        </table>
+
+        <div class="btnc">
+            <p class="fr" *ngIf="!isLinked">
+                <button *ngIf = "!isChoiceToOffer" (click)="closeOfferSetup.emit(true)">{{constants.BTN_CLOSE}}</button>
+                <button *ngIf="isForced && possibleForcedChainOffers.length > 0" title="Link & Save Chain Offer" [attr.disabled]="selectedDemoOfferCode == null ? true:null" [ngClass]="selectedDemoOfferCode == null ? 'ml15 inactive':'ml15'" class="ml15" (click)="LinkForcedChainOffer()">{{constants.BTN_LINK_FORCED}}</button>
+                <button *ngIf="isChoice && possibleChoiceChainOffers.length > 0" title="Link Chain Offer" [attr.disabled]="selectedDemoCode == null ? true:null" [ngClass]="selectedDemoCode == null ? 'ml15 inactive':'ml15'" (click)="LinkChoiceChainOffer()">{{constants.BTN_LINK_CHOICE}}</button>
+            </p>
+        </div>
+    </div>
+</div>
+<bs-modal #modalValidate [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-info-circle"></span>{{BusinessMessage}}
+    </div>
+</bs-modal>
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>
+    </div>
+</bs-modal>
+<bs-modal #modalSwitchChain [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.SWITCH_CHAIN_TAB}}</span></p>
+        <button (click)="switchChainTab()" class="btn btn-default marginR10" id="OK" title="OK">{{constants.LBL_OK}}</button>
+    </div>
+</bs-modal>

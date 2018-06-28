@@ -1,0 +1,122 @@
+<div class="row mtop20 cnt-md">
+    <div class="col-md-12 plz pr20">
+        <div class="cnt-md-inner-fluid">
+            <div class="cnt-l">
+                <div class="fl cnt-lp-arc" (click)="showFilter()">
+                    <a class="fa fa-angle-left fa-3x ptr" *ngIf="showFilterPane"></a>
+                    <a class="fa fa-angle-right fa-3x ptr" *ngIf="!showFilterPane"></a>
+                </div>
+                <div *ngIf="showFilterPane">
+                    <app-filter-search [filterParams]="filterParams" (updateFilters)="updateFilters($event)" (clearFilters)="clearFilters($event)"></app-filter-search>
+                </div>
+            </div>
+            <div class="ctl-r">
+                <div class="table-responsive">
+                    <ul class="innerNav fr">
+                        <li class="btnc"><button [class.inactive]="isDisabled" (click)="callCreate()" [disabled]="isDisabled">Create New</button></li>
+                        <li><span class="dot fl"></span></li>
+                        <li class="btnc"><button (click)="callPrioritize()" [class.inactive]="isDisabled" [disabled]="isDisabled">Prioritize</button></li>
+                    </ul>
+                    <h1 class="fl plz">Showing Demos</h1>
+                    <div class="stsdc clearfix pb15" *ngIf="filteredValues">
+                        <ng-template ngFor let-filters [ngForOf]="filteredValues">
+                            <a class="selected" title="{{filters.DisplayText}}">{{filters.DisplayText}}<span class="sptr" (click)="removeFilter(filters)"></span></a>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div class="table-cnt">
+                        <table id="mytable" class="table table-hover" [mfData]="data |FreeTextSearchPipe: freeTextSearch" #mf="mfDataTable" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder"
+                                [(mfRowsOnPage)]="rowsOnPage">
+                            <colgroup>
+                                <col style="width:45%" />
+                                <col style="width:15%" />
+                                <col style="width:10%" />
+                                <col style="width:10%" />
+                                <col style="width:10%" />
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>
+                                        <div class="sbc hide text-center show"><input type="text" placeholder="Search Questions" [(ngModel)]="freeTextSearch" style="width:90%;">
+                                        <a  class="fa fa-search"></a></div>
+                                    </th>
+                                    <th><mfDefaultSorter by="AnswerType">Answer Type</mfDefaultSorter></th>
+                                    <th><mfDefaultSorter by="DemoCode">Demo code</mfDefaultSorter></th>
+                                    <th><mfDefaultSorter by="Status">Status</mfDefaultSorter></th>
+                                    
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of mf.data; trackBy:trackByDemoCode">
+                                <tr class="ptr">
+                                    <td (click)="viewDemo(item)"><span class="fa fa-question-circle"></span> {{item.QuestionText}}</td>
+                                    <td>{{item.AnswerType}}</td>
+                                    <td>{{item.DemoCode}}</td>
+                                    <td [ngSwitch]="item.Status">
+                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{item.Status}}</a>
+                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{item.Status}}</a>
+                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{item.Status}}</a>
+                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{item.Status}}</a>
+                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{item.Status}}</a>
+                                    </td>
+                                    
+                                    <td>
+                                        <a title="View Demo" class="fa fa-angle-right fa-2x ptr" (click)="viewDemo(item)"></a>
+                                        <a *ngIf="item.Status === 'DRAFT' && (!isDisabled)" class="fa fa-trash" (click)="deleteDemoCode(item.DemoCode)"></a>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="13">
+                                        <div class="fr clearfix">
+                                            <div class="fl sipp">Show
+                                                <select [(ngModel)]="rowsOnPage" (change)="UserPaginationChoice(rowsOnPage)">
+                                                    <option [ngValue]="5">5</option>
+                                                    <option [ngValue]="10">10</option>
+                                                    <option [ngValue]="15">15</option>
+                                                    <option [ngValue]="25">25</option>
+                                                    <option [ngValue]="100">100</option>
+                                                </select>items per page
+                                            </div>
+                                            <mfBootstrapPaginator></mfBootstrapPaginator>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<bs-modal #modalDeleteDemo [backdrop]="'static'">
+    <div class="alertmodel">
+        <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_QT_SUMMARY_DELETE}}</span></p>
+        <button (click)="demoValidate()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+        <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteDemo.dismiss()">{{constants.LBL_CANCEL}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modalDeleteSuccess [backdrop]="'static'">
+    <div class="alertsuccess">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modalDemoLocked [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+    </div>
+</bs-modal>
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>
+    </div>
+</bs-modal>

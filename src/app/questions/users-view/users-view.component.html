@@ -1,0 +1,148 @@
+﻿<div role="tabpanel" class="clearfix">
+    <div class="cnt-md-inner" *ngIf="UserViewHasErrors">
+        <div class="error">
+            <span>{{this.UserViewMessage}}</span>
+        </div>
+    </div>
+    <div class="cnt-md-inner">
+        <div class="col-md-2 vtabs text-center">
+            <i class="fa fa-binoculars fa-2x"></i>
+            <div class="userdet" *ngIf="isLocked">
+                <span class="dot clearfix"></span>
+                <div>
+                    <span class="fa fa-3x fa-circle"></span>
+                    <span class="fa fa-2x fa-user"></span>
+                    <span class="fa fa-2x fa-lock"></span>
+                </div>
+                <p class="user"><span>{{lockedUser}}</span></p>
+            </div>
+        </div>
+        <div class="col-md-10" *ngIf="!UserViewHasErrors">
+            <div class="tab-content">
+                <div class="tab-pane active form-horizontal" id="magazine">
+                    <h2 class="ocTitle">Published view of the Demo</h2>
+                    <div>
+                        <p class="alert" *ngIf="(validateAndIntializeDemoCodeChannel()).length > 0">{{validateAndIntializeDemoCodeChannel()}}</p>
+                    </div>
+                    <div class="table-cnt clearfix mt10 btlite">
+                        <table class="table ntable">
+                            <colgroup>
+                                <col style="width:4%">
+                                <col style="width:8%">
+                                <col style="width:14%">
+                                <col style="width:10%">
+                                <col style="width:64%">
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th></th>
+                                    <th>Demo Offer</th>
+                                    <th>
+                                        <div id="sbox" class="sbc hide text-center show">
+                                            <input type="text" placeholder="Demo Offer Code.." [(ngModel)]="freeTextSearch" (change)="SetPinnedFilter()" style="width:90%;">
+                                            <a class="fa fa-search"></a>
+                                        </div>
+                                    </th>
+                                    <th>Status</th>
+                                    <th>Preview</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-template ngFor let-demooffer [ngForOf]="DemoOffers |DemoOfferSearchPipe : freeTextSearch" let-i="index">
+                                    <tr>
+                                        <td *ngIf="ViewMode"></td>
+                                        <td *ngIf="!ViewMode">
+                                            <input type="checkbox" (change)="updateCheckedOffers(demooffer.DemoOfferCode)" *ngIf="validateDemoOffer(demooffer.DemoOfferCode) && isValidStatus(demooffer.Status) && isScheudledDateValid(demooffer.ScheduleDate)" />
+                                            <b *ngIf="!validateDemoOffer(demooffer.DemoOfferCode) && isValidStatus(demooffer.Status)" style="color:red">&#x2718;</b>
+                                            <b *ngIf="!isValidStatus(demooffer.Status)" style="color:green">&#10004;</b>
+                                        </td>
+                                        <td><i class="fa fa-dropbox"></i>{{i+1}}</td>
+                                        <td>{{demooffer.DemoOfferCode}}</td>
+                                        <td [ngSwitch]="demooffer.Status">
+                                            <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{demooffer.Status}}</a>
+                                            <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{demooffer.Status}}</a>
+                                            <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{demooffer.Status}}</a>
+                                            <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{demooffer.Status}}</a>
+                                            <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{demooffer.Status}}</a>
+                                            <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{demooffer.Status}}</a>
+                                            <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{demooffer.Status}}</a>
+                                            <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{demooffer.Status}}</a>
+                                        </td>
+                                        <td [ngSwitch]="DemoCodeModel.AnswerType.toUpperCase()">
+                                            <div class="greyp clearfix">
+                                                <label>{{DemoCodeModel.QuestionText}}</label>
+                                                <span *ngIf="demooffer.DisplayText !== null"><br />{{demooffer.DisplayText}}</span>
+                                                <!--Free text control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.FreeText">
+                                                    <input class="txt" type="text" disabled />
+                                                </div>
+                                                <!--Marking control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.Marking">
+                                                    User's view is disabled for this DemoCode
+                                                </div>
+                                                <!--Date control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.Date">
+                                                    <div class="col-sm-6">
+                                                        <my-date-picker [options]="userViewConfigurations" [placeholder]="'mm/dd/yyyy'"></my-date-picker>
+                                                    </div>
+                                                </div>
+                                                <!--Date Range Control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.DateRange">
+                                                    <div class="col-sm-12">
+                                                        <div class="col-sm-6">
+                                                            <b>Minimum Date</b>
+                                                            <my-date-picker class="txt" [options]="userViewConfigurations" [placeholder]="'mm/dd/yyyy'" [selDate]="demooffer.MinDate"></my-date-picker>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <b>Maximum Date</b>
+                                                            <my-date-picker class="txt" [options]="userViewConfigurations" [placeholder]="'mm/dd/yyyy'" [selDate]="demooffer.MaxDate"></my-date-picker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Numeric Range Control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.Numeric">
+                                                    <ion-range-slider [min]="demooffer.MinValue" [max]="demooffer.MaxValue" type="single" grid="true" [step]="demooffer.Interval" force-edges="true"></ion-range-slider>
+                                                </div>
+                                                <!--Multiple Option Check Box Control-->
+                                                <div class="mt20" *ngSwitchCase="answerType.MultipleOption">
+                                                    <ng-template ngFor let-choice [ngForOf]="demooffer.DemoOffer_Choice">
+                                                        <label class="col-md-3"><input type="checkbox" name="chooseshow"> {{choice.DemoChoiceText}}</label>
+                                                    </ng-template>
+                                                </div>
+                                                <!--Dropdown Range Control-->
+                                                <div class="mt20" *ngSwitchDefault>
+                                                    <!--*ngSwitchCase="'Single Option' || 'Opt-in/Opt-out'">-->
+                                                    <div [ngSwitch]="demooffer.ControlType.toUpperCase()">
+                                                        <select *ngSwitchCase="constants.CTRL_DROP" class="ddl-ctrl">
+                                                            <option value="Select">Select</option>
+                                                            <option *ngFor="let choice of demooffer.DemoOffer_Choice" [value]="choice.DemoChoiceText">{{choice.DemoChoiceText}}</option>
+                                                        </select>
+                                                        <ng-template *ngSwitchCase="constants.CTRL_RADIO" ngFor let-choice [ngForOf]="demooffer.DemoOffer_Choice">
+                                                            <label class="col-md-3"><input type="radio" name="chooseshow"> {{choice.DemoChoiceText}}</label>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="errormessage" *ngIf="isValidStatus(demooffer.Status) && !isScheudledDateValid(demooffer.ScheduleDate)">
+                                                <p>{{constants.MSG_USRVW_FUTURESCHDDATE}}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div *ngIf="filteredDemoOffer !=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a class="ptr" (click)="clearFilterUserView()">Remove Demo Offer Filter</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<bs-modal #progressBar>
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>
+    </div>
+</bs-modal>

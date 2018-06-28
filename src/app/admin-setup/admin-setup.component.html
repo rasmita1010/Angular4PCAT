@@ -1,0 +1,109 @@
+<div class="row mt10 cnt-md">
+    <h1 class="fl">{{constants.LBL_SETUP}}</h1>
+
+    <div role="tabpanel" class="clearfix">
+        <div class="cnt-md-inner">
+
+            <div class="col-md-2 vtabs text-center">
+                <i class="fa fa-cog fa-2x"></i>
+            </div>
+
+            <div class="col-md-10">
+                <div class="tab-content">
+                    <div class="tab-pane active form-horizontal">
+                        <div class="dropdown selmag">
+                            <b>{{constants.QT_MAGAZINE_NAME}}:</b>
+                            <select class="ddl-ctrl" [(ngModel)]="selectedMagazine" (change)="loadMagazineDetails()">
+                                <option value="null" [disabled]="true">{{constants.LBL_SELECT}}</option>
+                                <option *ngFor="let mag of resources" [value]="mag.ResourceName">{{mag.Description}}</option>
+                            </select>
+                        </div>
+                        <!-- drag and drop data starts -->
+                        <div class="row dragdrop" *ngIf="isMagSelected">
+                            <div class="col-md-6">
+                                <h2>{{AvailableUsers.length}} {{constants.LBL_NO_USR_AVAILABLE}}</h2>
+                                <div id="sbox" class="sbc hide text-center show">
+                                    <input type="text" placeholder="Search" style="width:97%;" [(ngModel)]="freeUserSearch">
+                                    <a href="javascript:void(0)" class="fa fa-search"></a>
+                                </div>
+                                {{constants.LBL_DRAG_USRS}}
+                                <div class="dragarea whitep">
+                                    <ul >
+                                        <li dnd-draggable [dragData]=checkedList *ngFor="let user of AvailableUsers | FreeUserPipe:freeUserSearch;let idx=index">
+                                            <input id="chk_{{idx}}" type="checkbox" [(checked)]="checked[idx]" (click)="onSelectUser($event, user,idx)" />
+                                            <label for="chk_{{idx}}">{{user}}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pb15">
+                                
+                                <div class="dropper pl15 pr15 clearfix" dnd-droppable (onDropSuccess)="droppedUsers($event)">
+                                    <h3>{{constants.LBL_ASSIGN_USRS}}({{AssociatedUsers.length}})</h3>
+                                    <p class="pt15">{{constants.TXT_ASSIGN_USR_MSG}}</p>
+                                    <p class="mt10 text-center">
+                                        <input type="email"  class="txt w100" placeholder="Please enter email address..." [(ngModel)]="newEmail" #txtUserEmail (focus)="showError = false;" (blur)="showError = true"/>
+                                    </p>
+                                   <div class="alert-danger-error" *ngIf="!validateEmail() && showError" >
+                                        {{constants.MSG_INVALID_EMAIL_ADDR}}
+                                    </div> 
+                                    <div class="btnc clearfix text-right mt10">
+                                        <button (click)="addUserToAssociatedUsers()">{{constants.LBL_ADD}}</button>
+                                    </div>
+                                    <p class="pt15">{{constants.LBL_DROP_USRS}}</p>
+                                    <div class="droparea">
+                                        <a href="javascript:void(0)" class="selected hideit" *ngFor="let user of AssociatedUsers;let idx=index">
+                                            {{user}}
+                                            <i class="glyphicon glyphicon-remove-circle pull-right" (click)="removeSelectedUser(idx)"></i>
+                                        </a>
+                                    </div>
+                                    <div class="fr btnc mt15 mt10">
+                                        <button (click)="modelSave.open()">{{constants.BTN_SAVE}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- drag and drop data ends -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <bs-modal #modelSave [backdrop]="'static'">
+        <div class="alertmodel">
+            <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_SAVE}}?</span></p>
+            <button (click)="updateApprovalList()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+            <button id="cancel" title="no" class="btn btn-default" (click)="modelSave.dismiss()">{{constants.LBL_NO}}</button>
+        </div>
+    </bs-modal>
+
+    <bs-modal #modalSaveSuccess [backdrop]="'static'">
+        <div class="alertsuccess">
+            <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+        </div>
+    </bs-modal>
+
+    <bs-modal #modalError [backdrop]="'static'">
+        <div class="alertError">
+            <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+        </div>
+    </bs-modal>
+
+    <bs-modal #modalIsDirty [backdrop]="'static'">
+        <div class="alertmodel">
+            <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+            <button (click)="modalIsDirty.close()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+            <button id="cancel" title="no" class="btn btn-default" (click)="modalIsDirty.dismiss()">{{constants.LBL_NO}}</button>
+        </div>
+    </bs-modal>
+
+    <bs-modal #progressBar [backdrop]="'static'">
+        <div style="padding-left: 50%;margin-top: 33%;">
+            <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+        </div>
+    </bs-modal>
+
+</div>
+

@@ -1,0 +1,21 @@
+﻿.userdet div{
+    margin-left:40%;
+}
+
+.userdet{
+    margin-top: 20px;
+}
+
+.dot{
+    margin-left:-5px;
+}
+
+.table-cnt{
+    max-height: 48vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cnt-md-inner{
+    margin-top:-10px;
+}

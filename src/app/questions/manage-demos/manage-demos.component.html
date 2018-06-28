@@ -1,0 +1,483 @@
+<div class="row mt10 cnt-md" (window:beforeunload)="callBrowserClose()">
+  <div class="confirmc text-center clearfix hide" id="confirmd">
+    <div class="alert">
+      <p><span class="fa fa-2x fa-info-circle"></span><span id="alertdata">Are you sure you want to Submit the Question?</span></p>
+      <button id="confirmObs" title="OK">OK</button><button id="cancel" title="CANCEL">CANCEL</button>
+    </div>
+  </div>
+  <h1 *ngIf="paramValue.toLowerCase() === constants.MSG_ROUTE_CREATE" class="fl">{{constants.CREATE_DEMO}}</h1>
+  <h1 *ngIf="paramValue.toLowerCase() === constants.MSG_ROUTE_EDIT" class="fl">{{constants.EDIT_DEMO}}</h1>
+  <div *ngIf="filteredDemoOffer!==''" class="clearfix pinOffer" id="fitlerd"><span class="fa fa-long-arrow-right pr20"></span>Filter Demo Offers by: <a href="javascript:void(0)" (click)="clearPinnedFilter()" class="filtered removefilter">{{filteredDemoOffer}}</a></div>
+  <div class="fr closec"><a href="javascript:void(0);" title="Close" (click)="callClose()"><span class="fa fa-close goback"></span></a></div>
+  <div class="fr mt10" [ngSwitch]="status">
+    {{constants.LBL_STATUS}}:
+    <a class="activel" *ngSwitchCase="'ACTIVE'">{{status}}</a>
+    <a class="approved" *ngSwitchCase="'APPROVED'">{{status}}</a>
+    <a class="draft" *ngSwitchCase="'DRAFT'">{{status}}</a>
+    <a class="pending" *ngSwitchCase="'PENDING'">{{status}}</a>
+    <a class="returned" *ngSwitchCase="'RETURNED'">{{status}}</a>
+  </div>
+  <div class="penretc text-center mt10">
+    <span class="pend">
+      <a href="javascript:void(0);" (click)="allowUserView(false)" [ngClass]="IsUserView === true ? 'off':'on'" title="Editor's View">{{constants.LBL_EDITOR_VIEW}}</a>
+    </span>
+    <span class="retn">
+      <a href="javascript:void(0);" (click)="allowUserView(true)" [ngClass]="IsUserView === true ? 'on':'off'" title="User's View">{{constants.USER_VIEW}}</a>
+    </span>
+  </div>
+  <div role="tabpanel" class="clearfix" *ngIf="!IsUserView">
+    <div class="cnt-md-inner">
+      <div class="col-md-2 vtabs">
+        <ul class="nav nav-pills brand-pills nav-stacked" role="tablist">
+          <li role="presentation" [ngClass]="selectedTab==constants.QT_QUESTION_ID?'brand-nav active':'brand-nav'">
+            <a (click)="questionsTabSelection(constants.QT_QUESTION_ID)" title="Question" href="javascript:void(0);">
+              <span class="fa fa-question-circle"></span>{{constants.QT_QUESTION_NAME}}<span class="dot"></span>
+            </a>
+          </li>
+          <li role="presentation" [ngClass]="selectedTab==constants.QT_ANSWERS_ID?'brand-nav active':'brand-nav'">
+            <a (click)="questionsTabSelection(constants.QT_ANSWERS_ID)" title="Answers" href="javascript:void(0);">
+              <span class="fa fa-key"></span><span class="counts">{{answersCount}}</span>{{constants.QT_ANSWERS_NAME}}<span class="dot"></span>
+            </a>
+          </li>
+          <li role="presentation" [ngClass]="selectedTab==constants.QT_MAGAZINE_ID?'brand-nav active':'brand-nav'">
+            <a (click)="questionsTabSelection(constants.QT_MAGAZINE_ID)" title="Magazine" href="javascript:void(0);">
+              <i class="fa fa-book"></i><span class="counts">{{magazineCount}}</span>{{constants.QT_MAGAZINE_NAME}}<span class="dot"></span>
+            </a>
+          </li>
+          <li role="presentation" [ngClass]="selectedTab==constants.QT_COMMENTS_ID?'brand-nav active':'brand-nav'">
+            <a (click)="questionsTabSelection(constants.QT_COMMENTS_ID)" title="Comments" href="javascript:void(0);">
+              <i class="fa fa-comments"></i><span class="counts">{{comments.length}}</span>{{constants.QT_COMMENTS_NAME}}<span class="dot"></span>
+            </a>
+          </li>
+          <li role="presentation" [ngClass]="selectedTab==constants.QT_CHAIN_OFFER_ID?'brand-nav active':'brand-nav'">
+            <a (click)="questionsTabSelection(constants.QT_CHAIN_OFFER_ID)" title="Chain Offer" href="javascript:void(0);">
+              <i class="fa fa-link"></i><span class="counts">{{chainOfferCount}}</span>{{constants.QT_CHAIN_OFFER_NAME}}<span class="dot"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10">
+        <div class="tab-content" [ngSwitch]="selectedTab">
+          <div role="tabpanel" class="tab-pane active form-horizontal" id="question" *ngSwitchCase="constants.QT_QUESTION_ID">
+            <form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm.value)">
+              <h2>
+                {{constants.LBL_CREATE_QUESTION}}
+                <span class="btnc pdcButton" *ngIf="((answerValue.value.toUpperCase() === answerTypeConst.SingleOption) || (answerValue.value.toUpperCase() === answerTypeConst.MultipleOption) || (answerValue.value.toUpperCase() === answerTypeConst.Optin_OptOut)) && (paramValue.toLowerCase()!=='create')">
+                  <a (click)="prioritizeDemoChoices()" class="active" href="javascript:void(0)" *ngIf="status.toUpperCase() !== 'PENDING'">Prioritize Demo Choices</a>
+                </span>
+              </h2>
+              <div class="form-group clearfix mt10">
+                <div class="col-md-3"></div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-9">
+                  <label class="control-label text-left mb5" for="question">{{constants.LBL_QUESTION}}:</label><br />
+                  <textarea formControlName="QuestionText" id="question" class="tasmall" placeholder="Enter" (keyup)="searchEvent($event)"></textarea>
+                  <div class="result-data">
+                    <div *ngFor="let question of questions">
+                      <a href="javascript:void(0);" innerHTML="{{question.QuestionText | highlight:searchText}}" (click)="onDemoCodeSelect(question.DemoCode)"></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label class="control-label mb5" for="demoCode">{{constants.LBL_DEMO_CODE}}:</label>
+                  <input formControlName="Code" id="demoCode" type="text" class="w100" placeholder="Enter" value="" (blur)="onDemoCodeChange()" />
+                  <div *ngIf="code.errors && (code.errors.duplicateCode || code.errors.isEmpty)" class="alert-danger-error">{{demoCodeBusinessMsg}}</div>
+                  <div *ngIf="validateDemoCode" class="alert-danger-error">{{validationMsg}}</div>
+                  <label class="control-label mb5" for="answerType">{{constants.LBL_ANSWER_TYPE}}:</label>
+                  <div class="dropdown selmag priomag">
+                    <select formControlName="AnswerId" (change)="changeAnswerType($event)" id="answerType">
+                      <option value="0" disabled selected>Select Answer Type</option>
+                      <option *ngFor="let type of answerTypes" value="{{type.AnswerId}}">{{type.AnswerType}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb5">
+                <label class="col-md-6 control-label text-left">{{constants.LBL_ANSWERED_QUESTION}}</label>
+                <label class="col-md-6 control-label text-righ">{{constants.LBL_ANSWERED_QUESTION_EX}}</label>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12"><input formControlName="AnsweredQuestionText" id="answeredQuestion" type="text" class="w100" placeholder="Enter" /></div>
+              </div>
+              <div class="f-row-form form-group">
+                <div>{{constants.LBL_ADVANCED_OPTIONS}}:</div>
+                <div class="greyp w49 fl bg qao">
+                  <div>
+                    <label class="control-label inb">{{constants.LBL_DATABASE}}:</label>
+                    <div class="radiotoggle inb">
+                      <input formControlName="IsCDBModel" type="radio" id="prod1" name="IsCDBModel" [value]="false" (change)="changeDBType($event)" />
+                      <label for="prod1" [ngClass]="!dbType.value?'prod1 selected':'prod1'">
+                        <span class="fa fa-database"></span><br />{{constants.LBL_DATABASE_CP}}
+                      </label>
+                      <input formControlName="IsCDBModel" type="radio" id="prod2" name="IsCDBModel" [value]="true" (change)="changeDBType($event)" />
+                      <label for="prod2" [ngClass]="dbType.value?'prod2 selected':'prod2'">
+                        <span class="fa fa-database">
+                        </span><br />{{constants.LBL_DATABASE_CBD}}
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="control-label mt10">{{constants.LBL_RECENT_ANSWERS}}:</label>
+                    <a href="javascript:void(0)" (click)="changeRecentAnswersCount(-1)" *ngIf="!numberControl.disabled"><i class="fa fa-minus-circle fa-2x vm"></i></a>
+                    <input formControlName="RecentAnswerCount" id="recentAnswersCount" type="text" class="w50" placeholder="0" (keypress)="restrictSpecialCharacters($event,true)" />
+                    <a href="javascript:void(0)" (click)="changeRecentAnswersCount(1)" *ngIf="!numberControl.disabled"><i class="fa fa-plus-circle fa-2x vm"></i></a>
+                  </div>
+                </div>
+                <p class="w2 fl">&nbsp;</p>
+                <div class="greyp w49 fl">
+                  <label class="control-label">{{constants.LBL_QUESTION_IDENTIFIER}}:</label>
+                  <input formControlName="QuestionIdentifier" id="questionIdentifier" type="text" placeholder="Enter" (blur)="onQuestionIdentifierChange()" />
+                  <div *ngIf="questionIdentifier.errors && (questionIdentifier.errors.duplicateCode || questionIdentifier.errors.isEmpty)" class="alert-danger-error">{{quesIdenBusinessMsg}}</div>
+                  <div *ngIf="validateQuestionIdentifier" class="alert-danger-error">Validating Question Identifier....</div>
+                </div>
+              </div>
+              <div class="btnc clearfix btline text-right">
+                <!--<a (click)="saveQuestion()" class="active ml15">Save</a>-->
+                <button type="submit" [class.inactive]="status !== this.demoStatus.Draft">Save</button>
+              </div>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="demoOffers" *ngSwitchCase="constants.QT_ANSWERS_ID">
+            <div [ngSwitch]="answerValue.value.toUpperCase()">
+              <h2>
+                Create Answers
+                <span class="btnc pdcButton">
+                  <a (click)="prioritizeDemoChoices()" class="active ptr" *ngIf="status.toUpperCase() !== 'PENDING' && ((answerValue.value.toUpperCase() === answerTypeConst.SingleOption) || (answerValue.value.toUpperCase() === answerTypeConst.MultipleOption) || (answerValue.value.toUpperCase() === answerTypeConst.Optin_OptOut)) ">Prioritize Demo Choices</a>
+                  <a (click)="setScheduleDate()" class="active ptr" *ngIf="status.toUpperCase() !== 'PENDING' && SetScheduleDateVisibility">Set Schedule Date</a>
+                </span>                
+              </h2>
+              
+              <app-choice-answer *ngSwitchCase="answerTypeConst.SingleOption" [questionTabDetails]="demoCodeObj" (updatedDemoOffers)="updateDemoOffers($event)" (updateMagazines)="updateMagazines($event)" (updateDCStatus)="updateStatus($event)" (demoCodeDetails)="updatePostRecall($event)" (clearFilter)="clearPinnedFilter()" [filteredDemoOffer]="filteredDemoOffer"></app-choice-answer>
+              <app-choice-answer *ngSwitchCase="answerTypeConst.MultipleOption" [questionTabDetails]="demoCodeObj" (updatedDemoOffers)="updateDemoOffers($event)" (updateMagazines)="updateMagazines($event)" (updateDCStatus)="updateStatus($event)" (demoCodeDetails)="updatePostRecall($event)" [filteredDemoOffer]="filteredDemoOffer" (clearFilter)="clearPinnedFilter()"></app-choice-answer>
+              <app-choice-answer *ngSwitchCase="answerTypeConst.Optin_OptOut" [questionTabDetails]="demoCodeObj" (updatedDemoOffers)="updateDemoOffers($event)" (updateMagazines)="updateMagazines($event)" (updateDCStatus)="updateStatus($event)" (demoCodeDetails)="updatePostRecall($event)" [filteredDemoOffer]="filteredDemoOffer" (clearFilter)="clearPinnedFilter()"></app-choice-answer>
+              <app-non-choice-answers [questionTabDetails]="demoCodeObj" (updatedDemoOffers)="updateDemoOffers($event)" (updateMagazines)="updateMagazines($event)" *ngSwitchDefault (updateDCStatus)="updateStatus($event)" (demoCodeDetails)="updatePostRecall($event)" [filteredDemoOffer]="filteredDemoOffer" (clearFilter)="clearPinnedFilter()"></app-non-choice-answers>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="Magazine" *ngSwitchCase="constants.QT_MAGAZINE_ID">
+            <app-magazine [demoCode]="demoCodeObj" (updateMagazines)="updateMagazines($event)" (updateMagazineCount)="updateMagazineCount($event)" (clearFilter)="clearPinnedFilter()" [filteredDemoOffer]="filteredDemoOffer"></app-magazine>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="comments" *ngSwitchCase="constants.QT_COMMENTS_ID">
+            <app-commments [comments]="comments" [demoCode]="demoCodeDetails.Code" [showHeader]="true" (updateComments)="updateComments($event)"></app-commments>
+          </div>
+          <div role="tabpanel" class="tab-pane active" id="chainoffers" *ngSwitchCase="constants.QT_CHAIN_OFFER_ID">
+            <app-chainoffers [questionTabDetails]="demoCodeObj" (updateChainOffers)="updateChainOffers($event)" (updatedDemoOffers)="updateDemoOffers($event)" [filteredDemoOffer]="filteredDemoOffer" (clearFilter)="clearPinnedFilter()"></app-chainoffers>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--User's View-->
+  <div role="tabpanel" class="clearfix" *ngIf="IsUserView && !showComments">
+    <app-user-view [ViewMode]="false" [DemoCodeObj]="demoCodeObj" [isLocked]="false" [lockedUser]="" (SelectedDemoOffers)="updateSelectedOffers($event)"></app-user-view>
+  </div>
+  <div role="tabpanel" class="clearfix" *ngIf="IsUserView && showComments">
+    <div class="cnt-md-inner">
+      <div class="col-md-2 vtabs text-center">
+        <i class="fa fa-binoculars fa-2x"></i>
+      </div>
+      <div class="col-md-10">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active form-horizontal" id="additionalComments">
+            <h2 class="ocTitle">{{constants.LBL_ADDNL_COMMENTS}}</h2>
+            <h3>{{constants.LBL_DISPLAYOFFERS}} <b>{{selectedOffers.join(', ')}}</b></h3>
+            <br />
+            <div class="form-group mt20">
+              <div class="col-md-3 control-label userdet">
+                <div>
+                  <span class="fa fa-3x fa-circle"></span>
+                  <span class="fa fa-2x fa-user"></span>
+                  <p class="user">
+                    <span>{{userDetails.DisplayName}}</span>
+                    <br />
+                    <span>{{todayDate | FormatDateMonth}}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="col-md-4">
+                  {{constants.LBL_CHANGEHISTORY}}
+                </div>
+                <div class="col-md-8">
+                  <ng-template ngFor let-element [ngForOf]="changeHistory">
+                    <input type="checkbox" [checked]="checked" (change)="UpdateCheckBoxValue(element)">{{element}}<br>
+                  </ng-template>
+                </div>
+                <textarea cols="75" rows="10" class="mt10" placeholder="Additional Notes here" [(ngModel)]="additionalComments"></textarea>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="btnc">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <!--Display Back and Delete buttons-->
+      <p class="fl">
+        <!--Display the Back button in Additional comments screen in Edit View-->
+        <a (click)="showComments = false; this.selectedOffers = []" title="Back" *ngIf="showComments">{{constants.LBL_BACKTOUSERVIEW}}</a>
+        <!--Display the Delete button-->
+        <button (click)="deleteDemoCode()" *ngIf="!IsUserView && status === 'DRAFT'" title="Delete Demo Code Completely" [disabled]="notAllowDelete" [ngClass]="notAllowDelete === true ? 'inactive' : 'active'">{{constants.LBL_DELETE}}</button>
+      </p>
+      <!--Display Next button in Edit View-->
+      <p class="fr" *ngIf="!IsUserView">
+        <a (click)="showNextTab(selectedTab)" title="Next" class="ml15">{{constants.LBL_NEXT}}</a>
+      </p>
+      <!--Display Additional comments button if some offers are selected-->
+      <p class="fr" *ngIf="!showComments && IsUserView">
+        <a href="javascript:void(0)" (click)="showAdditionalComments()" title="Add Additional Comments" class="ml15" id=""
+           [class.inactive]="status === this.demoStatus.Pending || this.selectedOffers.length === 0">{{constants.LBL_ADDLCOMMENTS}}</a>
+      </p>
+      <!--Enable Submit only when additional comments are provided-->
+      <p class="fr" *ngIf="showComments && IsUserView">
+        <a href="javascript:void(0)" (click)="modalAlertSubmit.open();" title="Submit Demo Offers for Approvals" class="ml15" id=""
+           [class.inactive]="additionalComments.trim() === ''">{{constants.LBL_SUBMIT}}</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<bs-modal #modelPriortizeChoices [backdrop]="'static'">
+  <bs-modal-header>
+    <h4 class="modal-title">Prioritize Demo Choices!</h4>
+    <a href="javascript:void(0)" title="Close" (click)="modelPriortizeChoices.close()" style="float:right"><i class="fa fa-2x fa-close"></i></a>
+  </bs-modal-header>
+  <bs-modal-body>
+    <div class="clearfix row">
+      <div class="col-md-12">
+        <div *ngIf="showPrioritizeMessage" class="alert-danger-error mb15 msgSize">{{prioritizeMessage}}</div>
+      </div>
+    </div>
+    <div class="ctl-r mt7">
+      <div class="clearfix row">
+        <div class="table-responsive pl5">
+          <div id="sbox" class="sbc hide text-center">
+            <input type="text" placeholder="Search" style="width:90%;" />
+            <a href="#" class="fa fa-search"></a>
+          </div>
+          <div class="table-cnt scroll-data">
+            <table id="mytable" class="table table-hover">
+              <colgroup>
+                <col style="width:35%" />
+                <col style="width:35%" />
+                <col style="width:30%" />
+              </colgroup>
+              <thead class="thead-default">
+                <tr>
+                  <th>Order</th>
+                  <th>Demo Choice Text</th>
+                  <th>Demo Choice Code</th>
+                </tr>
+              </thead>
+              <tbody dnd-sortable-container [sortableData]="lstDemoChoices">
+                <tr *ngFor="let choice of lstDemoChoices; let i = index" dnd-sortable [sortableIndex]="i" [dragEnabled]="true" (onDropSuccess)="dropSuccess()">
+                  <td>{{i+1}}</td>
+                  <td>{{choice.DemoChoiceText}}</td>
+                  <td>{{choice.DemoChoiceCode}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </bs-modal-body>
+  <bs-modal-footer>
+    <button type="button" class="btn btn-default" (click)="modelPriortizeChoices.close()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="publishPriortizeChoices()">Publish</button>
+  </bs-modal-footer>
+</bs-modal>
+
+<bs-modal #modelSetScheduleDate [backdrop]="'static'">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Set Schedule Date!</h4>
+      <a href="javascript:void(0)" title="Close" (click)=" CancelScheduleDatePopUp()" style="float:right"><i class="fa fa-2x fa-close"></i></a>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body-content col-md-12">
+        <div class="row mt7">
+          <div class="col-sm-3">
+            <label>Schedule Date:</label><br />
+            <my-date-picker class="txt" [options]="myDatePickerOptions" [placeholder]="'mm/dd/yyyy'" [selDate]="selectedDate" (inputFieldChanged)="onScheduleDateChange($event)" required></my-date-picker>
+          </div>
+          <div class="col-sm-7 btnc">
+            <a (click)="UpdateScheduleDate()" class="active ml15 ptr btnc" style="margin-top:20px;">Assign Schedule Date</a>
+          </div>
+        </div>
+        <div class="row mt7">
+          <div class="alert-danger-error mt7" *ngIf="showError">{{errorMessage}}</div>
+        </div>
+        <div class="row mt7">
+          <div class="table-cnt clearfix">
+            <table class="table ntable atable">
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+                <col style="width:10%">
+              </colgroup>
+              <thead class="thead-default">
+                <tr>
+                  <th>Select</th>
+                  <th>Demo Offer Code</th>
+                  <th>Scheduled Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let offer of scheduleDatedemoOfferDetails;let i=index">
+                  <td><input type="checkbox" value="{{offer.DemoOfferCode}}" [(ngModel)]="offer.Checked" (ngModelChange)='onCheckboxChange(offer.DemoOfferCode)' /></td>
+                  <td>{{offer.DemoOfferCode}}</td>
+                  <td>{{offer.ScheduleDate | FormatDate}}</td>
+                  <td>{{offer.Status}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+        <div class="clearfix mt10">
+          <div class="btnc">
+            <p class="fr">
+              <a (click)="SaveScheduleDates()" class="active ml15 ptr">Save</a>
+              <a (click)="CancelScheduleDatePopUp()" title="Cancel" class="ml15 ptr">Cancel</a>
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+</bs-modal>
+
+<bs-modal #modalValidate [backdrop]="'static'">
+  <div class="alertError">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modalSaveSuccess [backdrop]="'static'">
+  <div class="alertsuccess">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+
+</bs-modal>
+
+<bs-modal #modelIsDirty [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+    <button (click)="allowNavigation()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="blockNavigation()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelIsUserViewDirty [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+    <button (click)="allowUserViewNavigation()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="blockUserViewNavigation()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelIsDirtyOnRoute [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+    <button (click)="allowRouteNavigation()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="blockRouteNavigation()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelSetSourceType [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.MSG_DB_TYPE_CHANGE}}?</span></p>
+    <button (click)="updateDemoOfferSourceType('E')" class="btn btn-default marginR10" id="OK">Effort Key</button>
+    <button id="cancel" class="btn btn-default" (click)="updateDemoOfferSourceType('F')">Preference</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalAlertSubmit [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_SUBMIT}}?</span></p>
+    <button (click)="submitChanges()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modalAlertSubmit.dismiss()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalDeleteSuccess [backdrop]="'static'">
+  <div class="alertsuccess">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modalDeleteDemo [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_QT_SUMMARY_DELETE}}</span></p>
+    <button (click)="demoValidate()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteDemo.dismiss()">{{constants.LBL_CANCEL}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalDemoLocked [backdrop]="'static'">
+  <div class="alertError">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modalAnswerTypeAlert [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.MSG_ANSWER_TYPE_CHANGE}}</span></p>
+    <button (click)="resetAnswerType()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="cancel" class="btn btn-default" (click)="modalAnswerTypeAlertClose()">{{constants.LBL_CANCEL}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelIsExisting [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{prioritizeMessage}} ?</span></p>
+    <button (click)="modelIsExisting.close()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modelIsExisting.dismiss()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalSetChannelVisibility [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.MSG_DB_CHANGE_WITH_CHANNEL}}</span></p>
+    <button (click)="allowSetChannelVisibility()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="cancel" class="btn btn-default" (click)="blockSetChannelVisibility()">{{constants.LBL_CANCEL}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #progressBar [backdrop]="'static'">
+  <div style="padding-left: 50%;
+    margin-top: 33%;">
+    <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+  </div>
+</bs-modal>
+
+<bs-modal #modalSubmitFailure [backdrop]="'static'">
+  <div class="alertError">
+    <div *ngFor="let error of modalErrorMessage" style="text-align:center">
+      <span class="fa fa-info-circle"></span>
+      {{error}}
+    </div>
+    <div style="text-align:center">{{modalMessage}}</div>
+    <br />    
+    <button class="btn btn-default" (click)="modalSubmitFailure.close()">{{constants.LBL_OK}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelChainOfferIsDirty [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+    <button (click)="allowChainOfferToUserview()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modelChainOfferIsDirty.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>

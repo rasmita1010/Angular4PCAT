@@ -1,0 +1,346 @@
+export const Constants = {
+    APPLICATION_NAME: 'PREFERENCE CENTER ADMIN TOOL',
+    TOKEN: 'token',
+    USER_DETAILS: 'userDetails',
+
+    // Login Error Messages
+    ALERT_PROVIDE_UNAME_PWD: 'Please provide User Name and Password to login',
+    ALERT_PROVIDE_UNAME: 'Please provide User Name to login',
+    ALERT_PROVIDE_PWD: 'Please provide Password to login ',
+    ALERT_USER_PERMISSION: 'You are not authorized to use this application.',
+    ALERT_INCORRECT_CREDENTIALS: 'User Name or password is incorrect',
+
+
+    // Navigation Tab Names
+    PCA_HOME: 'Home',
+    PCA_QUESTIONS: 'Questions',
+    PCA_DIGITAL: 'Digital Demos',
+    PCA_SCHEDULE: 'Schedule',
+    PCA_SETUP: 'Setup',
+    PCA_LOGOUT: 'Logout',
+
+    // Views
+    EDITOR_VIEW: 'Editor\'s View',
+    USER_VIEW: 'User\'s View',
+
+    // Buttons
+    BTN_EDIT: 'Edit',
+    BTN_RECALL_DELETE: 'Recall & Delete',
+    BTN_RECALL_EDIT: 'Recall & Edit',
+    BTN_RECALL_DISCARD: 'Recall & Discard',
+    BTN_CLOSE: 'Close',
+    BTN_SAVE: 'Save',
+    BTN_LINK_FORCED: 'Link & Save Chain Offer',
+    BTN_LINK_CHOICE: 'Link Chain Offer',
+    BTN_LINK_CHOICETOOFFER: 'Link & Save Choice To Offer Chain',
+    BTN_SHOW_CHAINS: 'Show Chain Offers',
+    BTN_ADD_EDIT_CO: 'Add and edit a Forced or Choice Demo Offer',
+    BTN_REMV_DO_FLTR: 'Remove Demo Offer Filter',
+
+    // Create Component Headers and Sub Headers
+    CREATE_DEMO: 'Create Demo',
+    CREATE_QUESTION: 'Create Question',
+    CREATE_ANSWER: 'Create Answers',
+    CREATE_MAGAZINE: 'Assign Magazine',
+    CREATE_COMMENTS: 'Comments',
+    CREATE_CHAIN_OFFERS: 'Chain Offer(s)',
+    EDIT_DEMO: 'Edit Demo',
+
+    // View Component Headers and Sub Headers
+    VIEW_DEMO: 'View Demo',
+    VIEW_QUESTION: 'View Question',
+    VIEW_ANSWER: 'View Answers',
+    VIEW_MAGAZINE: 'View Magazine(s)',
+    VIEW_COMMENTS: 'View Comments',
+    VIEW_CHAIN_OFFERS: 'View Assigned Chain Offers',
+
+    // Questions Tab
+    QT_QUESTION_ID: 'question',
+    QT_QUESTION_NAME: 'Question',
+    QT_ANSWERS_ID: 'answers',
+    QT_ANSWERS_NAME: 'Answers',
+    QT_MAGAZINE_ID: 'magazine',
+    QT_MAGAZINE_NAME: 'Magazine',
+    QT_COMMENTS_ID: 'comments',
+    QT_COMMENTS_NAME: 'Comments',
+    QT_CHAIN_OFFER_ID: 'chainOffer',
+    QT_CHAIN_OFFER_NAME: 'Chain Offer',
+    LBL_STATUS: 'Status',
+    LBL_EDITOR_VIEW: 'Editor\'s View',
+    LBL_USER_VIEW: 'User\'s View',
+
+    // Question Menu
+    // QUES_ANSWER_TYPES: ['Single Option', 'Multiple Option', 'Free Text', 'Date', 'Date Range', 'Numeric Range'],
+    LBL_CREATE_QUESTION: 'Create Question',
+    LBL_QUESTION: 'Question',
+    LBL_DEMO_CODE: 'Demo Code',
+    LBL_ANSWER_TYPE: 'Answer Type',
+    LBL_ANSWERED_QUESTION: 'Answered Question will be shown as...',
+    LBL_ANSWERED_QUESTION_EX: 'ex: Your favorite actress is',
+    LBL_ADVANCED_OPTIONS: 'Advanced Options',
+    LBL_DATABASE: 'Database',
+    LBL_DATABASE_CP: 'Customer Preference',
+    LBL_DATABASE_CBD: 'CDB Model',
+    LBL_RECENT_ANSWERS: 'No. of recent answers to be published',
+    LBL_QUESTION_IDENTIFIER: 'Question Identifier',
+    LBL_DC_STATUS: 'Status',
+    LBL_CHAIN_OFFER: 'Chain Offers',
+    LBL_DELETE: 'Delete Demo',
+    LBL_NEXT: 'Next',
+    LBL_ADDLCOMMENTS: 'Add Comments & Submit',
+    LBL_SUBMIT: 'Submit',
+    ALERT_SUBMIT: 'Are you sure you want to submit the Demo Code?',
+
+    // Answer Types
+    SINGLE_OPTION_VAL: 'Single Option',
+    MULTIPLE_OPTION_VAL: 'Multiple Option',
+    OPT_OPTION_VAL: 'Opt-in/Opt-out',
+
+    // common
+    LBL_YES: 'Yes',
+    LBL_NO: 'No',
+    LBL_CANCEL: 'Cancel',
+    LBL_SELECT: 'Select',
+    LBL_ALL_SELECTED: 'All selected',
+    LBL_SELECT_ALL: 'Select all',
+    LBL_OK: 'Ok',
+
+    // Route Type
+    MSG_ROUTE_CREATE: 'create',
+    MSG_ROUTE_EDIT: 'edit',
+
+    // Validation Messages
+    MSG_DC_KEY_FIELDS_EMPTY: 'Please enter the Demo Code key fields',
+    MSG_QUES_TXT_EMPTY: 'Question text cannot be empty',
+    MSG_CODE_EMPTY: 'Demo Code cannot be empty',
+    MSG_QUES_IDEN_EMPTY: 'Question Identifier cannot be empty',
+    MSG_ANS_TYPE_EMPTY: 'Answer Type cannot be empty',
+    MSG_ANS_QUES_TXT_EMPTY: 'Answered question text cannot be empty',
+    MSG_RECENT_ANS_CHECK: 'Recent Answers count should be greater than or equal to zero',
+    MSG_USRVW_NODEMOCODE: 'Please save the question before proceeding',
+    MSG_USRVW_NODEMOOFFER: 'Please create at least one Demo Offer',
+    MSG_USRVW_NOMAGAZINES: 'Please associate mentioned Demo Offer(s) to a minimum of one Magazine & Channel combination: ',
+    MSG_USRVW_FUTURESCHDDATE: 'Schedule date should be future date.',
+    MSG_MAGAZINE_SAVESUCESS: 'Magazine Channel association saved sucessfully',
+    MSG_MAGAZINE_UNMODIFIED_SAVE: 'No Changes were made to Channel Association',
+    MSG_MAGAZINE_CHANNEL_DELETE: 'Channels deleted from the magazine sucessfully',
+    MSG_MAGAZINE_DELETE: 'Magazine Deleted from the Demo Offer Sucessfully',
+    MSG_DEMOOFFER_CODE_EMPTY: 'Demo Offer Code cannot be empty',
+    MSG_DEMOOFFER_SOURCE_EMPTY: 'Source Type cannot be empty',
+    MSG_DEMOOFFER_RECORD_EMPTY: 'Record Type cannot be empty',
+    MSG_DEMOOFFER_SCHEDULE: 'Schedule date should be greater than current date',
+    MSG_DEMOOFFER_CONTROL_EMPTY: 'Type of control cannot be empty',
+    MSG_DEMOOFFER_MIN_EMPTY: 'Minimum selection range should be greater than 0 and less than or equal to number of choices available',
+    MSG_DEMOOFFER_MAX_EMPTY: 'Maximum selection range should be greater than 0 and less than or equal to number of choices available',
+    MSG_DEMOOFFER_CHOICE_EMPTY: 'Demo Choices cannot be empty. At least one demo choice should be available.',
+    MSG_DELETE_DEMO_CHOICE_WARNING: 'Demo Choices cannot be deleted from this Demo Offer as it is linked as forced chain offer to the following.',
+    MSG_DELETE_DEMO_CHOICE_CHOICETOOFFER_WARNING: 'Demo Choices cannot be deleted from this Demo Offer as it is linked as choice to offer chain to the following.',
+    MSG_ADD_DEMO_CHOICE_WARNING: 'Demo Choices cannot be added to this Demo Offer as it is linked as forced chain offer to the following.',
+    MSG_ADD_DEMO_CHOICE_CHOICETOOFFER_WARNING: 'Demo Choices cannot be added to this Demo Offer as it is linked as choice to offer chain to the following.',
+    MSG_DEMOOFFER_NOT_AVAILABLE: 'At least one choice needs to be linked to complete choice chaining.',
+    MSG_DEMOOFFER_NOT_AVAILABLE_FOR_CHOICETOOFFER: 'At least one offer needs to be linked to complete choice to offer chaining.',
+    MSG_CO_SINGLE_ONLY: 'Chain Offers Can be associated to [Single Option] type Answers',
+    MSG_CO_CDB: 'Chain Offers Cannot be associated to Database type - CDB Model',
+    MSG_CO_ADD_MAGCHNL: 'Please add a Demo Offer / Magazine-Channel Association to Continue..',
+    MSG_CO_DOs_CHAINED: 'No Demo Offers available to create Chain Offer. Either all are chained or it may have a Digital Link.',
+    MSG_DB_CHANGE_WITH_CHAIN: 'Database cannot be modified as there are chain offers associated to Demo Offer(s) within this Demo Code',
+    MSG_DB_CHANGE_WITH_CHANNEL: 'Changing the Database Type will reset all Channel\'s visibility to false. Do you wish to proceed?',
+    MSG_ANSWER_TYPE_CHANGE: 'Changing the Answer Type will clear all Demo Offer(s), Magazine, Channel associations created. Do you wish to proceed?',
+    MSG_VALID_YEAR: 'Please enter valid Year',
+    MSG_VALID_DATE: 'Please enter valid date',
+    MSG_MIN_MAX_COMPARE: 'Min Range should be less than Max Range',
+
+    // Warnings
+    ALERT_UNSAVED_MSG: 'Unsaved information will be lost. Do you want to proceed ',
+    ALERT_LOGOUT: 'Are you sure you want to be logged out?',
+    ALERT_DELETE_CHAIN: 'Do you wish to delete the chain offer?',
+    ALERT_RECALL_DEMO_OFFER: 'Are you sure you want to Recall and Delete the selected Demo Offer?',
+    ALERT_RECALL_EDIT_DEMO_OFFER: 'Are you sure you want to Recall and Edit the selected Demo Offer?',
+    ALERT_RECALL_DISCARD_DEMO_OFFER: 'Are you sure you want to Recall and Discard the selected Demo Offer?',
+    ALERT_RECALL_PENDING_DC: 'Recalling Demo Offer now will also recall the Demo Code and other Demo Offer(s), if any. Do you wish to proceed?',
+
+    // Question Search
+    KEY_CODE_ENTER: 13,
+    KEY_CODE_SPACE: 32,
+    EXCLUDE_LIST: ['what', 'when', 'why', 'how', 'your', 'is', 'are', 'who', 'which'],
+    SEARCH_KEYWORD_EMPTY: 'Search keywords cannot be empty',
+    SEARCH_KEYWORD_EMPTY_RESULT: 'Searched Keywords are not found.',
+
+    // Admin Tables
+    KEY_DEMOCODE: 'DEMOCODE',
+    KEY_DEMOOFFER: 'DEMOOFFER',
+    LBL_DEMOCODES: 'Demo Code',
+    LBL_DEMOOFFERS: 'Demo Offer Code',
+    LBL_DESCRIPTION: 'Description',
+    LBL_TYPE: 'Type',
+    LBL_MAG_CODE: "Mag Code",     // CME-7077 - mag code column in Digital demo 
+    MSG_DIG_DEMO_CODE: 'Demo Code should be 3 characters',
+    MSG_DIG_DESC: 'Description should not be empty',
+    MSG_DIG_DEMO_OFFER_VAL: 'Demo Code should have a minimum of one Demo Offer associated.',
+    MSG_DIG_DEMO_OFFER: 'Demo Offer Code should be 4 characters',
+    MSG_DIG_DUPLICATE_OFFER: 'Duplicate Demo Offer code exists',
+    AT_SUMMARY_SORTORDER: 'asc',
+    AT_SUMMARY_SORTBY: 'DemoCode',
+    AT_SUMMARY_ROWSPERPAGE: 5,
+
+    // Question Summary
+    QT_SUMMARY_SORTORDER: 'desc',
+    QT_SUMMARY_SORTBY: 'DemoCode',
+    QT_SUMMARY_ROWSPERPAGE: 5,
+    ALERT_QT_SUMMARY_DELETE: 'Are you sure you want to delete this Demo Code and any Offers contained within it?',
+
+    // LocalStorage Keys
+    LS_DEMO_CODE: 'DemoCode',
+    // LS_DEMO_CODE_MODEL: 'DemoCodeDetails',
+    // LS_ADDED_FORCED_OFFERS: 'ForcedOffers',
+    // LS_ADDED_CHOICE_OFFERS: 'ChoiceOffers',
+    // LS_QUESTION_TAB_MODEL: 'QuestionTabDetails',
+    LS_CHANNEL_METADATA: 'channels',
+    LS_ANSWERTYPE_METADATA: 'answerTypes',
+    LS_STATUS_METADATA: 'Status',
+    LS_MAGAZINE: 'Magazine',
+    LS_PAGINATION_VALUE: 'PaginationValue',
+    LS_USER_PAGINATION_DEMO_SUMMARY: 'PaginationDemoSummary',
+    LS_FILTRED_DEMO_OFFER: 'DemoOffer',
+    LS_DEMO_OFFER_COUNT: 'DemoOfferCount',
+    LS_ISALLOW: 'AllowNavigation',
+
+    // Prioritize Demo Offers
+    LBL_PRIOR_HEADER: 'Prioritize Demo Offers',
+    LBL_MAGAZINE: 'Magazine',
+    LBL_CHANNEL: 'Channel',
+    LBL_PRIOR_DATE: 'Prioritization Date',
+    LBL_SCHEDULED_DATE: 'Scheduled Date',
+    BTN_PUBLISH: 'Publish',
+    TBL_H_DISPLAY: 'Display Order',
+    TBL_H_QUESTION: 'Question',
+    TBL_H_ANS_TYPE: 'Answer Type',
+    TBL_H_DEMO_OFFER: 'Demo Offer Code',
+    TBL_H_ACTION: 'Action',
+    MSG_NO_DEMO_OFFERS: 'No Demo Offers available for the selected combination. Please change the selection',
+    MSG_NO_SORTING: 'There are no changes made to save.',
+    MSG_DEMO_OFFER_UNMODIFIED_SAVE: 'There are no changes made to save.',
+    MSG_PUBLISH_SUCCESS: 'Demo Offers are published successfully',
+    MSG_DB_TYPE_CHANGE: 'Please select the Source Type that needs to be associated with Demo Offers within this Demo Code',
+
+    // Answer Types (Demo Offer)
+    CDB_SOURCE_TYPES: [{ id: 'D', name: 'DemoGraphic' }],
+    OTHER_SOURCE_TYPES: [{ id: 'E', name: 'Effort Key' }, { id: 'F', name: 'Regular Preference' }],
+    RECORD_TYPES: [{ id: 'P', name: 'Preference' }, { id: 'S', name: 'Segmentation' }],
+    PREMIUM_TYPES: [{ id: 'MSDDEXC2', name: 'MSDDEXC2 - Selection' }, { id: 'MSDRC3', name: 'MSDRC3 - Selection' }, { id: 'MSDRC1', name: 'MSDRC1 – Selection' }, { id: 'MSCPMVCH', name: 'MSCPMVCH – Variation' }],
+    CONTROL_TYPES: ['radio', 'drop'],
+    CTRL_DROP: 'DROP',
+    CTRL_RADIO: 'RADIO',
+    SINGLE_OPTION: 'Single Option Answer',
+    MULTIPLE_OPTION: 'Multiple Options Answer',
+    FREE_TEXT: 'Free Text Answer',
+    DATE: 'Date Selection Answer',
+    DATE_RANGE: 'Date Range Selection Answer',
+    NUMERIC_RANGE: 'Numeric Range Selection Answer',
+    OPT_IN_OUT: 'Opt-In/Opt-Out Type Answer',
+    MARKING: 'Marking Type Answer',
+
+    // Single Option
+    LBL_DEMO_OFFER: 'Demo Offer',
+    LBL_DEMO_OFFER_CODE: 'Demo Offer Code',
+    LBL_LINK_PREMIUM: 'Link Premium',
+    LBL_LINK_DIGITAL: 'Link  Digital',
+    LBL_TYPE_CONTROL: 'Type of Control',
+    LBL_SOURCE_TYPE: 'Source Type',
+    LBL_RECORD_TYPE: 'Record Type',
+    LBL_SCHEDULE: 'Schedule',
+    LBL_ACTION: 'Action',
+    LBL_EDIT: 'Edit',
+    LBL_ADD_DEMO_OFFER: 'Add Demo Offer',
+    LBL_EDIT_DEMO_OFFER: 'Edit Demo Offer',
+    LBL_CHOICE_HEADER: 'Following controls will be available for User\’s input',
+    LBL_ANSWER_OPTIONS: 'Answer Options',
+    LBL_DEMO_CHOICE_CODE: 'Demo Choice Code',
+    LBL_OPTION: 'Option',
+    LBL_SELECTION_RANGE: 'Selection Range',
+
+    // Approval setup
+    ALERT_SAVE: 'Are you sure you want to save changes?',
+    RESULT_SAVE: 'The list of approvers has been updated for magazine ',
+    LBL_SETUP: 'Setup Approvers',
+    LBL_NO_USR_AVAILABLE: 'User(s) Available',
+    LBL_DRAG_USRS: 'Drag Users from here:',
+    LBL_ASSIGN_USRS: 'Assign as approver',
+    TXT_ASSIGN_USR_MSG: 'Users added below will be provided with Approval privileges.',
+    MSG_INVALID_EMAIL_ADDR: 'The email address entered is invalid',
+    LBL_ADD: 'Add',
+    LBL_DROP_USRS: 'Drop Users here:',
+
+
+    // View Schedules
+    VS_DEF_SORT_ORDER: 'asc',
+    VS_PENDING_SORTBY: 'ScheduleDate',
+    VS_COMPLETE_SORTBY: 'ScheduleDate',
+
+    // Additional Comments
+    LBL_ADDNL_COMMENTS: 'Add Additional Comments if any',
+    LBL_DISPLAYOFFERS: 'Include Particulars of any changes made for the selected offers:',
+    LBL_CHANGEHISTORY: 'Change history:',
+    LBL_BACKTOUSERVIEW: 'Back to Users View',
+
+    // Chain Offers
+    FORCED: 'Forced',
+    CHOICE: 'Choice',
+    CHOICETOOFFER: 'Choice To Offer',
+    CO_CHAINOFFERS: 'Chain Offer(s)',
+    CO_MANAGE: 'Manage Chain Demo Offers here...',
+    CO_DEMO_CHOICE: 'Demo Choice',
+    CO_DO_CODE: 'Demo Offer Code',
+    CO_DCODE: 'Demo Code',
+    CO_DRAG_DROP: ' Drag Drop Choices from here..',
+    DEMOOFFER_DRAG_DROP: 'Drag Drop Offers from here..',
+    CO_SEL_DO_MAG: 'Select Demo offer code and magazine',
+    SWITCH_CHAIN_TAB: 'There can be only one type of Chain offer associated to a Demo Offer and magazine combination. If you switch to another type of chaining, modifications saved will overwrite existing setup.',
+
+    // Comments
+    CMNT_ALERT_SAVE: 'Do you want to delete this comment?',
+    CMNT_RESULT_SAVE: 'The comment was deleted succesfully.',
+
+    // Home
+    LBL_HELLO: 'Hello',
+    LBL_MANAGE_GREETING: 'What would you like to manage today?',
+
+    // Questions Search
+    LBL_VIEWALL: 'View all Questions',
+    LBL_SEARCH_QN_EXIXTS: 'Search whether the question already exists...',
+    LBL_CREATE_NEWQN: 'Create New Question',
+    LBL_RESULTS: 'Result(s)',
+
+    // Notifications
+    MSG_APPROVE_WARNING: 'Are you sure want to approve the Demo offer(s)?',
+    MSG_RETURN_WARNING: 'Are you sure want to return the Demo offer(s)?',
+    MSG_UNAUTH_MAG_WARNING: 'You do not have permissions to approve the following magazines. Please obtain necessary permissions or return the Demo Offer(s) to Marketing in order to be disassociated from these magazines.',
+    MSG_SELECT_APPROVE: 'Please select the Demo Offer(s) to approve',
+
+    // Filters
+    LBL_VIS_CHANNEL: 'Visible Channels',
+    LBL_DCODE_STATUS: 'Demo Code Status',
+    LBL_DEMO_CHOICE: 'Demo Choice Text',
+    LBL_LINKED_OFFER: 'Linked Offer',
+    LBL_CLEAR_FILTER: 'Clear Filters',
+
+    // Filter Columns
+    FTR_STATUSID: 'StatusId',
+    FTR_ANSWERID: 'AnswerId',
+    FTR_CHNNLID: 'ChannelId',
+    FTR_MAGCODE: 'Mag_Code',
+    FTR_DEMOCODE: 'DemoCode',
+    FTR_DEMOCHOICETXT: 'DemoChoiceText',
+    FTR_DEMOOFFERCODE: 'DemoOfferCode',
+    FTR_LINKPREMIUM: 'PremiumOffer',
+    FTR_LINKDIGITAL: 'DigitalOffer',
+    FTR_LINKOFFER: 'LinkOffer',
+
+    //  Custom display name for channels
+    LBL_CSP: 'CSP',
+    LBL_GS: 'GS',
+    LBL_IC: 'PRINT',
+    LBL_MSGR: 'MSGR',
+    LBL_SUBS: 'SUBS',
+    LBL_WES: 'WES'   
+};

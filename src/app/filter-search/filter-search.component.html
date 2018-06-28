@@ -1,0 +1,42 @@
+<div class="df-panel fl" style="display: block;">
+    <p class="filtc bb1 clearfix">
+        <a id="filterIcon" class="filter-icon-on ptr" title="Filter"><span class="fa fa-filter"></span></a>
+    </p>
+    <div class="cnt-l-inputs fl">
+        <div class="mt3 bb1 pb5 proTypec">
+            <label>{{constants.LBL_MAGAZINE}}</label>
+            <app-multi-check-box [filterColumn]="MCMagazine" [ColumnName]="constants.FTR_MAGCODE" (updateFilterValues)="updateFilterValues($event)"></app-multi-check-box>
+        </div>
+        <div class="mt3 bb1 pb5 chanTypec">
+            <label>{{constants.LBL_VIS_CHANNEL}}</label>
+            <app-multi-check-box [filterColumn]="MCChannel" [ColumnName]="constants.FTR_CHNNLID" (updateFilterValues)="updateFilterValues($event)"></app-multi-check-box>
+        </div>
+        <div class="mt3 bb1 pb5 qStatusc">
+            <label>{{constants.LBL_DCODE_STATUS}}</label>
+            <app-multi-check-box [filterColumn]="MCStatus" [ColumnName]="constants.FTR_STATUSID" (updateFilterValues)="updateFilterValues($event)"></app-multi-check-box>
+        </div>
+        <div class="mt3 bb1 pb5 aTypec">
+            <label>{{constants.LBL_ANSWER_TYPE}}</label>
+            <app-multi-check-box [filterColumn]="MCAnswerType" [ColumnName]="constants.FTR_ANSWERID" (updateFilterValues)="updateFilterValues($event)"></app-multi-check-box>
+        </div>
+        <div class="mt7 bb1 pb5">
+            <label>{{constants.LBL_DEMO_CODE}}</label>
+            <input type="text" class="rounded mr10" size="15" placeholder="Enter" [(ngModel)]="filterDemoCode" (blur)="onDemoCodeChange()" (input)="valuechange($event,filterDemoCode,constants.FTR_DEMOCODE)">
+        </div>
+        <div class="mt7 bb1 pb5 currencyc">
+            <label>{{constants.LBL_DEMO_OFFER}}</label>
+            <input type="text" size="15" placeholder="Enter" [(ngModel)]="filterDemoOfferCode" (blur)="onDemoOfferCodeChange()" (input)="valuechange($event,filterDemoOfferCode,constants.FTR_DEMOOFFERCODE)">
+        </div>
+        <div class="mt7 bb1 pb5 currencyc">
+            <label>{{constants.LBL_DEMO_CHOICE}}</label>
+            <input type="text" size="15" placeholder="Enter" [(ngModel)]="filterDemoChoiceText" (blur)="onDemoChoiceTextChange()" (input)="valuechange($event,filterDemoChoiceText,constants.FTR_DEMOCHOICETXT)">
+        </div>
+        <div class="mt7 inps150 lofferc">
+            <label>{{constants.LBL_LINKED_OFFER}}</label>
+            <app-multi-check-box [filterColumn]="MCLinkOffer" [ColumnName]="constants.FTR_LINKOFFER" (updateLinkOfferFilters)="updateLinkOfferFilters($event)"></app-multi-check-box>
+        </div>
+        <p class="mt10 cnt-l-btn">
+            <button class="btn-primary fl" (click)="clearFilters.emit(true)">{{constants.LBL_CLEAR_FILTER}}</button>
+        </p>
+    </div>
+</div>

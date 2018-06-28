@@ -1,0 +1,903 @@
+<div class="row mt10 cnt-md">
+    <h1 class="fl">{{constants.VIEW_DEMO}}</h1>
+    <div *ngIf="filteredDemoOffer !==''" class="clearfix pinOffer" id="fitlerd">
+        <span class="fa fa-long-arrow-right pr20"></span>Filter Demo Offers by: <a (click)="clearPinnedFilter()" class="filtered removefilter ptr">{{filteredDemoOffer}}</a></div>
+    <div class="fr closec"><a class="ptr" (click)="closeView()" title="Close"><span class="fa fa-close goback"></span></a></div>
+    <div class="fr mt10" *ngIf="DemoCodeModel" [ngSwitch]="DemoCodeModel.Status">
+        {{constants.LBL_DC_STATUS}}
+        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{DemoCodeModel.Status}}</a>
+        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{DemoCodeModel.Status}}</a>
+        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{DemoCodeModel.Status}}</a>
+        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{DemoCodeModel.Status}}</a>
+        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{DemoCodeModel.Status}}</a>
+    </div>
+    <div class="penretc text-center mt10">
+        <span class="pend">
+            <a href="javascript:void(0);" (click)="IsUserView = false" [ngClass]="IsUserView === true ? 'off editorv':'off on editorv'" title="Editor's View">{{constants.EDITOR_VIEW}}</a>
+        </span>
+        <span class="retn">
+            <a href="javascript:void(0);" (click)="IsUserView = true" [ngClass]="IsUserView === true ? 'off on userv':'off userv'" title="User's View">{{constants.USER_VIEW}}</a>
+        </span>
+    </div>
+    <!--Editor's View-->
+    <div role="tabpanel" class="clearfix" *ngIf="!IsUserView">
+        <div class="cnt-md-inner">
+            <div class="col-md-2 vtabs">
+                <ul class="nav nav-pills brand-pills nav-stacked" role="tablist">
+                    <li role="presentation" [ngClass]="selectedTab==constants.QT_QUESTION_ID?'brand-nav active':'brand-nav'">
+                        <a class="ptr" (click)="questionsTabSelection(constants.QT_QUESTION_ID)" title="Question" href="javascript:void(0);">
+                            <span class="fa fa-question-circle"></span>{{constants.QT_QUESTION_NAME}}<span class="dot"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" [ngClass]="selectedTab==constants.QT_ANSWERS_ID?'brand-nav active':'brand-nav'">
+                        <a class="ptr" (click)="questionsTabSelection(constants.QT_ANSWERS_ID)" title="Answers" href="javascript:void(0);">
+                            <span class="fa fa-key"></span><span class="counts">{{demoOfferCount}}</span>{{constants.QT_ANSWERS_NAME}}<span class="dot"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" [ngClass]="selectedTab==constants.QT_MAGAZINE_ID?'brand-nav active':'brand-nav'">
+                        <a class="ptr" (click)="questionsTabSelection(constants.QT_MAGAZINE_ID)" title="Magazine" href="javascript:void(0);">
+                            <i class="fa fa-book"></i><span class="counts">{{magazineCount}}</span>{{constants.QT_MAGAZINE_NAME}}<span class="dot"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" [ngClass]="selectedTab==constants.QT_COMMENTS_ID?'brand-nav active':'brand-nav'">
+                        <a class="ptr" (click)="questionsTabSelection(constants.QT_COMMENTS_ID)" title="Comments" href="javascript:void(0);">
+                            <i class="fa fa-comments"></i><span class="counts">{{Comments.length}}</span>{{constants.QT_COMMENTS_NAME}}<span class="dot"></span>
+                        </a>
+                    </li>
+                    <li role="presentation" [ngClass]="selectedTab==constants.QT_CHAIN_OFFER_ID?'brand-nav active':'brand-nav'">
+                        <a class="ptr" (click)="questionsTabSelection(constants.QT_CHAIN_OFFER_ID)" title="Chain Offer" href="javascript:void(0);">
+                            <i class="fa fa-link"></i><span class="counts">{{chainOffersCount}}</span>{{constants.QT_CHAIN_OFFER_NAME}}<span class="dot"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="userdet" *ngIf="isLocked">
+                    <span class="dot clearfix"></span>
+                    <div>
+                        <span class="fa fa-3x fa-circle"></span>
+                        <span class="fa fa-2x fa-user"></span>
+                        <span class="fa fa-2x fa-lock"></span>
+                    </div>
+                    <p class="user"><span>{{lockedUser}}</span></p>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="tab-content" [ngSwitch]="selectedTab" *ngIf="DemoCodeModel">
+                    <div role="tabpanel" class="tab-pane active form-horizontal" id="question" *ngSwitchCase="constants.QT_QUESTION_ID">
+                        <h2>
+                            {{constants.VIEW_QUESTION}}
+                            <span class="btnc pdcButton" *ngIf="(DemoCodeModel.AnswerType.toUpperCase() === answerType.SingleOption) || (DemoCodeModel.AnswerType.toUpperCase() === answerType.MultipleOption) || (DemoCodeModel.AnswerType.toUpperCase() === answerType.Optin_OptOut)">
+                                <a (click)="prioritizeDemoChoices()" class="active ptr">View Demo Choices</a>
+                            </span>
+                        </h2>
+                        <div class="form-group clearfix mt10">
+
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8 pl35">
+                                <label class="text-left mb5">{{constants.LBL_QUESTION}} :</label>
+                                <p>{{DemoCodeModel.QuestionText}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb5">{{constants.LBL_DEMO_CODE}} :</label>
+                                <p>{{DemoCodeModel.Code}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group mb5 mt30">
+                            <div class="col-md-8 pl35">
+                                <label class="text-left mb5">{{constants.LBL_ANSWERED_QUESTION}}</label>
+                                <p>{{DemoCodeModel.AnsweredQuestionText}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb5">{{constants.LBL_ANSWER_TYPE}} :</label>
+                                <p>{{DemoCodeModel.AnswerType}}</p>
+                            </div>
+                        </div>
+                        <div><hr class="hl" /></div>
+                        <div class="f-row-form form-group">
+                            <div class="pl20"><label><u>{{constants.LBL_ADVANCED_OPTIONS}}</u></label></div>
+                            <div class="form-group mt20">
+                                <div class="col-md-4 pl35">
+                                    <label class="text-left mb5">{{constants.LBL_DATABASE}} :</label>
+                                    <p>{{DBType}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="text-left mb5">{{constants.LBL_QUESTION_IDENTIFIER}} :</label>
+                                    <p>{{DemoCodeModel.QuestionIdentifier}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="text-left mb5">{{constants.LBL_RECENT_ANSWERS}} :</label>
+                                    <p>{{DemoCodeModel.RecentAnswerCount}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active form-horizontal" id="demoOffers" *ngSwitchCase="constants.QT_ANSWERS_ID">
+                        <h2>{{constants.VIEW_ANSWER}}
+                            <span class="btnc pdcButton" *ngIf="(DemoCodeModel.AnswerType.toUpperCase() === answerType.SingleOption) || (DemoCodeModel.AnswerType.toUpperCase() === answerType.MultipleOption) || (DemoCodeModel.AnswerType.toUpperCase() === answerType.Optin_OptOut)">
+                                <a (click)="prioritizeDemoChoices()" class="active ptr">View Demo Choices</a>
+                            </span>
+                        </h2>
+                        <div class="tab-content" [ngSwitch]="DemoCodeModel.AnswerType.toUpperCase()">
+                            <div role="tabpanel" id="sopts" class="tab-pane in fade active" *ngSwitchCase="answerType.SingleOption">
+                                <h3 class="">{{constants.SINGLE_OPTION}}
+                                </h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br /> Demo Offer</th>
+                                                <th>Link  Digital<br /> Demo Offer</th>
+                                                <th>Type of Control </th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-SAdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-SADO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{SADO + 1}}</td>
+                                                    <td>{{SAdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{SAdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{SAdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{SAdemoOffer.ControlType}}</td>
+                                                    <td>{{SAdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{SAdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{SAdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td [ngSwitch]="SAdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{SAdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{SAdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="mopts" class="tab-pane in fade active" *ngSwitchCase="answerType.MultipleOption">
+                                <h3 class="">
+                                    {{constants.MULTIPLE_OPTION}}
+                                </h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()"  [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br /> Demo Offer</th>
+                                                <th>Link  Digital<br /> Demo Offer</th>
+                                                <th>Selection Range</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-MAdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-MADO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{MADO + 1}}</td>
+                                                    <td>{{MAdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{MAdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{MAdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{MAdemoOffer.MinValue}} - {{MAdemoOffer.MaxValue}}</td>
+                                                    <td>{{MAdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{MAdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{MAdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td [ngSwitch]="MAdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{MAdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{MAdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="ftopts" class="tab-pane in fade active" *ngSwitchCase="answerType.FreeText">
+                                <h3 class="">{{constants.FREE_TEXT}}</h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium <br />Demo Offer</th>
+                                                <th>Link  Digital<br /> Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>DisplayText</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-FTdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-FTDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{FTDO + 1}}</td>
+                                                    <td>{{FTdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{FTdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{FTdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{FTdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{FTdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{FTdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td>
+                                                        <popover-content #myPopover title="Display Text" [closeOnClickOutside]="true">
+                                                            {{FTdemoOffer.DisplayText}}
+                                                        </popover-content>
+                                                        <span [popover]="myPopover" [popoverOnHover]="true">{{FTdemoOffer.DisplayText | Display:FTdemoOffer.DisplayText }}</span>
+                                                    </td>
+                                                    <td [ngSwitch]="FTdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{FTdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{FTdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="dopts" class="tab-pane in fade active" *ngSwitchCase="answerType.Date">
+                                <h3 class="">{{constants.DATE}}</h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br />Demo Offer</th>
+                                                <th>Link  Digital<br />Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>DisplayText</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-DTdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-DTDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{DTDO + 1}}</td>
+                                                    <td>{{DTdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{DTdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{DTdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{DTdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{DTdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{DTdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td>
+                                                        <popover-content #myPopover title="Display Text" [closeOnClickOutside]="true">
+                                                            {{DTdemoOffer.DisplayText}}
+                                                        </popover-content>
+                                                        <span [popover]="myPopover" [popoverOnHover]="true">{{DTdemoOffer.DisplayText | Display:DTdemoOffer.DisplayText }}</span>
+                                                    </td>
+                                                    <td [ngSwitch]="DTdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{DTdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{DTdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="dropts" class="tab-pane in fade active" *ngSwitchCase="answerType.DateRange">
+                                <h3 class="">{{constants.DATE_RANGE}}</h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:8%">
+                                            <col style="width:12%">
+                                            <col style="width:8%">
+                                            <col style="width:7%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:8%">
+                                            <col style="width:8%">
+                                            <col style="width:9%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br />Demo Offer</th>
+                                                <th>Link  Digital<br />Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Beginning of Range</th>
+                                                <th>Ending of Range</th>
+                                                <th>Display Text</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-DRdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-DRDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{DRDO + 1}}</td>
+                                                    <td>{{DRdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{DRdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{DRdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{DRdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{DRdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{DRdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td>{{DRdemoOffer.MinDate | FormatDate}}</td>
+                                                    <td>{{DRdemoOffer.MaxDate | FormatDate}}</td>
+                                                    <td>
+                                                        <popover-content #myPopover title="Display Text" [closeOnClickOutside]="true">
+                                                            {{DRdemoOffer.DisplayText}}
+                                                        </popover-content>
+                                                        <span [popover]="myPopover" [popoverOnHover]="true">{{DRdemoOffer.DisplayText | Display:DRdemoOffer.DisplayText }}</span>
+                                                    </td>
+                                                    <td [ngSwitch]="DRdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{DRdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{DRdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="nropts" class="tab-pane in fade active" *ngSwitchCase="answerType.Numeric">
+                                <h3 class="">{{constants.NUMERIC_RANGE}}</h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:8%">
+                                            <col style="width:12%">
+                                            <col style="width:8%">
+                                            <col style="width:7%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:8%">
+                                            <col style="width:7%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br />Demo Offer</th>
+                                                <th>Link  Digital<br />Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Display Text</th>
+                                                <th>Selection Range</th>
+                                                <th>Slider Intervals</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-NRdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-NRDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{NRDO + 1}}</td>
+                                                    <td>{{NRdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{NRdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{NRdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{NRdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{NRdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{NRdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td>
+                                                        <popover-content #myPopover title="Display Text" [closeOnClickOutside]="true">
+                                                            {{NRdemoOffer.DisplayText}}
+                                                        </popover-content>
+                                                        <span [popover]="myPopover" [popoverOnHover]="true">{{NRdemoOffer.DisplayText | Display:NRdemoOffer.DisplayText }}</span>
+                                                    </td>
+                                                    <td>{{NRdemoOffer.MinValue}} - {{NRdemoOffer.MaxValue}}</td>
+                                                    <td>{{NRdemoOffer.Interval}}</td>
+                                                    <td [ngSwitch]="NRdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{NRdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{NRdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="opopts" class="tab-pane in fade active" *ngSwitchCase="answerType.Optin_OptOut">
+                                <h3 class="">
+                                    {{constants.OPT_IN_OUT}}
+                                </h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:18%">
+                                            <col style="width:12%">
+                                            <col style="width:15%">
+                                            <col style="width:15%">
+                                            <col style="width:13%">
+                                            <col style="width:15%">
+                                            <col style="width:12%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br /> Demo Offer</th>
+                                                <th>Link  Digital<br /> Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-OPTdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-OPTDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{OPTDO + 1}}</td>
+                                                    <td>{{OPTdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{OPTdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{OPTdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{OPTdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{OPTdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{OPTdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td [ngSwitch]="OPTdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{OPTdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{OPTdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" id="mkopts" class="tab-pane in fade active" *ngSwitchCase="answerType.Marking">
+                                <h3 class="">{{constants.MARKING}}</h3>
+                                <div class="table-cnt clearfix mt10">
+                                    <table id="npotbl" class="table ntable atable">
+                                        <colgroup>
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:10%">
+                                            <col style="width:15%">
+                                            <col style="width:10%">
+                                        </colgroup>
+                                        <thead class="thead-default">
+                                            <tr>
+                                                <th>Demo Offer</th>
+                                                <th>
+                                                    <div id="sbox" class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch" style="width:90%;"><a class="fa fa-search"></a></div>
+                                                </th>
+                                                <th>Link Premium<br /> Demo Offer</th>
+                                                <th>Link  Digital<br /> Demo Offer</th>
+                                                <th>Source Type</th>
+                                                <th>Record Type</th>
+                                                <th>Schedule</th>
+                                                <th>Display Text</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-template ngFor let-MKdemoOffer [ngForOf]="DemoOffers | DemoOfferSearchPipe :freeTextSearch " let-MKDO="index">
+                                                <tr>
+                                                    <td><i class="fa fa-dropbox"></i>{{MKDO + 1}}</td>
+                                                    <td>{{MKdemoOffer.DemoOfferCode}}</td>
+                                                    <td>{{MKdemoOffer.PremiumOffer}}</td>
+                                                    <td>{{MKdemoOffer.DigitalOffer}}</td>
+                                                    <td>{{MKdemoOffer.SourceType | SourceRecordName:'source'}}</td>
+                                                    <td>{{MKdemoOffer.RecordType | SourceRecordName:'record'}}</td>
+                                                    <td>{{MKdemoOffer.ScheduleDate | FormatDate}}</td>
+                                                    <td>
+                                                        <popover-content #myPopover title="Display Text" [closeOnClickOutside]="true">
+                                                            {{MKdemoOffer.DisplayText}}
+                                                        </popover-content>
+                                                        <span [popover]="myPopover" [popoverOnHover]="true">{{MKdemoOffer.DisplayText | Display:MKdemoOffer.DisplayText }}</span>
+                                                    </td>
+                                                    <td [ngSwitch]="MKdemoOffer.Status.toUpperCase()">
+                                                        <a title="DRAFT" class="draft" *ngSwitchCase="'DRAFT'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="PENDING" class="pending" *ngSwitchCase="'PENDING'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="APPROVED" class="approved" *ngSwitchCase="'APPROVED'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE" class="activel" *ngSwitchCase="'ACTIVE'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="RETURNED" class="returned" *ngSwitchCase="'RETURNED'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="DELETED" class="deleted" *ngSwitchCase="'DELETED'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="ACTIVE-IN EDIT" class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{MKdemoOffer.Status}}</a>
+                                                        <a title="ARCHIVED" class="archived" *ngSwitchCase="'ARCHIVED'">{{MKdemoOffer.Status}}</a>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div *ngIf="filteredDemoOffer !=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a class="ptr" (click)="clearPinnedFilter()">Remove Demo Offer Filter</a></div>
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane active form-horizontal" id="Magazine" *ngSwitchCase="constants.QT_MAGAZINE_ID">
+                        <div role="tabpanel" class="tab-pane active" id="magazine">
+                            <h2>View Magazine(s)</h2>
+                            <h3>View Magazine Associations here...</h3>
+                            <div *ngFor="let element of demoOfferChannel">
+
+                            </div>
+                            <div class="table-cnt clearfix mt20">
+                                <table id="npotbl" class="table ntable">
+                                    <colgroup>
+                                        <col style="width:15%">
+                                        <col style="width:30%">
+                                        <col style="width:24%">
+                                        <col style="width:19%">
+                                        <col style="width:12%">
+                                    </colgroup>
+                                    <thead class="thead-default">
+                                        <tr>
+                                            <th>Demo Offer</th>
+                                            <th>
+                                                <div class="sbc hide text-center show"><input type="text" placeholder="Demo Offer Code" style="width:90%;" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch"><a class="fa fa-search"></a></div>
+                                            </th>
+                                            <th>Magazine</th>
+                                            <th>Channel</th>
+                                            <th>Visible</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-template ngFor let-demoOffer [ngForOf]="demoOfferChannel | DemoOfferSearchPipe :freeTextSearch" let-i="index">
+                                            <tr>
+                                                <td><i class="fa fa-dropbox"></i> {{i + 1 }}</td>
+                                                <td>{{demoOffer.DemoOfferCode}}</td>
+                                                <td colspan="3">
+                                                    <table class="table magintbl">
+                                                        <colgroup>
+                                                            <col style="width:45%" />
+                                                            <col style="width:35%" />
+                                                            <col style="width:20%" />
+                                                        </colgroup>
+                                                        <tbody>
+                                                            <tr *ngFor="let channelMag of demoOffer.DemoOfferChannel">
+                                                                <td>{{channelMag.MagazineName}}</td>
+                                                                <td title="{{channelMag.ChannelName}}">{{constants['LBL_'+channelMag.ChannelCode]}}</td>
+                                                                <td>
+                                                                    <label class="switch">
+                                                                        <input type="checkbox" [checked]="channelMag.IsVisible" disabled>
+                                                                        <span class="slider round"></span>
+                                                                    </label>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div *ngIf="filteredDemoOffer !=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a class="ptr" (click)="clearPinnedFilter()">Remove Demo Offer Filter</a></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane clearfix form-horizontal active" id="comments" *ngSwitchCase="constants.QT_COMMENTS_ID">
+                        <h2>{{constants.VIEW_COMMENTS}}</h2>
+                        <h3>Comments({{Comments.length}})</h3>
+                        <div *ngFor="let comment of this.Comments">
+                            <div class="form-group bgcomment mt20">
+                                <div class="col-md-3 control-label userdet">
+                                    <div class="pred">
+                                        <span class="fa fa-3x fa-circle"></span><span class="fa fa-2x fa-user"></span>
+                                        <p class="user"><span>{{comment.CommentBy}}</span><br /><span>{{comment.CommentDate | FormatDateTime}}</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9">
+                                    <p class="comment" style="white-space:pre-wrap">{{comment.CommentText }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="chainoffers" *ngSwitchCase="constants.QT_CHAIN_OFFER_ID">
+                        <h2>{{constants.VIEW_CHAIN_OFFERS}}</h2>
+                        <div class="table-cnt clearfix mt20">
+                            <table id="npotbl" class="table ntable">
+                                <colgroup>
+                                    <col style="width:35%">
+                                    <col style="width:20%">
+                                    <col style="width:25%">
+                                    <col style="width:20%">
+                                </colgroup>
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>{{constants.QT_QUESTION_NAME}}</th>
+                                        <th>
+                                            <div class="sbc hide text-center show">
+                                                <input type="text" placeholder="Demo Offer Code" style="width:90%;" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch"><a class="fa fa-search"></a>
+                                            </div>
+                                        </th>
+                                        <th>{{constants.QT_MAGAZINE_NAME}}</th>
+                                        <th>{{constants.LBL_CHAIN_OFFER}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--Forced Chain Offers-->
+                                    <ng-template ngFor let-forcedOffers [ngForOf]="ForcedChainOffer | DemoOfferCodePipe:freeTextSearch" let-fc="index">
+                                        <tr>
+                                            <td>
+                                                <a class="ptr"><i class="fa fa-dropbox"></i>{{forcedOffers.QuestionText}}</a>
+                                            </td>
+                                            <td>{{forcedOffers.ParentDemoOfferCode}}</td>
+                                            <td>{{forcedOffers.MagazineName}}</td>
+                                            <td>
+                                                <a *ngIf="fc != selectedForcedChain" title="Expand" (click)="selectedForcedChain = fc; selectedChoiceChain = -1; choiceToOfferIndex = -1" class="fa fa-angle-right ptr"></a>
+                                                <a *ngIf="fc == selectedForcedChain" title="Collapse" (click)="selectedForcedChain = -1" class="fa fa-angle-down ptr"></a>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="fc == selectedForcedChain">
+                                            <td>
+                                                <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{forcedOffers.ChildOfferQuestionText}}</a></p>
+                                            </td>
+                                            <td>{{forcedOffers.ChildDemoOfferCode}}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </ng-template>
+                                    <!-- Choice To Offer Links -->
+                                    <ng-template ngFor let-choiceToOfferChain [ngForOf]="ChoiceToOfferChain | DemoOfferCodePipe: freeTextSearch" let-cf="index">
+                                        <!--parentoffer -->
+                                        <tr>
+                                            <td>
+                                                <a class="ptr"><i class="fa fa-dropbox"></i>{{choiceToOfferChain.QuestionText}}</a>
+                                            </td>
+                                            <td>{{choiceToOfferChain.ParentDemoOfferCode}}</td>
+                                            <td>{{choiceToOfferChain.MagazineName}}</td>
+                                            <td>
+                                                <a *ngIf="cf != choiceToOfferIndex" title="Expand" (click)="choiceToOfferIndex = cf;selectedForcedChain=-1;selectedChoiceChain=-1;editOfferChain = false" class="fa fa-angle-right ptr"></a>
+                                                <a *ngIf="cf == choiceToOfferIndex" title="Collapse" (click)="choiceToOfferIndex = -1" class="fa fa-angle-down ptr"></a>
+                                            </td>
+                                        </tr>
+                                        <!--linked child offer -->
+                                        <tr *ngIf="cf == choiceToOfferIndex && !editOfferChain">
+                                            <td>
+                                                <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{choiceToOfferChain.ChildOfferQuestionText}}</a></p>
+                                            </td>
+                                            <td>{{choiceToOfferChain.ChildDemoCode}}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr *ngIf="cf==choiceToOfferIndex && !editOfferChain">
+                                            <td colspan="4">
+                                                <div class="row scroll-choice">
+                                                    <div class="col-md-6 pl80 ">
+                                                        <ng-template ngFor let-choiceChain [ngForOf]="choiceToOfferChain.ChoiceToOfferAssociations" let-ch="index">
+                                                            <i class="fa fa-chain fl mt10"></i>
+                                                            <div [ngClass]="ch == 0 ? 'dropchoice':'dropchoice mt10'">
+                                                                {{choiceChain.ParentDemoChoiceText}}
+                                                                <a class="simplebox mt0 ptr" *ngIf="choiceChain.ChildDemoOfferCode">{{choiceChain.ChildDemoOfferCode}}</a>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                    <!--Choice Chain offers-->
+                                    <ng-template ngFor let-chainOffers [ngForOf]="ChoiceChainOffer | DemoOfferCodePipe:freeTextSearch" let-cc="index">
+                                        <tr>
+                                            <td><a class="ptr"><i class="fa fa-dropbox"></i>{{chainOffers.QuestionText}}</a></td>
+                                            <td>{{chainOffers.ParentDemoOfferCode}}</td>
+                                            <td>{{chainOffers.MagazineName}}</td>
+                                            <td>
+                                                <a *ngIf="cc != selectedChoiceChain" title="Expand" (click)="selectedChoiceChain = cc ; selectedForcedChain = -1 ; choiceToOfferIndex = -1" class="fa fa-angle-right ptr"></a>
+                                                <a *ngIf="cc == selectedChoiceChain" title="Collapse" (click)="selectedChoiceChain = -1" class="fa fa-angle-down ptr"></a>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="cc == selectedChoiceChain">
+                                            <td>
+                                                <p class="pl35"><a class="ptr"><i class="fa fa-chain"></i>{{chainOffers.ChildOfferQuestionText}}</a></p>
+                                            </td>
+                                            <td>{{chainOffers.ChildDemoCode}}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr *ngIf="cc == selectedChoiceChain">
+                                            <td colspan="4">
+                                                <div class="row scroll-choice">
+                                                    <div class="col-md-6 pl80">
+                                                        <ng-template ngFor let-chainChoices [ngForOf]="chainOffers.ChoiceChainOffers" let-ch="index">
+                                                            <i class="fa fa-chain fl mt10"></i>
+                                                            <div [ngClass]="ch == 0 ? 'dropchoice':'dropchoice mt10'">
+                                                                {{chainChoices.ParentDemoChoiceText}}
+                                                                <a class="simplebox mt0 ptr" *ngIf="chainChoices.ChildDemoCHoiceText">{{chainChoices.ChildDemoCHoiceText}}</a>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div *ngIf="filteredDemoOffer !=='' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a class="ptr" (click)="clearPinnedFilter()">Remove Demo Offer Filter</a></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--User's View-->
+    <div role="tabpanel" class="clearfix" *ngIf="IsUserView">
+        <app-user-view [ViewMode]="true" [DemoCodeObj]="DemoCodeObj" [isLocked]="isLocked" [lockedUser]="lockedUser" (clearFilter)="clearPinnedFilter()"></app-user-view>
+    </div>
+</div>
+<div class="row">
+    <div class="btnc">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <p class="fr" *ngIf="isEditable">
+                <a title="Edit" class="ml15 ptr" (click)="EditDemoCode()">{{constants.BTN_EDIT}}</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<bs-modal #modelPriortizeChoices [backdrop]="'static'">
+    <bs-modal-header>
+        <h4 class="modal-title">Prioritize Demo Choices!</h4>
+        <a title="Close" (click)="modelPriortizeChoices.close()" style="float:right"><i class="fa fa-2x fa-close ptr"></i></a>
+    </bs-modal-header>
+    <bs-modal-body>
+        <div class="ctl-r">
+            <div class="clearfix row">
+                <div class="table-responsive pl5">
+                    <div id="sbox" class="sbc hide text-center">
+                        <input type="text" placeholder="Search" style="width:90%;" />
+                        <a class="fa fa-search ptr"></a>
+                    </div>
+                    <div class="table-cnt scroll-data">
+                        <table id="mytable" class="table table-hover">
+                            <colgroup>
+                                <col style="width:35%" />
+                                <col style="width:35%" />
+                                <col style="width:30%" />
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Demo Choice Text</th>
+                                    <th>Demo Choice Code</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let choice of lstDemoChoices; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{choice.DemoChoiceText}}</td>
+                                    <td>{{choice.DemoChoiceCode}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </bs-modal-body>
+    <bs-modal-footer>
+        <button type="button" class="btn btn-primary" (click)="modelPriortizeChoices.close()">Ok</button>
+    </bs-modal-footer>
+</bs-modal>
+<bs-modal #progressBar>
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'"></loaders-css>
+    </div>
+</bs-modal>

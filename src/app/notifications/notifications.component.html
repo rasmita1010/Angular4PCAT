@@ -1,0 +1,189 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title clickable panel-collapsed">
+            <span class="fa fa-bell"></span> Notifications ({{pendingNotifications.length + returnedNotifications.length}})
+            <span class="pull-right clickable panel-collapsed"><i class="glyphicon glyphicon-chevron-down"></i></span>
+        </h3>
+    </div>
+    <div class="panel-body" style="display:none">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active form-horizontal clearfix" id="tab2">
+                <div class="dropdown selmag mb15">
+                    <label class="control-label mb5" for="ddlMagazine">{{constants.LBL_MAGAZINE}} : </label>
+                    <select id="ddlMagazine" [(ngModel)]="selectedMagazine" (change)="changeMagazine()" class="ddl-ctrl">
+                        <option value="" selected>All</option>
+                        <option *ngFor="let type of magazineList" value="{{type.ResourceName}}">{{type.Description}}</option>
+                    </select>
+                </div>
+                <div class="clearfix">
+                    <div class="penretc fl">
+                        <span class="pend"><a (click)="loadPendingNotifications()" id="show-npotbl" [ngClass]="showPending ? 'off on':'off'" title="PENDING"><span>{{pendingNotifications.length}}</span>PENDING</a></span>
+                        <span class="retn"><a id="show-nrotbl" (click)="loadReturnedNotifications()" [ngClass]="!showPending ? 'off on':'off'" title="RETURNED"><span>{{returnedNotifications.length}}</span>RETURNED</a></span>
+                        <span class="ml5" *ngIf="selectedMagazine !== ''"><span>{{data.length}} notifications available for selected magazine</span></span>
+                    </div>
+                    <ul class="innerNav fr">
+                        <li class="btnc"><a *ngIf="showPending && isApprover" href="javascript:void(0)" (click)="approveAllItems()" title="Approve">Approve</a></li>
+                        <li class="btnc"><a *ngIf="showPending && isApprover" href="javascript:void(0)" (click)="returnAllItems()" title="Return">Return</a></li>
+                    </ul>
+                </div>
+                <div class="table-responsive">
+                    <div class="table-cnt clearfix mt10">
+                        <table id="mytable" class="table ntable" [mfData]="data" #mf="mfDataTable" [(mfRowsOnPage)]="rowsOnPage">
+                            <colgroup>
+                                <col style="width:5%" *ngIf="showPending && isApprover"/>
+                                <col style="width:30%" />
+                                <col style="width:10%" />
+                                <col style="width:10%" />
+                                <col style="width:15%" />
+                                <col style="width:20%" />
+                                <col style="width:10%" />
+                            </colgroup>
+                            <thead class="thead-default">
+                                <tr>
+                                    <th *ngIf="showPending && isApprover"><input type="checkbox" [checked]="headerChecked" (click)="changeHeaderCheckbox($event)"/></th>
+                                    <th>Item Name</th>
+                                    <th>Demo Code</th>
+                                    <th>Linked Magazines</th>
+                                    <th>Linked Channels</th>
+                                    <th>Answer Type</th>
+                                    <th>Demo Offers</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let element of mf.data; let i = index">
+                                    <tr>
+                                        <td *ngIf="showPending && isApprover"><input type="checkbox" [checked]="checked[(mf.activePage - 1) * mf.rowsOnPage + i]" (change)="changeCheckBox(((mf.activePage - 1) * mf.rowsOnPage + i),element)"/></td>
+                                        <td><span class="fa fa-question-circle col-md-1"></span><p class="col-md-11">{{element.QuestionText}}</p></td>
+                                        <td>{{element.DemoCode}}</td>
+                                        <td>{{element.LinkedMagazines}}</td>
+                                        <td>{{element.LinkedChannels}}</td>
+                                        <td>{{element.AnswerType}}</td>
+                                        <td>{{element.DemoOfferCount}} 
+                                        <a href="javascript:void(0)" title="Expand/Collapse Data" (click)="showDetails(i)">
+                                            <span [ngClass]="selectedIndex === i && isEnabled ? 'asts':'asts collapsed'"></span>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="isEnabled && selectedIndex==i">
+                                        <td colspan="8" class="datadet">
+                                            <div><!--class="btlite pt10"-->
+                                                <div class="clearfix fiterc pdc">Pending Demo Offers: 
+                                                    <ng-template ngFor let-item [ngForOf]="element.MagazineAssociations">
+                                                        <a class="selected">{{item.DemoOfferCode}}</a>
+                                                    </ng-template>
+                                                </div>
+                                                <app-commments [comments]="element.Comments" [demoCode]="element.DemoCode" [showHeader]="false" (updateComments)="updateComments($event)"></app-commments>
+                                                <div class="form-group btlite pt10">
+                                                    <div class="col-md-5 btnc"><a (click)="navigateToView(element.DemoCode)" title="View Details">View Details</a></div>
+                                                    <div class="col-md-7 btnc text-right">
+                                                        <a *ngIf="showPending && isApprover" (click)="approveItem(element.SubmittedGroupId)" title="Approve" class="">Approve</a>
+                                                        <a *ngIf="showPending && isApprover" (click)="returnItem(element.SubmittedGroupId)" class="ml15">Return</a>
+                                                        <!--<div class="col-md-7 btnc text-right"><a (click)="showDetails(i)" title="Close">Close</a></div>-->
+                                                        <a (click)="showDetails(i)" href="javascript:void(0)" class="ml15" title="Close">Close</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </tbody>                            
+                            <tfoot>
+                                <tr>
+                                    <td colspan="13">
+                                        <div class="fr clearfix">
+                                            <div class="fl sipp">
+                                                Show
+                                                <select [(ngModel)]="rowsOnPage">
+                                                    <option [ngValue]="5">5</option>
+                                                    <option [ngValue]="10">10</option>
+                                                    <option [ngValue]="15">15</option>
+                                                    <option [ngValue]="25">25</option>
+                                                    <option [ngValue]="100">100</option>
+                                                </select>items per page
+                                            </div>
+                                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<bs-modal #commentsModal [backdrop]="'static'">
+    <div class="alertmodel">
+        <div class="clearfix">
+            <div class="pt10 pb10">Comments:</div>
+            <div class="clearfix pb10"><textarea style="color:black" cols="50" rows="5" [(ngModel)]="Comments" placeholder="{{errorMsg}}"></textarea></div>
+        </div>
+
+        <button class="btn btn-default" title="OK" (click)="acceptChanges()">OK</button><button class="btn btn-default" title="CANCEL" (click)="cancel()">CANCEL</button>
+    </div>
+</bs-modal>
+
+
+<bs-modal #successModal [backdrop]="'static'">
+    <div class="alertsuccess"><span class="fa fa-2x fa-check"></span>{{businessMessage}}</div>
+</bs-modal>
+
+<bs-modal #modalValidate [backdrop]="'static'">
+    <div class="alertError">
+        <span class="fa fa-2x fa-check"></span>{{businessMessage}}
+    </div>
+</bs-modal>
+
+<bs-modal #modelIsApproveReturn [backdrop]="'static'">
+    <div class="alertmodel">
+        <p *ngIf="isApprove" class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.MSG_APPROVE_WARNING}} ?</span></p>
+        <p *ngIf="!isApprove" class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.MSG_RETURN_WARNING}} ?</span></p>
+        <button (click)="ShowComments()" class="btn btn-default marginR10" id="OK">{{constants.LBL_YES}}</button>
+        <button id="cancel" class="btn btn-default" (click)="modelIsApproveReturn.close()">{{constants.LBL_NO}}</button>
+    </div>
+</bs-modal>
+
+<bs-modal #modelComments [backdrop]="'static'">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="modelComments.close();approvalNotes=''">&times;</button>
+            <h4 class="modal-title">Add Comments</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+                <div class="form-group mt20">
+                    <div class="col-md-3 control-label userdet">
+                        <div>
+                            <span class="fa fa-3x fa-circle"></span><span class="fa fa-2x fa-user"></span>
+                            <p class="user"><span>{{userDetails.DisplayName}}</span><br /><span>{{todayDate | FormatDateMonth}}</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-9"><textarea cols="25" rows="3" [(ngModel)]="approvalNotes" placeholder="Notes for Approval/Rejection" (keyup)="showCommentMessage = false"></textarea></div>
+                </div>
+                <div *ngIf="showCommentMessage" class="alert-danger-error">Comments mandatory to return Demo Offers</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="isApprove" (click)="ApproveReturnChanges()" class="btn btn-default marginR10" id="OK">Approve</button>
+            <button *ngIf="!isApprove" (click)="ApproveReturnChanges()" class="btn btn-default marginR10" id="OK">Return</button>
+        </div>
+    </div>
+</bs-modal>
+
+<bs-modal #modelUnAuthMagazines [backdrop]="'static'">
+    <div class="alertError">
+        {{constants.MSG_UNAUTH_MAG_WARNING}}<br /><br />
+        <div *ngFor="let mag of unAuthMags; let i = index" style="text-align:center">
+            <span class="fa fa-info-circle"></span>
+            '{{mag.Magazines}}' in Demo Code '{{mag.DemoCode}}'
+        </div><br />
+        <button class="btn btn-default" (click)="modelUnAuthMagazines.close()">Ok</button>
+    </div>
+</bs-modal>
+
+<bs-modal #progressBar [backdrop]="'static'">
+    <div style="padding-left: 50%;
+    margin-top: 33%;">
+        <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+    </div>
+</bs-modal>

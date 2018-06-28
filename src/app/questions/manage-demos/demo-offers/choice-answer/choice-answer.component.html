@@ -1,0 +1,462 @@
+<h3 class="mt20">{{answerHeader}}</h3>
+<div class="tab-content">
+  <div role="tabpanel" id="sopts" class="tab-pane in fade active">
+    <p *ngIf="answerType.toUpperCase() === answerTypeConst.MultipleOption" class="text-right">
+      <label>Selection Range</label> - Number of answers user would enter in CSP when published as a minimum or maximum
+    </p>
+    <div class="table-cnt clearfix mt10">
+      <table class="table ntable atable">
+        <colgroup>
+          <col style="width:8%">
+          <col style="width:16%">
+          <col style="width:10%">
+          <col style="width:10%">
+          <col style="width:10%">
+          <col style="width:8%">
+          <col style="width:8%">
+          <col style="width:10%">
+          <col style="width:10%">
+          <col style="width:10%">
+        </colgroup>
+        <thead class="thead-default">
+          <tr>
+            <th>{{constants.LBL_DEMO_OFFER}}</th>
+            <th>
+              <div class="sbc hide text-center show">
+                <input type="text" placeholder="Demo Offer Code" style="width:90%;" (change)="SetPinnedFilter()" [(ngModel)]="freeTextSearch">
+                <a class="fa fa-search ptr"></a>
+              </div>
+            </th>
+            <th>{{constants.LBL_LINK_PREMIUM}}<br /> {{constants.LBL_DEMO_OFFER}}</th>
+            <th>{{constants.LBL_LINK_DIGITAL}}<br /> {{constants.LBL_DEMO_OFFER}}</th>
+            <th *ngIf="answerType.toUpperCase() !== answerTypeConst.MultipleOption">{{constants.LBL_TYPE_CONTROL}}</th>
+            <th *ngIf="answerType.toUpperCase() === answerTypeConst.MultipleOption">{{constants.LBL_SELECTION_RANGE}}</th>
+            <th>{{constants.LBL_SOURCE_TYPE}}</th>
+            <th>{{constants.LBL_RECORD_TYPE}}</th>
+            <th>{{constants.LBL_SCHEDULE}}</th>
+            <th>{{constants.LBL_STATUS}}</th>
+            <th>{{constants.LBL_ACTION}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let offer of demoOfferDetails | DemoOfferSearchPipe :freeTextSearch; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{offer.DemoOfferCode}}</td>
+            <td>{{offer.PremiumOffer}}</td>
+            <td>{{offer.DigitalOffer}}</td>
+            <td *ngIf="answerType.toUpperCase()!== answerTypeConst.MultipleOption">{{offer.ControlType}}</td>
+            <td *ngIf="answerType.toUpperCase()=== answerTypeConst.MultipleOption">{{offer.MinValue}} - {{offer.MaxValue}}</td>
+            <td>{{offer.SourceType | SourceRecordName:'source'}}</td>
+            <td>{{offer.RecordType | SourceRecordName:'record'}}</td>
+            <td>{{offer.ScheduleDate | FormatDate}}</td>
+            <td>
+              <span [ngSwitch]="offer.Status">
+                <a class="activel" *ngSwitchCase="'ACTIVE'">{{offer.Status}}</a>
+                <a class="approved" *ngSwitchCase="'APPROVED'">{{offer.Status}}</a>
+                <a class="draft" *ngSwitchCase="'DRAFT'">{{offer.Status}}</a>
+                <a class="pending" *ngSwitchCase="'PENDING'">{{offer.Status}}</a>
+                <a class="returned" *ngSwitchCase="'RETURNED'">{{offer.Status}}</a>
+                <a class="deleted" *ngSwitchCase="'DELETED'">{{offer.Status}}</a>
+                <a class="archived" *ngSwitchCase="'ARCHIVED'">{{offer.Status}}</a>
+                <a class="inactivel" *ngSwitchCase="'ACTIVE-IN EDIT'">{{offer.Status}}</a>
+                <!--class for active in edit needs to be changed-->
+              </span>
+            </td>
+            <td>
+              <a (click)="deleteDemoOfferValidate(offer.DemoOfferCode)" *ngIf="offer.Status === 'DRAFT' && isDemoCodeNotPending()" class="ptr"><i class="fa fa-trash"></i></a>
+              <a (click)="openRecallDemoOffer(offer)" title="Recall" *ngIf="offer.Status.toUpperCase() === 'PENDING'" class="ptr"><i class="fa fa-undo"></i></a>
+              <a (click)="editDemoOffer(offer)" title="Edit" class="ptr" *ngIf="getEditability(offer.Status) && isDemoCodeNotPending()"><i class="fa fa-pencil"></i></a>
+              <a (click)="checkArchival(offer)" title="Archive" *ngIf="offer.Status.toUpperCase() === 'ACTIVE' && isDemoCodeNotPending()" class="ptr"><i class="fa fa-archive"></i></a>
+            </td>
+          </tr>
+          <tr *ngIf="demoCodeStatus !=='PENDING'">
+            <td><i class="fa fa-2x fa-plus-circle" (click)="addDemoOffer()"></i></td>
+            <td colspan="9"><a class="ptr" (click)="addDemoOffer()">{{constants.LBL_ADD_DEMO_OFFER}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="filteredDemoOffer !== '' && (demoOfferCount > 1)" class="text-center" id="viewallOffer">{{demoOfferCount}} offers in all. To view all <a href="javascript:void(0)" (click)="clearPinnedFilter()">Remove Demo Offer Filter</a></div>
+</div>
+
+
+<bs-modal #modelEditAnswer [backdrop]="'static'">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="dismissModalAnswer()">&times;</button>
+      <h4 class="modal-title" *ngIf="isAddDemoOffer">Add Demo Offer - {{answerHeader}}</h4>
+      <h4 class="modal-title" *ngIf="!isAddDemoOffer">Edit Demo Offer - {{answerHeader}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body-content col-md-12">
+
+        <div class="table-cnt clearfix" style="margin-top:5px">
+          <table class="table ntable atable">
+            <colgroup>
+              <col style="width:15%">
+              <col style="width:25%">
+              <col style="width:15%" />
+            </colgroup>
+            <thead class="thead-default">
+              <tr>
+                <th> <label>Schedule Date</label></th>
+                <th> <label> Link Digital Demo Offer </label></th>
+                <th style="padding-left: 50px"> <label>{{constants.LBL_STATUS}}  </label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="col-sm-10" style="margin-left: -15px;">
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'mm/dd/yyyy'"
+                                    (inputFieldChanged)="validateDate($event)" [selDate]="selectedDemoOffer.ScheduleDate" required></my-date-picker>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="dropdown selmag priomag" style="width:100%;">
+                    <select class="ddl-ctrl" style="width: 500px" [(ngModel)]="selectedDemoOffer.DigitalOffer" (change)="onOtherFieldsChange($event)" [disabled]="disableLinking">
+                      <option value="null">{{constants.LBL_SELECT}}</option>
+                      <option *ngFor="let dig of filteredDigitalDemoOffers" [value]="dig.DemoOfferCode" [title]="dig.DemoOfferCodeWithMagazine">{{dig.DemoOfferCodeWithMagazineTrim}} </option>
+                    </select>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="col-sm-2" style="float: none; margin: 0 auto;padding-left:50px">
+                    <span [ngSwitch]="selectedDemoOffer.Status" class="fr">
+                      <a class="activel inEditStatus" *ngSwitchCase="'ACTIVE'">{{selectedDemoOffer.Status}}</a>
+                      <a class="approved inEditStatus" *ngSwitchCase="'APPROVED'">{{selectedDemoOffer.Status}}</a>
+                      <a class="draft inEditStatus" *ngSwitchCase="'DRAFT'">{{selectedDemoOffer.Status}}</a>
+                      <a class="pending inEditStatus" *ngSwitchCase="'PENDING'">{{selectedDemoOffer.Status}}</a>
+                      <a class="returned inEditStatus" *ngSwitchCase="'RETURNED'">{{selectedDemoOffer.Status}}</a>
+                      <a class="deleted inEditStatus" *ngSwitchCase="'DELETED'">{{selectedDemoOffer.Status}}</a>
+                      <a class="archived inEditStatus" *ngSwitchCase="'ARCHIVED'">{{selectedDemoOffer.Status}}</a>
+                      <a class="inactivel inEditStatus" *ngSwitchCase="'ACTIVE-IN EDIT'">{{selectedDemoOffer.Status}}</a>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:5px;margin-bottom:5px" class="col-sm-12"><p class="alert-danger-error digital" *ngIf="disableLinking"><span>{{digitalLinkError}}</span></p></div>
+
+        <div class="table-cnt clearfix" style="margin-top:10px">
+          <table class="table ntable atable">
+            <colgroup>
+              <col style="width:10%">
+              <col style="width:14%">
+              <!--<col style="width:10%">-->
+              <col style="width:12%">
+              <col style="width:15%">
+              <col style="width:15%">
+              <col style="width:14%">
+            </colgroup>
+            <thead class="thead-default">
+              <tr>
+                <th>{{constants.LBL_DEMO_OFFER_CODE}}</th>
+                <th>{{constants.LBL_LINK_PREMIUM}} {{constants.LBL_DEMO_OFFER}}</th>
+
+                <!--<th>{{constants.LBL_LINK_DIGITAL}}<br /> {{constants.LBL_DEMO_OFFER}}</th>-->
+                <th *ngIf="answerType.toUpperCase() !== answerTypeConst.MultipleOption">{{constants.LBL_TYPE_CONTROL}}</th>
+                <th>{{constants.LBL_SOURCE_TYPE}}</th>
+                <th>{{constants.LBL_RECORD_TYPE}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input id="DemoOfferCode" type="text" class="txt" value="" placeholder="enter" [(ngModel)]="selectedDemoOffer.DemoOfferCode"
+                         (change)="demoOfferChanged = true" (blur)="onDemoOfferCodeChange(selectedDemoOffer.DemoOfferCode)" [disabled]="!isAddDemoOffer" />
+
+                </td>
+                <td>
+                  <div class="dropdown selmag priomag">
+                    <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer.PremiumOffer" (change)="onOtherFieldsChange($event)">
+                      <option value="null">{{constants.LBL_SELECT}}</option>
+                      <option *ngFor="let prem of premiumTypes" [value]="prem.id">{{prem.name}}</option>
+                    </select>
+                  </div>
+                </td>
+                <!--<td>
+                    <div class="dropdown selmag priomag">
+                        <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer.DigitalOffer" (change)="onOtherFieldsChange($event)" [disabled]="disableLinking">
+                            <option value="null">{{constants.LBL_SELECT}}</option>
+                            <option *ngFor="let dig of digitalOffers" [value]="dig">{{dig}}</option>
+                        </select>
+                    </div>
+                </td>-->
+                <td *ngIf="answerType.toUpperCase() !== answerTypeConst.MultipleOption">
+                  <div class="dropdown selmag priomag">
+                    <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer.ControlType" (change)="onOtherFieldsChange($event)">
+                      <option value="null" disabled selected>{{constants.LBL_SELECT}}</option>
+                      <option *ngFor="let ctrl of controlTypes" [value]="ctrl">{{ctrl}}</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown selmag priomag">
+                    <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer.SourceType" (change)="onOtherFieldsChange($event)">
+                      <option value="" disabled selected>{{constants.LBL_SELECT}}</option>
+                      <option *ngFor="let source of sourceTypes" [value]="source.id">{{source.id}} - {{source.name}}</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown selmag priomag">
+                    <select class="ddl-ctrl" [(ngModel)]="selectedDemoOffer.RecordType" (change)="onOtherFieldsChange($event)">
+                      <option value="" disabled selected>{{constants.LBL_SELECT}}</option>
+                      <option *ngFor="let record of recordTypes" [value]="record.id">{{record.id}} - {{record.name}}</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="answerTypeError" class="alert-danger-error mt10">{{answerTypeErrorMsg}}</div>
+        <div *ngIf="validateDemoOfferCode" class="alert-danger-error mt10">{{validationMsg}}</div>
+        <div *ngFor="let error of demoChoiceErrors; let k = index" class="alert-danger-error mt7">Option {{error.index + 1}} - {{error.errorDescription}}</div>
+        <div class="whitep mt10">
+          <div class="ocTitle">{{constants.LBL_CHOICE_HEADER}}</div>
+          <p class="osTitle">{{questionTabDetails.DemoCode.QuestionText}}  (Choose One)</p>
+          <div class="row mt10" *ngIf="answerType.toUpperCase() === answerTypeConst.MultipleOption">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">Min of selection range<input type="text" class="w100 txt" placeholder="Enter" [(ngModel)]="selectedDemoOffer.MinValue" (change)="onOtherFieldsChange($event)" /></div>
+            <div class="col-md-3">Max of selection range<input type="text" class="w100 txt" placeholder="Enter" [(ngModel)]="selectedDemoOffer.MaxValue" (change)="onOtherFieldsChange($event)" /></div>
+            <div class="col-md-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-7 mt20"><i>{{constants.LBL_ANSWER_OPTIONS}}</i></div>
+            <div class="col-md-2 mt20"><i>{{constants.LBL_DEMO_CHOICE_CODE}}</i></div>
+            <div class="col-md-1 mt20"><i>{{constants.LBL_ACTION}}</i></div>
+          </div>
+          <div id="demoChoiceContainer">
+            <div class="row mt20" *ngFor="let choice of selectedDemoOffer.DemoOffer_Choice;let i=index">
+              <div class="col-md-2">{{constants.LBL_OPTION}} {{i+1}}</div>
+              <div class="col-md-7">
+                <input type="text" class="w100 txt" placeholder="Enter" [(ngModel)]="choice.DemoChoiceText"
+                       (change)="onDemoChoiceTextChange(i)" (keyup)="showDemoChoiceContents(choice,i,$event)" (blur)="onDemoChoiceTextBlur(i,$event,choice)" />
+                <div *ngIf="!hideElements[i]" class="result-data">
+                  <div *ngFor="let dc of filteredDemoChoices; let j = index">
+                    <a class="ptr" innerHTML="{{dc.DemoChoiceText}}" (click)="loadSelectedDemoChoice(dc,i)"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="text" class="w100 txt" placeholder="Enter" [(ngModel)]="choice.DemoChoiceCode"
+                       (change)="choicesChanged = true" (blur)="onDemoChoicesChange(choice, i)" [disabled]="choice.DemoChoiceId > 0 || answerType.toUpperCase() === answerTypeConst.Optin_OptOut" />
+              </div>
+              <div class="col-md-1"><a class="ptr" (click)="deleteDemoChoice(choice,i)" *ngIf="!((answerType.toUpperCase() === answerTypeConst.Optin_OptOut) && !(selectedDemoOffer.Status === 'DRAFT' || selectedDemoOffer.Status === 'RETURNED'))"><i class="fa fa-trash"></i></a></div>
+            </div>
+          </div>
+          <div class="row mt20">
+            <div class="col-md-12">
+              <div class="cnopt text-center" *ngIf="answerType.toUpperCase() !== answerTypeConst.Optin_OptOut">
+                <a class="ptr" (click)="addNewDemoChoice()"><i class="fa fa-plus-circle fa-2x"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix mt10">
+        <div class="btnc">
+          <p class="fl"><a class="ml15 ptr" title="Delete Demo Offer" (click)="deleteDemoOfferValidate(selectedDemoOffer.DemoOfferCode)" *ngIf="(selectedDemoOffer.Status === 'DRAFT') && !isAddDemoOffer">Delete Demo Offer</a></p>
+          <p class="fr">
+            <a (click)="saveDemoOfferDetails($event)" class="active ml15 ptr">Save</a>
+            <a (click)="dismissModalAnswer()" title="Cancel" class="ml15 ptr">Cancel</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallDemoOffer [backdrop]="'static'">
+  <div class="modal-content" *ngIf="recalledDemoOffer">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="modalRecallDemoOffer.close()">&times;</button>
+      <h4 class="modal-title"><b>Recall Demo Offer</b><a class="active"><span class="rcOffer">{{recalledDemoOffer.DemoOfferCode}}</span></a></h4>
+    </div>
+    <div class="modal-body">
+      <div class="alert-danger-error" *ngIf="demoOfferDetails.length === 1"><p><span class="fa fa-info-circle"></span><span>Demo Offer <b>'{{recalledDemoOffer.DemoOfferCode}}'</b> is the only Demo Offer for DemoCode <b>'{{questionTabDetails.DemoCode.Code}}'</b></span></p></div>
+      <div class="greyp clearfix" [ngSwitch]="answerType.toUpperCase()">
+        <h4>{{questionTabDetails.DemoCode.QuestionText}}</h4>
+        <!--Single Option Control-->
+        <div class="mt20" *ngSwitchCase="answerTypeConst.SingleOption">
+          <div [ngSwitch]="recalledDemoOffer.ControlType.toUpperCase()">
+            <select *ngSwitchCase="constants.CTRL_DROP" class="ddl-ctrl">
+              <option value="Select">Select</option>
+              <option *ngFor="let choice of recalledDemoOffer.DemoOffer_Choice" [value]="choice.DemoChoiceText">{{choice.DemoChoiceText}}</option>
+            </select>
+            <ng-template *ngSwitchCase="constants.CTRL_RADIO" ngFor let-choice [ngForOf]="recalledDemoOffer.DemoOffer_Choice">
+              <label class="col-md-3"><input type="radio" name="chooseshow"> {{choice.DemoChoiceText}}</label>
+            </ng-template>
+          </div>
+        </div>
+        <!--Opt-in Opt-out Control-->
+        <div class="mt20" *ngSwitchCase="answerTypeConst.Optin_OptOut">
+          <div [ngSwitch]="recalledDemoOffer.ControlType.toUpperCase()">
+            <select *ngSwitchCase="constants.CTRL_DROP" class="ddl-ctrl">
+              <option value="Select">Select</option>
+              <option *ngFor="let choice of recalledDemoOffer.DemoOffer_Choice" [value]="choice.DemoChoiceText">{{choice.DemoChoiceText}}</option>
+            </select>
+            <ng-template *ngSwitchCase="constants.CTRL_RADIO" ngFor let-choice [ngForOf]="recalledDemoOffer.DemoOffer_Choice">
+              <label class="col-md-3"><input type="radio" name="chooseshow"> {{choice.DemoChoiceText}}</label>
+            </ng-template>
+          </div>
+        </div>
+        <!--Multiple Option Check Box Control-->
+        <div class="mt20" *ngSwitchCase="answerTypeConst.MultipleOption">
+          <ng-template ngFor let-choice [ngForOf]="recalledDemoOffer.DemoOffer_Choice">
+            <label class="col-md-3"><input type="checkbox" name="chooseshow"> {{choice.DemoChoiceText}}</label>
+          </ng-template>
+        </div>
+      </div>
+      <div class="greyp clearfix btnc">
+        <p class="fl">
+          <button title="cancel" class="ml15" (click)="modalRecallDemoOffer.close()">{{constants.LBL_CANCEL}} <i class="fa fa-close"></i></button>
+        </p>
+        <p class="fr">
+          <button title="Recall & Delete" class="ml15" (click)="modalRecallDelete.open()" *ngIf="(previousStatus.toUpperCase() === 'DRAFT') && (questionTabDetails.DemoCode.Status !== 'PENDING')">{{constants.BTN_RECALL_DELETE}} <i class="fa fa-trash-o"></i></button>
+          <button title="Recall & Edit" class="ml15" (click)="checkDCStatus()">{{constants.BTN_RECALL_EDIT}} <i class="fa fa-pencil"></i></button>
+          <button title="Recall & Discard" class="ml15" (click)="modalRecallDiscard.open()" *ngIf="(previousStatus.toUpperCase() === 'ACTIVE') || (previousStatus.toUpperCase() === 'ACTIVE-IN EDIT')">{{constants.BTN_RECALL_DISCARD}} <i class="fa fa-undo"></i></button>
+        </p>
+      </div>
+    </div>
+  </div>
+</bs-modal>
+
+<bs-modal #modalDeleteDemoOffer [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{deleteMessage}}</span></p>
+    <button (click)="deleteDemoOffer(demoOfferCode)" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="cancel" class="btn btn-default" (click)="modalDeleteDemoOffer.dismiss()">{{constants.LBL_CANCEL}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalDeleteSuccess [backdrop]="'static'">
+  <div class="alertsuccess">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallConfirmation [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{recallConfirm}}{{constants.ALERT_RECALL_PENDING_DC}}</span></p>
+    <button (click)="proceedRecall()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modalRecallConfirmation.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallDelete [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_RECALL_DEMO_OFFER}}</span></p>
+    <button (click)="recallAndDelete()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modalRecallDelete.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallEdit [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_RECALL_EDIT_DEMO_OFFER}}</span></p>
+    <button (click)="recallAndEdit()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modalRecallEdit.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallDiscard [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_RECALL_DISCARD_DEMO_OFFER}}</span></p>
+    <button (click)="recallAndDiscard()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modalRecallDiscard.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalRecallSuccess [backdrop]="'static'">
+  <div class="alertsuccess">
+    <span class="fa fa-2x fa-check"></span>{{BusinessMessage}}
+  </div>
+
+</bs-modal>
+
+<bs-modal #modalArchive [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>Are you sure you wish to archive this Demo Offer?</span></p>
+    <button (click)="archive()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="cancel" class="btn btn-default" (click)="modalArchive.dismiss()">{{constants.LBL_CANCEL}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelForcedChainDetails [backdrop]="'static'">
+  <div class="alertError">
+    {{deleteForcedLinkChoiceMsg}}<br /><br />
+    <div *ngFor="let forced of forcedChainDetails; let i = index" style="text-align:center">
+      <span class="fa fa-info-circle"></span>
+      Demo Offer Code '{{forced.DemoOfferCode}}' in Demo Code '{{forced.DemoCode}}'
+    </div><br />
+    {{deleteAlertMsgForChoiceToOfferLink}}<br /><br />
+    <div *ngFor="let chain of choiceToOfferChainDetails; let i = index" style="text-align:center">
+      <span class="fa fa-info-circle"></span>
+      Demo Offer Code '{{chain.DemoOfferCode}}' in Demo Code '{{chain.DemoCode}}'
+    </div><br />
+    <button class="btn btn-default" (click)="modelForcedChainDetails.close()">Ok</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modelChoiceChainDetails [backdrop]="'static'">
+  <div class="alertError">
+    <div *ngFor="let choice of choiceChainDetails; let i = index" style="text-align:center">
+      <span class="fa fa-info-circle"></span>
+      Demo Choice Code '{{currentChoice.DemoChoiceCode}}' is linked to Demo Choice Code '{{choice.DemoChoiceCode}}' in Demo Code '{{choice.DemoCode}}'
+    </div><br />
+    <button class="btn btn-default" (click)="modelChoiceChainDetails.close()">Ok</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalValidate [backdrop]="'static'">
+  <div class="alertError">
+    <span class="fa fa-info-circle"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modalDiscardError [backdrop]="'static'">
+  <div class="alertError">
+    <span class="fa fa-info-circle">The Demo Offer cannot be recalled due to the following conflicts:</span>
+    <div id="errorMsg"></div>
+    <button (click)="modalDiscardError.dismiss()" class="btn btn-default marginR10" id="OK" title="yes">OK</button>
+  </div>
+</bs-modal>
+
+<bs-modal #modalSaveSuccess [backdrop]="'static'">
+  <div class="alertsuccess">
+    <span class="fa fa-2x fa-check"></span>{{modalMessage}}
+  </div>
+</bs-modal>
+
+<bs-modal #modelIsDirty [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-info-circle"></span><span>{{exisitingDemoChoiceMsg}}?</span></p>
+    <button (click)="modelIsDirty.dismiss()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="modelIsDirty.close()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
+
+<bs-modal #progressBar [backdrop]="'static'">
+  <div style="padding-left: 50%;
+    margin-top: 33%;">
+    <loaders-css [loader]="'ball-spin-fade-loader'" [loaderClass]="'my-loader'">Loading..</loaders-css>
+  </div>
+</bs-modal>
+
+<bs-modal #modelUnSavedChanges [backdrop]="'static'">
+  <div class="alertmodel">
+    <p class="paddingtB10"><span class="fa fa-2x fa-info-circle"></span><span>{{constants.ALERT_UNSAVED_MSG}}?</span></p>
+    <button (click)="allowChangesLost()" class="btn btn-default marginR10" id="OK" title="yes">{{constants.LBL_YES}}</button>
+    <button id="cancel" title="no" class="btn btn-default" (click)="blockChangesLost()">{{constants.LBL_NO}}</button>
+  </div>
+</bs-modal>
